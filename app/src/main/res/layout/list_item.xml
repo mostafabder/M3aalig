@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                >
+
+
+                <TextView
+                    android:id="@+id/lblListItem"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:text="@string/knowaboutapp"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="13dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:text="ألم امامي"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="13dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:onClick="inviteFriend"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:text="الم عميق"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="13dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:text="بدأ الالم منذ ساعة"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="13dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:text="ألم امامي"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="13dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:onClick="inviteFriend"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.7"
+                    android:layout_height="wrap_content"
+                    android:text="الم عميق"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="13dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:onClick="availableOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:id="@+id/choose_order_button"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        fancy:fb_defaultColor="#e28b3f"
+        fancy:fb_focusColor="#9bd823"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        fancy:fb_text="اختيار الطلب"
+        fancy:fb_textFont="Changa-Light.ttf"
+        fancy:fb_textColor="#FFFFFF"
+        android:layout_marginBottom="10dp"
+        />
+</LinearLayout>

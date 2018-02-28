@@ -1,0 +1,90 @@
+package com.asi.m3alig.PatientWork.m3aligSideScreens;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
+import com.asi.m3alig.Adapters.Patient.PatientMessageCenterAdapter;
+import com.asi.m3alig.Models.TestModel;
+import com.asi.m3alig.R;
+import com.asi.m3alig.Tools.Connection.ServerTool;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.ResponseBody;
+
+public class MesseageCenterActivity extends AppCompatActivity {
+    private RecyclerView.Adapter adapter;
+    private RecyclerView recyclerView;
+    private ArrayList<TestModel> data;
+    private RecyclerView.LayoutManager layoutManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_messeage_center);
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.m3alig_message_center_recycler);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        data = new ArrayList<>();
+        GetFAQ();
+
+
+
+    }
+
+    public void goBack(View view) {
+        onBackPressed();
+    }
+    private void GetFAQ() {
+        ServerTool.getFAQ(this, new ServerTool.APICallBack<List<TestModel>>() {
+            @Override
+            public void onSuccess(final List<TestModel> response) {
+                if (response != null) {
+                    Log.d("aaaa", response.size() + "");
+
+                    for (int i = 0; i < response.size(); i++) {
+
+                        data.add(new TestModel(
+                                response.get(i).getName(),
+                                response.get(i).getPhone(),
+                                response.get(i).getNumber(),
+                                response.get(i).getDesc(),
+                                response.get(i).getNote(),
+                                response.get(i).getPrice()
+                        ));
+
+
+                    }
+                    adapter = new PatientMessageCenterAdapter(data);
+                    recyclerView.setAdapter(adapter);
+
+                } else {
+//                    Toast.makeText(getActivity(), "Can't get Data", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailed(int statusCode, ResponseBody responseBody) {
+
+            }
+        });
+
+    }
+
+}

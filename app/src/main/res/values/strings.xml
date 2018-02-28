@@ -1,0 +1,185 @@
+<resources>
+    <string name="app_name">M3alig</string>
+    <string name="haveaccount">هل لديك حساب ؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="havenoaccount">ليس لديك حساب ...</string>
+    <string name="registernewaccount">تسجيل حساب جديد</string>
+    <string name="usingservice">أستخدامك للتطبيق يعني موافقتك</string>
+    <string name="youaccept">علي سياسة الخصوصة و شروط الأستخدام</string>
+    <string name="drawer_open">opened</string>
+    <string name="drawer_close">closed</string>
+    <string name="knowaboutapp">تعرف علي التطبيق</string>
+    <string name="tableof3lag">جدول جلسات العلاج</string>
+    <string name="invitefriend">دعوة صديق</string>
+    <string name="invite_txt">قم بدعوه اصدقائك واحصل علي نقاط مجانية يمكنك استبدالها بجلسات علاجيه عن كل صديق يقوم بتحميل البرنامج</string>
+    <string name="clicktoshareOn">أضغط لمشاركه الرابط علي</string>
+    <string name="back">رجوع</string>
+    <string name="treatment_guidelines_header">إرشادات العلاج و التمارين</string>
+    <string name="treatment_schedule_header">جدول جلسات العلاج</string>
+
+    <string name="cont">متابعة</string>
+    <string name="my_helth_summry">ملخص حالتي الصحية</string>
+    <string name="contact_doctor_header">التواصل مع أخصائي</string>
+    <string name="message_center_header">مركز الرسائل</string>
+    <string name="general_info_about_case">معلومات عامة عن الحاله الطبية</string>
+    <string name="for_who">لمن تطلب الجلسة</string>
+    <string name="for_me">أطلبها لي</string>
+    <string name="for_one_of_my_family">أطلبها لاحد افراد العائلة</string>
+    <string name="for_other">اطلبها لشخص اخر</string>
+    <string name="gender">الجنس</string>
+    <string name="male">ذكر</string>
+    <string name="female">أنثي</string>
+    <string name="Age">السن</string>
+    <string name="rate_patioent">قم بتقييم المريض</string>
+    <string name="rate_doctor">قم بتقييم الجلسة</string>
+    <string name="rate_footer">التقييمات اقل من 3 نجوم سيتوجب عليك توضيح السبب</string>
+
+    <string name="session_finished">إنتهت جلست العلاج</string>
+    <string name="do_session_report">قم بإعداد تقرير الزيارة</string>
+    <string name="yes">نعم</string>
+    <string name="start_session">أضغط لبدء جلسة العلاج</string>
+    <string name="message_admin">إضغط لمراسلة الإدارة</string>
+    <string name="patient_isnot_ready">هل المريض غير جاهز ؟؟</string>
+
+
+    <string name="view_my_appoinment_table">عرض جدول المواعيد الخاص بي ..</string>
+
+    <string name="no">لا</string>
+    <string name="subjictev">SUBJECTIVE</string>
+    <string name="objective">OBJECTIVE</string>
+    <string name="assessment">ASSESSMENT</string>
+    <string name="plan">PLAN</string>
+    <string name="number_of_sessions">عدد الجلسات المطلوبة للعلاج</string>
+    <string name="home_visit_table">جدولة الزيارات المنزلية</string>
+    <string name="did_he_ned_motab3a">هل يحتاج إلي متابعة ؟</string>
+
+    <string name="mechanical_notes">الملاحظات الإكلينيكية</string>
+    <string name="next_treatment_sessions_table">جدول الجلسات العلاجية التالية</string>
+    <string name="view_last_session">عرض اخر ملخص جلسة</string>
+    <string name="cancel_medecine">إلغاء العلاج !</string>
+    <string name="cancel_medecine_message">(يترتب عليه إلغاء جميع الجلسات التالية)</string>
+    <string name="achieved_goals">اهداف تحققت</string>
+    <string name="closed_goals">هدف قريب المدى</string>
+    <string name="Long_term_goals">هدف بعيد المدى</string>
+
+    <string name="patient_status">حالة المريض الحالية</string>
+
+    <string name="medecine_date_item1">- يوميا الساعة 12 ظهرا</string>
+    <string name="medecine_date_item2">- يوميا الساعة 8 مساء</string>
+    <string name="medecine_date_item3">- يوميا الساعة 4 صباحا</string>
+
+    <string name="medecine_name_item">كريم مووف</string>
+    <string name="medecine_count_item">دهان موضعي</string>
+    <string name="medecine_must_be_used_footer">يقوم التطبيق بارسال تنبيهات إلي هاتفك قبل موعد العلاج ب 15 دقيقة </string>
+    <string name="medecine_must_be_used">أدوية يجب استخدامها </string>
+    <string name="join_message">يمكنك الاشتراك الشهري في الخدمة مقابل مبلغ رمزي </string>
+    <string name="required_doctor">ما هو التخصص المطلوب ؟ </string>
+    <string name="call_price">تكلفة الخدمة 1 ريال / دقيقة </string>
+    <string name="join_price">قيمة الإشتراك 100 ريال / شهر </string>
+
+    <string name="message_reply_templete">شكرا لاهتمامكم ... في انتظار تغير المعالج</string>
+    <string name="message_templete">تم الاهتمام بطلبكم و جاري تغير المعالج مع تمنياتنا بالشفاء العاجل</string>
+    <string name="tt">الخميس  18/12/2018</string>
+
+    <string name="health_summry_top">الوصفة الطبية حسب اخر تقرير لاخر معالج قام بزيارتك </string>
+    <string name="old_session_summry">ملخص الجلسات السابقة</string>
+    <string name="view_session_summry">عرض ملخص الجلسة</string>
+
+    <string name="number_picker_formatter">%02d</string>
+    <string name="Social_status">الحالة الأجتماعية</string>
+    <string name="married">متزوج</string>
+    <string name="single">أعزب</string>
+    <string name="move_status">مستوي الحركة</string>
+    <string name="walk">يمشي</string>
+    <string name="set">يجلس</string>
+    <string name="can_not_move">لا يستطيع الحركة</string>
+    <string name="healthy_problem">المشاكل الصحية</string>
+    <string name="no_thing">لا يوجد / لا اتذكر</string>
+    <string name="sugar">مريض بالسكر</string>
+    <string name="blood">اضرابات في ضغط الدم</string>
+    <string name="heart">مريض في القلب</string>
+    <string name="other">مرض اخر ...</string>
+    <string name="when_pain_start">متي بدأ الالم</string>
+    <string name="what_is_your_complaint">بماذا تشكو</string>
+    <string name="pain_postion">حدد  موضع الالم (يسمح بتعدد الاختيار )</string>
+    <string name="click_to_choose_pain_position">أضغط لتحديد مكان الالم</string>
+    <string name="click_to_remove_pain_position">اضغط مره اخري لازاله العلامه</string>
+    <string name="where_you_will_recive_treatment">أين ستتلقي العلاج</string>
+    <string name="flat_num">الدور , رقم الشقة</string>
+    <string name="house_num">رقم المنزل , اسم الشارع</string>
+    <string name="area">المنطقة</string>
+    <string name="schedule_appointments">جدولة المواعيد ..</string>
+    <string name="schedule_appointments_txt_one">سيتم إضافة الموعد الي جدولك الخاص الرجاء الإلتزام بالموعد و الوقت .</string>
+    <string name="gov_and_city">المحافظة / المدينة</string>
+    <string name="schedule">جدولة المواعيد ...</string>
+    <string name="treatment_session_report">تقرير الجلسة العلاجية</string>
+    <string name="schedule_txt_one">سيتم زيارتك من قبل معالج لتشخيص حالتك ومن ثم تجهيز تقريرلتحديد الاخصائي المناسب لمتابعة حالتك</string>
+    <string name="schedule_txt_two">يرجي العلم ان مواعيد العمل للرجال تبدأ من الساعه 9 صباحا حتي الساعه 9 مساء  وللنساء تبدأ من الساعه ال9 صباحا الي الساعه 6 مساء</string>
+    <string name="choose_date">أختر اليوم المناسب للزياره الاستكشافية</string>
+    <string name="done">أنهاء</string>
+    <string name="save">حفظ</string>
+    <string name="service_coast_text">يتم احتساب سعر الخدمة كالتالي :</string>
+    <string name="visitation_time">مدة الزيارة التشخيصية ساعة كحد أقصي .</string>
+    <string name="visit_money">سعر الزيارة التشخيصية  300 ريال</string>
+    <string name="note_one">اذا تطلبت الجلسه اكثر من ساعة سيتم تحديد موعد اخر</string>
+    <string name="note_two">
+    تسعد ادارة التطبيق بتقديم اقصي درجات العناية الطبية وتشترط التالي للتاكد
+    </string>
+    <string name="note_three">يجب تجهيز اي تحاليل سابقه او ادوية تم استخدامها خلال فتره قريبه من طلب الخدمه لعرضها علي المعالج</string>
+    <string name="note_four">يجب وجود ولي امر المريض (اذا كان طفلا)</string>
+    <string name="note_five">يجب وجود محرم بالغ (اذا كان المريض انثي )</string>
+    <string name="note_six">يتم الغاء الزياره فورا اذا تم مخالفه ايا من الامور السابقة</string>
+    <string name="note_seven">يتم حظرك من التطبيق اذا قمت بمعامله المعالج بشكل لا يليق</string>
+    <string name="note_eight">يرجي العلم انه يتم تحديد مكان المعالج بشكل مستمر خلال فتره الزياره وذالك لضمان جوده الخدمه</string>
+    <string name="enter_your_phone_num">ادخل رقم الهاتف</string>
+    <string name="enter_ver_code">ادخل كود التفعيل</string>
+    <string name="enter_your_full_name">ادخل الاسم رباعي</string>
+    <string name="are_you_mo3alg">هل أنت معالج طبي ؟</string>
+    <string name="login_as_m3alg">تسجيل الدخول كمعالج</string>
+    <string name="enter_your_id">ادخل رقم بطاقه الهوية</string>
+    <string name="enter_end_date_of_id">أدخل تاريخ انتهاء بطاقة الهوية</string>
+    <string name="enter_your_date_of_grad">تاريخ التخرج</string>
+    <string name="enter_rokhsa_number">أدخل رقم رخصة مزاوله المهنة</string>
+    <string name="enter_moahel">المؤهل الصحي (المسمي الصحي )</string>
+    <string name="best_time_for_work">تحديد مواعيد العمل المناسبة</string>
+    <string name="visit_table">جدول الزيارات والمواعيد</string>
+    <string name="comuinty">مجتمع المعالجين</string>
+    <string name="courses">الدورات التدريبية</string>
+    <string name="Available_treatment_requests">طلبات العلاج المتاحة ....</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="offer_help">تقديم استشارة طبية</string>
+    <string name="privacy_how_to_use">سياسة الخصوصية وشروط الاستخدام</string>
+    <string name="edit_info">تعديل البيانات</string>
+    <string name="visa">بطاقات الدفع</string>
+    <string name="visa_num">رقم البطاقة</string>
+    <string name="visa_card_owner">اسم حامل البطاقة</string>
+    <string name="sending_address">عنوان المرسلات</string>
+    <string name="enter_floor">أدخل رقم الطابق</string>
+    <string name="enter_steer">أدخل اسم الشارع</string>
+    <string name="enter_region">أدخل اسم المنطقة</string>
+    <string name="enter_city">أدخل المدينة</string>
+    من جوده الخدمه المقدمه
+    <string name="please_wait">انتظر من فضلك..</string>
+    <string name="something_error">حدث خطأ ما</string>
+    <string name="contact_services">اتصل بخدمة العملاء</string>
+    <string name="check_connection">تحقق من اتصالك بالإنترنت</string>
+    <string name="succes_added">تم بنجاح</string>
+    <string name="enter_national_id">أدخل الرقم القومي</string>
+    <string name="veri_code_sent">كود التفعيل تم ارساله</string>
+    <string name="enter_fullanme">أدخل اسمك الكامل</string>
+    <string name="enter_phone">أدخل رقم هاتفك</string>
+    <string-array name="items">
+        <item>اخصائي تغذية</item>
+        <item>اخصائي طب الاطفال</item>
+        <item>اخصائي امراض النساء</item>
+        <item>اخصائي الصدر</item>
+        <item>اخصائي المخ و الاعصاب</item>
+    </string-array>
+    //facebook id
+    <string name="facebook_app_id">1980513182202882</string>
+
+    <string name="default_notification_channel_name" translatable="true">News</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+</resources>
