@@ -177,9 +177,102 @@
         <item>اخصائي الصدر</item>
         <item>اخصائي المخ و الاعصاب</item>
     </string-array>
+    <string-array name="diseases">
+        <item>لا يوجد / لا اتذكر</item>
+        <item>مريض بالسكر</item>
+        <item>اضرابات في ضغط الدم</item>
+        <item>مريض في القلب</item>
+        <item>مرض اخر ...</item>
+    </string-array>
+    <string-array name="places">
+        <item value="شمال الرياض">شمال الرياض</item>
+        <item value="شرق الرياض"> شرق الرياض</item>
+        <item value="غرب الرياض"> غرب الرياض</item>
+        <item value="جنوب الرياض"> جنوب الرياض</item>
+        <item value="وسط الرياض">  وسط الرياض</item>
+        <item value="شمال مكه">شمال مكه</item>
+        <item value="شرق مكه"> شرق مكه</item>
+        <item value="غرب مكه"> غرب مكه</item>
+        <item value="جنوب مكه"> جنوب مكه</item>
+        <item value="وسط مكه"> وسط مكه</item>
+        <item value="شمال مدينه المنوره">شمال مدينه المنوره</item>
+        <item value="شرق مدينه المنوره"> شرق مدينه المنوره</item>
+        <item value="غرب مدينه المنوره"> غرب مدينه المنوره</item>
+        <item value="جنوب مدينه المنوره"> جنوب مدينه المنوره</item>
+        <item value="وسط مدينه المنوره"> وسط مدينه المنوره</item>
+        <item value="شمال بريدة">شمال بريدة</item>
+        <item value="شرق بريدة"> شرق بريدة</item>
+        <item value="غرب بريدة"> غرب بريدة</item>
+        <item value="جنوب بريدة"> جنوب بريدة</item>
+        <item value="وسط بريدة"> وسط بريدة</item>
+        <item value="شمال تبوك">شمال تبوك</item>
+        <item value="شرق تبوك"> شرق تبوك</item>
+        <item value="غرب تبوك"> غرب تبوك</item>
+        <item value="جنوب تبوك"> جنوب تبوك</item>
+        <item value="وسط تبوك"> وسط تبوك</item>
+        <item value="شمال الدمام">شمال الدمام</item>
+        <item value="شرق الدمام"> شرق الدمام</item>
+        <item value="غرب الدمام"> غرب الدمام</item>
+        <item value="جنوب الدمام"> جنوب الدمام</item>
+        <item value="وسط الدمام"> وسط الدمام</item>
+        <item value="شمال الاحساء">شمال الاحساء</item>
+        <item value="شرق الاحساء"> شرق الاحساء</item>
+        <item value="غرب الاحساء"> غرب الاحساء</item>
+        <item value="جنوب الاحساء"> جنوب الاحساء</item>
+        <item value="وسط الاحساء"> وسط الاحساء</item>
+        <item value="شمال الطائف">شمال الطائف</item>
+        <item value="شرق الطائف"> شرق الطائف</item>
+        <item value="غرب الطائف"> غرب الطائف</item>
+        <item value="جنوب الطائف"> جنوب الطائف</item>
+        <item value="وسط الطائف"> وسط الطائف</item>
+        <item value="شمال نجران">شمال نجران</item>
+        <item value="شرق نجران"> شرق نجران</item>
+        <item value="غرب نجران"> غرب نجران</item>
+        <item value="جنوب نجران"> جنوب نجران</item>
+        <item value="وسط نجران"> وسط نجران</item>
+        <item value="شمال حفر الباطن">شمال حفر الباطن</item>
+        <item value="شرق حفر الباطن"> شرق حفر الباطن</item>
+        <item value="غرب حفر الباطن"> غرب حفر الباطن</item>
+        <item value="جنوب حفر الباطن"> جنوب حفر الباطن</item>
+        <item value="وسط حفر الباطن"> وسط حفر الباطن</item>
+        <item value="شمال الجبيل">شمال الجبيل</item>
+        <item value="شرق الجبيل"> شرق الجبيل</item>
+        <item value="غرب  الجبيل"> غرب  الجبيل</item>
+        <item value="جنوب  الجبيل"> جنوب  الجبيل</item>
+        <item value="وسط الجبيل"> وسط الجبيل</item>
+        <item value="شمال ضباء">شمال ضباء</item>
+        <item value="شرق ضباء"> شرق ضباء</item>
+        <item value="غرب  ضباء"> غرب  ضباء</item>
+        <item value="جنوب  ضباء"> جنوب  ضباء</item>
+        <item value="وسط ضباء"> وسط ضباء</item>
+        <item value="شمال الخرج">شمال الخرج</item>
+        <item value="شرق الخرج"> شرق الخرج</item>
+        <item value="غرب  الخرج"> غرب  الخرج</item>
+        <item value="جنوب  الخرج"> جنوب  الخرج</item>
+        <item value="وسط الخرج"> وسط الخرج</item>
+        <item value="شمال الثقبة">شمال الثقبة</item>
+        <item value="شرق الثقبة"> شرق الثقبة</item>
+        <item value="غرب  الثقبة"> غرب  الثقبة</item>
+        <item value="جنوب  الثقبة"> جنوب  الثقبة</item>
+        <item value="وسط الثقبة"> وسط الثقبة</item>
+        <item value="شمال نجران">شمال نجران</item>
+        <item value="شرق نجران"> شرق نجران</item>
+        <item value="غرب نجران"> غرب نجران</item>
+        <item value="جنوب نجران"> جنوب نجران</item>
+        <item value="وسط نجران"> وسط نجران</item>
+        <item value="شمال خميس مشيط">شمال خميس مشيط</item>
+        <item value="شرق خميس مشيط"> شرق خميس مشيط</item>
+        <item value="غرب خميس مشيط"> غرب خميس مشيط</item>
+        <item value="جنوب خميس مشيط"> جنوب خميس مشيط</item>
+        <item value="وسط خميس مشيط"> وسط خميس مشيط</item>
+    </string-array>
     //facebook id
     <string name="facebook_app_id">1980513182202882</string>
 
     <string name="default_notification_channel_name" translatable="true">News</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="choose_health">اختر حالتك الصحية</string>
+    <string name="optional">( أختياري )</string>
+    <string name="update_info">تعديل البيانات</string>
+    <string name="wrong_number">رقم الهاتف غير صحيح!</string>
 </resources>

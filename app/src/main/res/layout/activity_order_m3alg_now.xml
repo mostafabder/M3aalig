@@ -291,60 +291,60 @@
 
 
             <!--Social status layout -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:padding="7dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/white_blue"
-                >
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:weightSum="2"-->
+                <!--android:padding="7dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:background="@color/white_blue"-->
+                <!--&gt;-->
 
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1.7"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Social_status"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="15dp"
-                    android:src="@drawable/main_screen_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/married"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:id="@+id/married_text_view"
-                    android:textColor="@color/white"
-                    android:layout_margin="4dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/single"
-                    android:id="@+id/single_text_view"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:layout_margin="4dp"
-                    />
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="1.7"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/Social_status"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--/>-->
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight=".2"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:src="@drawable/main_screen_arrow_icon"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--/>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--&gt;-->
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/married"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:id="@+id/married_text_view"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_margin="4dp"/>-->
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/single"-->
+                    <!--android:id="@+id/single_text_view"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_margin="4dp"-->
+                    <!--/>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
             <!--Move status layout -->
             <LinearLayout
@@ -447,6 +447,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
+                <ListView
+                    android:id="@+id/diseases_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/diseases"
+                    />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -455,49 +461,50 @@
                     android:id="@+id/no_disease_text_view"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:layout_margin="4dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sugar"
-                    android:textSize="15sp"
-                    android:id="@+id/diabetic_text_view"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
                     android:layout_margin="4dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/blood"
-                    android:textSize="15sp"
-                    android:id="@+id/blood_pressure_text_view"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:layout_margin="4dp"
-                    />
+                    android:visibility="gone"/>
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/sugar"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:id="@+id/diabetic_text_view"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_margin="4dp"-->
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/blood"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:id="@+id/blood_pressure_text_view"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_margin="4dp"-->
+                    <!--/>-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/heart"
-                    android:textSize="15sp"
-                    android:id="@+id/heart_patient_text_view"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:layout_margin="4dp"
-                    />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/heart"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:id="@+id/heart_patient_text_view"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_margin="4dp"-->
+                    <!--/>-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/other"
-                    android:textSize="15sp"
-                    android:id="@+id/other_disease_text_view"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:layout_margin="4dp"
-                    />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/other"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:id="@+id/other_disease_text_view"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_margin="4dp"-->
+                    <!--/>-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -107,11 +107,13 @@ public class WhenPainStartActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-
                         whenPainStartTextView.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                         order.setWhen_pain_start(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                     }
                 }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+        Calendar calendar=Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR,1);
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.show();
         //
     }

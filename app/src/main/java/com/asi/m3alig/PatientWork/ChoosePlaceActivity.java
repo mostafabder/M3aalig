@@ -17,12 +17,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.asi.m3alig.Models.VisitOrderPatient;
+import com.asi.m3alig.PatientWork.m3aligSideScreens.ContactDoctorActivty;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Utility.MyLocation;
 import com.google.android.gms.common.ConnectionResult;
@@ -52,6 +55,7 @@ import java.util.Locale;
 
 public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
+    Spinner spinner;
     private boolean mRequestingLocationUpdates = false;
     private LocationRequest mLocationRequest;
     private static int UPDATE_INTERVAL = 10000; // 10 sec
@@ -68,7 +72,7 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
     private GoogleMap googleMap;
     private SupportMapFragment mapFragment;
     private Marker sourceMarker;
-    EditText floor,street,region,city;
+    EditText floor,street,city;
     CardView cardView;
     LinearLayout linearLayout;
     ImageView mapButton,addressButton;
@@ -80,12 +84,14 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_choose_place);
+        spinner=(Spinner)findViewById(R.id.region_spinner);
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(ChoosePlaceActivity.this, R.array.places, R.layout.item_spinner_location);
+        spinner.setAdapter(arrayAdapter);
         order=(VisitOrderPatient)getIntent().getSerializableExtra("order");
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
         cardView = (CardView) findViewById(R.id.card_view_address);
         floor=(EditText)findViewById(R.id.floor_number);
         street=(EditText)findViewById(R.id.street_name);
-        region=(EditText)findViewById(R.id.region);
 //        city=(EditText)findViewById(R.id.city);
         linearLayout = (LinearLayout) findViewById(R.id.map_layout);
         mapButton= (ImageView) findViewById(R.id.map_button);
@@ -125,11 +131,10 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
         {
             if(validate().equals("ok"))
             {
-
                 getAddress();
                 order.setLocation_floor_number(floor.getText().toString());
                 order.setLocation_street_name(street.getText().toString());
-                order.setLocation_region(region.getText().toString());
+                order.setLocation_region(spinner.getSelectedItem().toString());
 //                order.setLocation_city(city.getText().toString());
                 Intent intent=new Intent(ChoosePlaceActivity.this, ScheduleActivity.class);
                 intent.putExtra("order",order);
@@ -182,13 +187,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(MAP_ZOOM_TO));
     }
     public String  validate(){
-
-        if(floor.getText().toString().trim().equals(""))
-            return getString(R.string.enter_floor);
-        else if(street.getText().toString().trim().equals(""))
+         if(street.getText().toString().trim().equals(""))
             return getString(R.string.enter_steer);
-        else if(region.getText().toString().trim().equals(""))
-            return getString(R.string.enter_region);
         else if(mLastLocation==null)
             return "تاكد من تمكين الموقع علي جهازك";
 //        else if(city.getText().toString().trim().equals(""))

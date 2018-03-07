@@ -105,19 +105,28 @@
 
 
         <Spinner
+            android:id="@+id/spinner_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/white"
             android:layoutDirection="rtl"
-            android:textAlignment="viewEnd"
             android:entries="@array/items"
             android:spinnerMode="dropdown"
             android:dropDownSelector="@drawable/downarrow"
-            android:textDirection="rtl">
+            android:textDirection="rtl"
+            >
 
         </Spinner>
-
+        <EditText
+            android:id="@+id/message_contact_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:textSize="16sp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/tinyblack"
+            android:textColor="@color/white"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -127,16 +136,17 @@
             android:weightSum="1">
 
             <ImageView
+                android:id="@+id/call_contact_iv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:src="@drawable/call_button" />
 
             <ImageView
+                android:id="@+id/message_contact_iv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-
                 android:src="@drawable/chat_button" />
 
 

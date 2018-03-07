@@ -17,12 +17,16 @@ import com.asi.m3alig.Responses.CurrentResponse;
 import com.asi.m3alig.Responses.FinishVisitResponse;
 import com.asi.m3alig.Responses.LoginResponse;
 import com.asi.m3alig.Responses.NormalResponse;
+import com.asi.m3alig.Responses.ProfileUpdateResponse;
 import com.asi.m3alig.Responses.RateVisitResponse;
 import com.asi.m3alig.Responses.StartingVisit;
 import com.asi.m3alig.Responses.VisitResponse;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
@@ -137,7 +141,13 @@ public interface ApiInterface {
     @POST("/patient/visit/rate")
     Call<NormalResponse> rateVisit(@Field("token")String token, @Field("secret")String secret,@Field("patient_rate")String patient_rate,@Field("patient_reason")String patient_reason,@Field("visit_id")String visit_id);
 
-
+    @FormUrlEncoded
+    @POST("/patient/messages/send")
+    Call<NormalResponse>contact_message(@Field("token")String token, @Field("secret")String secret,@Field("to_type")String to_type,
+                                        @Field("to_id")String to_id,@Field("from_type")String from_type,@Field("msg")String msg);
+    @FormUrlEncoded
+    @POST("/patient/updateProfile")
+    Call<ProfileUpdateResponse>update_profile(@Field("token")String token, @Field("secret")String secret,@FieldMap Map<String,String> params);
     //doctor start visit
     @FormUrlEncoded
     @POST("/doctor/visit/start")
@@ -199,6 +209,7 @@ public interface ApiInterface {
                                      @Field("need_follow")String need_follow, @Field("number_session")String number_session,
                                      @Field("other")String other, @Field("patient_id")String patient_id,
                                      @Field("visit_id")String visit_id);
+
 
 }
 

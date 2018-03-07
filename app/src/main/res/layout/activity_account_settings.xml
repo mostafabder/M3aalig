@@ -125,64 +125,94 @@
                      <TextView
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
+                         android:text="@string/enter_fullanme"
+                         android:layout_marginTop="5dp"
+                         android:textColor="@color/white"
+                         />
+                     <EditText
+                         android:id="@+id/name_profile_et"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:inputType="textCapWords"
+                         android:textColor="@color/white"
+                         android:textSize="15sp"
+                         />
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
                          android:text="@string/enter_your_phone_num"
                          android:layout_marginTop="5dp"
                          android:textColor="@color/white"
                          />
-
-                     <LinearLayout
+                     <EditText
+                         android:id="@+id/phone_profile_et"
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
-                         android:orientation="horizontal"
-                         android:weightSum="2"
-                         android:layout_margin="5dp"
-                         >
-
-
-                         <ImageView
-                             android:layout_width="0dp"
-                             android:layout_height="30dp"
-                             android:layout_gravity="center_vertical"
-                             android:layout_weight=".5"
-                             android:src="@drawable/phone_check_icon_not_active"
-                             />
-                         <TextView
-                             android:layout_width="0dp"
-                             android:layout_height="wrap_content"
-                             android:layout_weight=".3"
-                             android:text="+966"
-                             android:textColor="@color/white"
-                             />
-                         <EditText
-                             android:layout_width="0dp"
-                             android:layout_height="wrap_content"
-                             android:layout_weight="1.2"
-                             android:inputType="number"
-                             />
-                     </LinearLayout>
-                     <TextView
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:text="@string/enter_ver_code"
+                         android:inputType="phone"
                          android:textColor="@color/white"
+                         android:textSize="15sp"
                          />
-                     <com.mukesh.OtpView
-                         android:id="@+id/enter_code"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_gravity="center_horizontal"
-                         android:inputType="number"
-                         android:textColor="@color/tinyblack"
-                         android:layoutDirection="ltr"
-                         >
-                         <requestFocus/>
-                     </com.mukesh.OtpView>
-
-                     <ImageView
+                     <TextView
+                         android:id="@+id/submit_profile"
                          android:layout_width="match_parent"
                          android:layout_height="45dp"
-                         android:src="@drawable/change_num"
+                         android:background="@drawable/green_back_icon"
+                         android:text="@string/update_info"
+                         android:textStyle="bold"
+                         android:textAlignment="center"
+                         android:gravity="center_vertical"
+                         android:textColor="@color/white"
+                         android:textSize="18sp"
                          />
+                     <!--<LinearLayout-->
+                         <!--android:layout_width="match_parent"-->
+                         <!--android:layout_height="wrap_content"-->
+                         <!--android:orientation="horizontal"-->
+                         <!--android:weightSum="2"-->
+                         <!--android:layout_margin="5dp"-->
+                         <!--&gt;-->
+
+
+                         <!--<ImageView-->
+                             <!--android:layout_width="0dp"-->
+                             <!--android:layout_height="30dp"-->
+                             <!--android:layout_gravity="center_vertical"-->
+                             <!--android:layout_weight=".5"-->
+                             <!--android:src="@drawable/phone_check_icon_not_active"-->
+                             <!--/>-->
+                         <!--<TextView-->
+                             <!--android:layout_width="0dp"-->
+                             <!--android:layout_height="wrap_content"-->
+                             <!--android:layout_weight=".3"-->
+                             <!--android:text="+966"-->
+                             <!--android:textColor="@color/white"-->
+                             <!--/>-->
+                  <!---->
+                     <!--</LinearLayout>-->
+                   <!---->
+                     <!--<TextView-->
+                         <!--android:layout_width="match_parent"-->
+                         <!--android:layout_height="wrap_content"-->
+                         <!--android:text="@string/enter_ver_code"-->
+                         <!--android:textColor="@color/white"-->
+                         <!--/>-->
+                     <!--<com.mukesh.OtpView-->
+                         <!--android:id="@+id/enter_code"-->
+                         <!--android:layout_width="wrap_content"-->
+                         <!--android:layout_height="wrap_content"-->
+                         <!--android:layout_gravity="center_horizontal"-->
+                         <!--android:inputType="number"-->
+                         <!--android:textColor="@color/tinyblack"-->
+                         <!--android:layoutDirection="ltr"-->
+                         <!--&gt;-->
+                         <!--<requestFocus/>-->
+                     <!--</com.mukesh.OtpView>-->
+
+                     <!--<ImageView-->
+                         <!--android:layout_width="match_parent"-->
+                         <!--android:layout_height="45dp"-->
+                         <!--android:src="@drawable/change_num"-->
+                         <!--/>-->
 
 
                  </LinearLayout>

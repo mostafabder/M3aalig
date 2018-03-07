@@ -62,7 +62,7 @@
             android:theme="@style/AppThemeWithNoActionBar" />
         <activity
             android:name=".BeforLoginActivity"
-            android:theme="@style/AppThemeWithNoActionBar"></activity>
+            android:theme="@style/AppThemeWithNoActionBar"/>
         <activity
             android:name=".M3algFilesWork.AvailableTreatmentRequestsActivity"
             android:theme="@style/AppThemeWithNoActionBar" />
@@ -124,7 +124,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".M3algFilesWork.DoctorTreatmentSessionsScheduleActivity"></activity>
+        <activity android:name=".M3algFilesWork.DoctorTreatmentSessionsScheduleActivity"/>
         <service
             android:name=".Utility.Notification.MyFirebaseMessagingService">
             <intent-filter>

@@ -1,10 +1,14 @@
 package com.asi.m3alig;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 
 import android.support.annotation.NonNull;
@@ -20,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.asi.m3alig.Responses.LoginResponse;
 import com.asi.m3alig.Responses.NormalResponse;
@@ -60,6 +65,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.hbb20.CountryCodePicker;
 import com.mukesh.OtpView;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,18 +86,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     CardView login_card,register_card;
     EditText name_patient_register, phone_number_register;
     EditText phone_number_login;
-    ImageView send_sms_register,send_sms_login,fb_iv_login,gmail_iv_login,fb_iv_register,gmail_iv_register;
+    ImageView fb_iv_login,gmail_iv_login,fb_iv_register,gmail_iv_register;
     LoginButton fb_login,fb_register;
     SignInButton google_login,google_register;
-    OtpView otpView_register,otpView_login;
+    OtpView otpView;
     private FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     private SQLiteHandler db;
     private SessionManager session;
     String token,type;
     CallbackManager FBCallbackManager;
-    boolean loggin=false;
-    boolean checked=false;
+    boolean loggin=false; //means logging or register
+    boolean checked=false,enter=false;
     GoogleApiClient mGoogleApiClient;
     final int RC_SIGN_IN=1000;
     CountryCodePicker countryCodePickerLogin,countryCodePickerRegister;
@@ -98,12 +105,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     //Strings to store register fields
     private String name, idNumber, idNumberExpired, graduatedDate, licenceNumber, theJob, phoneNumber;
     //editText for doctor register fields
-    private EditText et_doctor_name, et_doctor_id, et_doctor_idEXP, et_doctor_graduate, et_doctor_licence, et_doctor_job, et_doctor_phone;
+    private EditText et_doctor_name, et_doctor_id, et_doctor_idEXP, et_doctor_graduate, et_doctor_licence, et_doctor_job;
     //help strings for doctorValidation method
     private static final String LOGIN_VALIDATION = "login-validation";
     private static final String REGISTER_VALIDATION = "register-validation";
     final String TAG="M3alig";
-
+    Dialog dialog;
+    FancyButton submit,modify;
+    TextView send_sms,seconds;
+    LinearLayout send_L,seconds_L;
+    Thread t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,38 +135,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             et_doctor_graduate = (EditText) findViewById(R.id.et_doctor_graduate_register);
             et_doctor_licence = (EditText) findViewById(R.id.et_doctor_licence_register);
             et_doctor_job = (EditText) findViewById(R.id.et_doctor_job_register);
-            et_doctor_phone = (EditText) findViewById(R.id.et_doctor_phone_register);
-            otpView_register = (OtpView) findViewById(R.id.enter_code_doctor_register);
-            send_sms_register =(ImageView)findViewById(R.id.iv_send_verify_doctor_register);
-            send_sms_register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!et_doctor_phone.getText().toString().trim().equals("")) {
-                        send_sms(et_doctor_phone.getText().toString(),code_register);
-                    }else {
-                        Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
             phone_number_login = (EditText) findViewById(R.id.et_phone_login);
-
-            phone_number_register = (EditText) findViewById(R.id.et_doctor_phone_register);
-
-            otpView_login=(OtpView)findViewById(R.id.enter_code_login);
-
-            send_sms_login=(ImageView)findViewById(R.id.iv_sendverify_login);
-            send_sms_login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!phone_number_login.getText().toString().trim().equals("")) {
-                        send_sms(phone_number_login.getText().toString(),code_login);
-                    }else{
-                        Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
+            phone_number_register = (EditText) findViewById(R.id.et_phone_register);
         }
         else
         {
@@ -245,124 +226,149 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         fb_iv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                enter =true;
+            if(!phone_number_register.getText().toString().trim().equals(""))
+            {
                 if(isLoggedIn())
                     LoginManager.getInstance().logOut();
                 loggin=false;
                 checked=false;
                 fb_register.performClick();
+            }
+              else Toast.makeText(getApplicationContext(),  getString(R.string.enter_phone), Toast.LENGTH_SHORT).show();
 
             }
         });
         fb_iv_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isLoggedIn())
-                    LoginManager.getInstance().logOut();
-                loggin=true;
-                checked=false;
-                fb_login.performClick();
+                enter =true;
+                if(!phone_number_login.getText().toString().trim().equals(""))
+                {
+                    if(isLoggedIn())
+                        LoginManager.getInstance().logOut();
+                    loggin=true;
+                    checked=false;
+                    fb_login.performClick();
+                }
+                else Toast.makeText(getApplicationContext(),  getString(R.string.enter_phone), Toast.LENGTH_SHORT).show();
             }
         });
         gmail_iv_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(FirebaseAuth.getInstance().getCurrentUser()!=null)
+                enter =true;
+                if(!phone_number_login.getText().toString().trim().equals(""))
                 {
-                    FirebaseAuth.getInstance().getCurrentUser().getProviderData().equals("google.com");
+                    if(FirebaseAuth.getInstance().getCurrentUser()!=null)
                     {
-                        mAuth.signOut();
-                        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-                            @Override
-                            public void onResult(@NonNull Status status) {
+                        FirebaseAuth.getInstance().getCurrentUser().getProviderData().equals("google.com");
+                        {
+                            mAuth.signOut();
+                            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+                                @Override
+                                public void onResult(@NonNull Status status) {
 
-                            }
-                        });
+                                }
+                            });
+                        }
                     }
-                }
 
-                loggin=true;
-                checked=true;
-                loginGmail();
+                    loggin=true;
+                    checked=true;
+                    loginGmail();
+                }
+                else Toast.makeText(getApplicationContext(),  getString(R.string.enter_phone), Toast.LENGTH_SHORT).show();
+
 
             }
         });
         gmail_iv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(FirebaseAuth.getInstance().getCurrentUser()!=null)
+                enter =true;
+                if (!phone_number_register.getText().toString().trim().equals(""))
                 {
-                    FirebaseAuth.getInstance().getCurrentUser().getProviderData().equals("google.com");
+                    if(FirebaseAuth.getInstance().getCurrentUser()!=null)
                     {
-                        mAuth.signOut();
-                        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-                            @Override
-                            public void onResult(@NonNull Status status) {
+                        FirebaseAuth.getInstance().getCurrentUser().getProviderData().equals("google.com");
+                        {
+                            mAuth.signOut();
+                            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+                                @Override
+                                public void onResult(@NonNull Status status) {
 
-                            }
-                        });
+                                }
+                            });
+                        }
                     }
+                    loggin=false;
+                    checked=true;
+                    loginGmail();
                 }
-                loggin=false;
-                checked=true;
-                loginGmail();
+                else Toast.makeText(getApplicationContext(),  getString(R.string.enter_phone), Toast.LENGTH_SHORT).show();
+
             }
         });
 
         mAuthListener= new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user=firebaseAuth.getCurrentUser();
-
-                if(!checked)//mean facebook
+                if(enter)
                 {
-                    if(!loggin) //mean register
+                    FirebaseUser user=firebaseAuth.getCurrentUser();
+
+                    if(!checked)//mean facebook
                     {
-                        if (
-                                phone_number_register.getText().toString().trim().equals("")) {
-                            Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (user != null) {
-                                if(type.equals(PATIENT_TYPE))
-                                registerPatientFB(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
-                                else registerDoctorFB(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
+                        if(!loggin) //mean register
+                        {
+                            if (
+                                    phone_number_register.getText().toString().trim().equals("")) {
+                                Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (user != null) {
+                                    if(type.equals(PATIENT_TYPE))
+                                        registerPatientFB(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
+                                    else registerDoctorFB(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
+                                }
+                            }
+                        }
+                        else //mean login
+                        {
+                            if (phone_number_login.getText().toString().trim().equals("")) {
+                                Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (user != null) {
+                                    if(type.equals(PATIENT_TYPE))
+                                        loginPatientFB( phone_number_login.getText().toString(), user.getUid());
+                                    else loginDoctorFB(phone_number_login.getText().toString(), user.getUid());
+                                }
                             }
                         }
                     }
-                    else //mean login
-                    {
-                        if (phone_number_login.getText().toString().trim().equals("")) {
-                            Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (user != null) {
-                                if(type.equals(PATIENT_TYPE))
-                                loginPatientFB( phone_number_login.getText().toString(), user.getUid());
-                                else loginDoctorFB(phone_number_login.getText().toString(), user.getUid());
+                    else {
+                        if(!loggin) //mean register
+                        {
+                            if (phone_number_register.getText().toString().trim().equals("")) {
+                                Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (user != null) {
+                                    if(type.equals(PATIENT_TYPE))
+                                        registerPatientGmail(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
+                                    else registerDoctorGmail(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
+                                }
                             }
                         }
-                    }
-                }
-                else {
-                    if(!loggin) //mean register
-                    {
-                        if (phone_number_register.getText().toString().trim().equals("")) {
-                            Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (user != null) {
-                                if(type.equals(PATIENT_TYPE))
-                                registerPatientGmail(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
-                                else registerDoctorGmail(user.getDisplayName(), phone_number_register.getText().toString(), user.getUid(), token);
-                            }
-                        }
-                    }
-                    else //mean login
-                    {
-                        if (phone_number_login.getText().toString().trim().equals("")) {
-                            Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (user != null) {
-                                if(type.equals(PATIENT_TYPE))
-                                loginPatientGmail( phone_number_login.getText().toString(), user.getUid());
-                                else loginDoctorGmail(phone_number_login.getText().toString(), user.getUid());
+                        else //mean login
+                        {
+                            if (phone_number_login.getText().toString().trim().equals("")) {
+                                Toast.makeText(LoginActivity.this, R.string.enter_phone, Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (user != null) {
+                                    if(type.equals(PATIENT_TYPE))
+                                        loginPatientGmail( phone_number_login.getText().toString(), user.getUid());
+                                    else loginDoctorGmail(phone_number_login.getText().toString(), user.getUid());
+                                }
                             }
                         }
                     }
@@ -375,27 +381,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         name_patient_register =(EditText)findViewById(R.id.et_fullname_register);
         phone_number_register =(EditText)findViewById(R.id.et_phone_register);
         phone_number_login=(EditText)findViewById(R.id.et_phone_login);
-        otpView_login=(OtpView)findViewById(R.id.enter_code_login);
-        otpView_register =(OtpView)findViewById(R.id.enter_code_register);
-        send_sms_register =(ImageView)findViewById(R.id.iv_sendverify_register);
-        send_sms_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!phone_number_register.getText().toString().trim().equals(""))
-                send_sms(phone_number_register.getText().toString(),code_register);
-                else Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
-            }
-        });
-        send_sms_login=(ImageView)findViewById(R.id.iv_sendverify_login);
-        send_sms_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!phone_number_login.getText().toString().trim().equals(""))
-                    send_sms(phone_number_login.getText().toString(),code_login);
-                else Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     public void login(View view) {
@@ -426,56 +411,173 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     public void LoginNow(View view) {
+
         if(getIntent().getStringExtra(Constants.USER_KEY).equals(Constants.M3ALG_TYPE)) {
-
-
-            /*
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra(Constants.USER_KEY,Constants.M3ALG_TYPE);
-            startActivity(intent);
-            */
-
-            String status = doctorValidation(LOGIN_VALIDATION);
-            if(status.equals("ok")) {
-                loginDoctor();
-            }else {
-                Toast.makeText(getApplicationContext(), doctorValidation(LOGIN_VALIDATION), Toast.LENGTH_SHORT).show();
+            if(!phone_number_login.getText().toString().trim().equals(""))
+            {
+                send_sms(phone_number_login.getText().toString(),code_login);
+                dialog=new Dialog(LoginActivity.this);
+                dialog.setContentView(R.layout.dialog_verification_login);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                initDialog();
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(otpView.getOTP().length()<4)
+                            Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
+                        else loginDoctor(otpView.getOTP());
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_login.getText().toString(),code_login);
+                        start_timer(30000,seconds,seconds_L,send_L);
+                    }
+                });
+                dialog.show();
             }
-
-
-        }else {
-            if(otpView_login.getOTP().length()==4)
-           loginPatient();
-            else Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
+           else Toast.makeText(getApplicationContext(),  getString(R.string.enter_ver_code), Toast.LENGTH_SHORT).show();
         }
-
+        else {
+            if (!phone_number_login.getText().toString().trim().equals("")) {
+                send_sms(phone_number_login.getText().toString(), code_login);
+                dialog = new Dialog(LoginActivity.this);
+                dialog.setContentView(R.layout.dialog_verification_login);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                initDialog();
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (otpView.getOTP().length() < 4)
+                            Toast.makeText(LoginActivity.this, getString(R.string.enter_ver_code), Toast.LENGTH_SHORT).show();
+                        else loginPatient(otpView.getOTP());
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_login.getText().toString(), code_login);
+                        start_timer(30000,seconds,seconds_L,send_L);
+                    }
+                });
+                dialog.show();
+            } else
+                Toast.makeText(LoginActivity.this, getString(R.string.enter_phone), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void RegisterNow(View view) {
         if(getIntent().getStringExtra(Constants.USER_KEY).equals(Constants.M3ALG_TYPE)) {
-            String status = doctorValidation(REGISTER_VALIDATION);
-            if(status.equals("ok")) {
-                registerDoctor();
-            }else{
-                Toast.makeText(getApplicationContext(), doctorValidation(REGISTER_VALIDATION), Toast.LENGTH_SHORT).show();
+            if (doctorValidation(REGISTER_VALIDATION).equals("ok"))
+            {
+                dialog=new Dialog(LoginActivity.this);
+                dialog.setContentView(R.layout.dialog_verification_login);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                initDialog();
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(otpView.getOTP().length()<4)
+                            Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
+                        else registerDoctor(otpView.getOTP());
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_register.getText().toString(),code_register);
+                    }
+                });
+                dialog.show();
             }
+            else
+                Toast.makeText(getApplicationContext(), doctorValidation(REGISTER_VALIDATION), Toast.LENGTH_SHORT).show();
+
         } else{
-                if(validate().equals("ok"))
-                {
-                    registerPatient();
-                }
-                else Toast.makeText(LoginActivity.this,validate(),Toast.LENGTH_SHORT).show();
+            if(validate().equals("ok"))
+            {
+                dialog=new Dialog(LoginActivity.this);
+                dialog.setContentView(R.layout.dialog_verification_login);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                initDialog();
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(otpView.getOTP().length()<4)
+                            Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
+                        else registerPatient(otpView.getOTP());
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_register.getText().toString(),code_register);
+                    }
+                });
+                dialog.show();
+            }
+            else Toast.makeText(LoginActivity.this,validate(),Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void registerPatient(){
+    public void initDialog() {
+        otpView=(OtpView)dialog.findViewById(R.id.otp_view);
+        submit=(FancyButton)dialog.findViewById(R.id.btn_verify);
+        modify=(FancyButton)dialog.findViewById(R.id.btn_close);
+        send_sms=(TextView)dialog.findViewById(R.id.tv_send_sms);
+        seconds=(TextView)dialog.findViewById(R.id.tv_seconds);
+        send_L=(LinearLayout)dialog.findViewById(R.id.send_layout);
+        seconds_L=(LinearLayout)dialog.findViewById(R.id.seconds_layout);
+        start_timer(30000,seconds,seconds_L,send_L);
+    }
+    public void start_timer(final long cnt, final TextView seconds,final LinearLayout sec, final LinearLayout send){
+        seconds_L.setVisibility(View.VISIBLE);
+        send_L.setVisibility(View.GONE);
+        new CountDownTimer(cnt, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                seconds.setText(String.valueOf(millisUntilFinished / 1000));
+            }
+
+            public void onFinish() {
+                sec.setVisibility(View.GONE);
+                send.setVisibility(View.VISIBLE);
+            }
+        }.start();
+    }
+    public void registerPatient(String code){
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage(getString(R.string.please_wait));
         progressDialog.setCancelable(false);
         progressDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<LoginResponse> call=apiService.registerPatient(name_patient_register.getText().toString(), phone_number_register.getText().toString(),code_register,
-                otpView_register.getOTP(),token);
+               code,token);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
@@ -520,7 +622,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     //register new doctor
-    public void registerDoctor(){
+    public void registerDoctor(String code){
         //show waiting progress
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage(getString(R.string.please_wait));
@@ -530,7 +632,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<LoginResponse> call = apiService.registerDoctor(
                 phoneNumber,code_register, name, idNumber, idNumberExpired, graduatedDate,
-                licenceNumber, theJob, otpView_register.getOTP(), "device_id", token);
+                licenceNumber, theJob, code, "device_id", token);
         //send data and receive response
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -634,16 +736,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
     }
 
-    public void loginPatient(){
+    public void loginPatient(String code){
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage(getString(R.string.please_wait));
         progressDialog.setCancelable(false);
         progressDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Log.e("Phone,Code",phone_number_login.getText().toString()+" "+otpView_login.getOTP());
+        Log.e("Phone,Code",phone_number_login.getText().toString()+" "+code);
 
 
-        Call<LoginResponse> call=apiService.verifyPatient(code_login,phone_number_login.getText().toString(), otpView_login.getOTP());
+        Call<LoginResponse> call=apiService.verifyPatient(code_login,phone_number_login.getText().toString(), code);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
@@ -694,7 +796,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
     //login as a doctor
-    public void loginDoctor(){
+    public void loginDoctor(String code){
         Log.i("schedule", "enter");
         //show waiting dialog
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
@@ -703,7 +805,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         progressDialog.show();
         //login doctor
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<LoginResponse> call = apiService.loginDoctor(phoneNumber, code_login, otpView_login.getOTP());
+        Call<LoginResponse> call = apiService.loginDoctor(phoneNumber, code_login, code);
         //send data and receive response
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -785,8 +887,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             //check empty fields
             if (phoneNumber.equals(""))
                 return getString(R.string.enter_phone);
-            else if (otpView_login.getOTP().length() < 4)
-                return getString(R.string.enter_ver_code);
         }
         //if status register
         if(status.equals(REGISTER_VALIDATION)) {
@@ -813,8 +913,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 return "ادخل المؤهل الصحي(المسمى الصحي)";
             else if (phoneNumber.equals(""))
                 return getString(R.string.enter_phone);
-            else if (otpView_register.getOTP().length() < 4)
-                return getString(R.string.enter_ver_code);
         }
         //return ok if all fields correct
         return "ok";
@@ -1257,8 +1355,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             return getString(R.string.enter_fullanme);
         else if(phone_number_register.getText().toString().trim().equals(""))
             return getString(R.string.enter_phone);
-        else if(otpView_register.getOTP().length()<4)
-            return getString(R.string.enter_ver_code);
         return "ok";
     }
 
