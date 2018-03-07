@@ -15,9 +15,10 @@ public class Constants {
     public static String BASE_URL = "http://api.m3alig.com/";
 
     public final static String EGYPT_PHONE_CODE = "02";
-    public final static String FLAGE_CODE_SUCCSESS_205 ="205";
-    public final static String FLAGE_CODE_SUCCSESS_210 ="210";
-    public final static String FLAGE_CODE_SUCCSESS_215 ="215";
+    public final static String FLAG_CODE_SUCCESS_205 ="205";
+    public final static String FLAG_CODE_SUCCESS_210 ="210";
+    public final static String FLAG_CODE_SUCCESS_215 ="215";
+    public final static String FLAG_CODE_SUCCESS_400 ="400";
 
 
     public static String getToken(Context context)

@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.asi.m3alig.M3algFilesWork.AccountSettingsActivity;
 import com.asi.m3alig.M3algFilesWork.AvailableTreatmentRequestsActivity;
 import com.asi.m3alig.M3algFilesWork.DoctorTreatmentSessionsScheduleActivity;
 import com.asi.m3alig.M3algFilesWork.HelpCenterActivity;
@@ -69,15 +70,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_400;
 import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 import static com.asi.m3alig.Utility.Constants.getType;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 
-import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS_205;
-import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS_210;
-import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS_215;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_205;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_210;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_215;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -110,14 +112,14 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_mian_maleg);
             mNavItems.add(new NavItem("الصفحة الرئيسية", R.drawable.homeicon));
             mNavItems.add(new NavItem("جدول جلسات العلاج", R.drawable.healthy_summery_icon));
-            mNavItems.add(new NavItem("مركز الرسائل", R.drawable.message_icon));
-            mNavItems.add(new NavItem("تقديم استشارات طبية", R.drawable.offer_help_icon));
-            //mNavItems.add(new NavItem("إعدادات الحساب", R.drawable.account_settings_icon));
+            //mNavItems.add(new NavItem("مركز الرسائل", R.drawable.message_icon));
+            //mNavItems.add(new NavItem("تقديم استشارات طبية", R.drawable.offer_help_icon));
+            mNavItems.add(new NavItem("إعدادات الحساب", R.drawable.account_settings_icon));
             mNavItems.add(new NavItem("دعوة الأصدقاء", R.drawable.invite_friend_icon));
             mNavItems.add(new NavItem("سياسه الخصوصيه \n وشروط الاستخدام", R.drawable.privacy_icon));
             mNavItems.add(new NavItem("مركز المساعده والدعم", R.drawable.help_center_icon));
             mNavItems.add(new NavItem("تعرف علينا", R.drawable.discover_us_icon));
-            mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
+            //mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
 
             bt_availableOrders = (FancyButton) findViewById(R.id.bt_availableOrders);
             bt_availableOrders.setVisibility(View.GONE);
@@ -330,28 +332,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(getIntent());
             } else if (position == 1) {
                 startActivity(new Intent(MainActivity.this, DoctorTreatmentSessionsScheduleActivity.class));
-            } else if (position == 2) {
+            } /*else if (position == 2) {
                 startActivity(new Intent(MainActivity.this, MesseageCenterActivity.class));
             } else if (position == 3) {
                 startActivity(new Intent(MainActivity.this, OfferHelpActivity.class));
-            } /*else if (position == 3) {
+            } */else if (position == 2) {
                 startActivity(new Intent(MainActivity.this, AccountSettingsActivity.class));
-            } */else if (position == 4) {
+            } else if (position == 3) {
                 inviteFriendViewDialog alert = new inviteFriendViewDialog();
                 alert.showDialog(MainActivity.this, "OTP has been sent to your Mail ");
-            } else if (position == 5) {
+            } else if (position == 4) {
                 startActivity(new Intent(MainActivity.this, PrivacyActivity.class));
-            } else if (position == 6) {
+            } else if (position == 5) {
                 startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
-            } else if (position == 7) {
-            } else if (position == 8) {
+            } else if (position == 6) {
+            } /*else if (position == 8) {
                 SessionManager session = new SessionManager(MainActivity.this);
                 session.setLogin(false);
                 Intent intent = new Intent(MainActivity.this, BeforLoginActivity.class);
                 new SQLiteHandler(getApplicationContext()).deleteUsers();
                 startActivity(intent);
                 finish();
-            }
+            }*/
         } else {
             // position 2 تقديم استشارة طبية
             if (position == 0) {
@@ -412,17 +414,17 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<DoctorCurrentVisit>() {
             @Override
             public void onResponse(Call<DoctorCurrentVisit> call, Response<DoctorCurrentVisit> response) {
-                Log.i("schedule", "enter2");
+                Log.i("cs", "enter2");
                 progressDialog.dismiss();
                 //here if task successful
                 //check the respond body is null or not
                 //if body not null
                 if(response.body() != null){
-                    Log.i("schedule", "not null");
+                    Log.i("cs", "not null");
                     //check if response code is successful or not
                     //if code successful
                     if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS)){
-                        Log.i("schedule", "200");
+                        Log.i("cs", "200");
                         DoctorSingleVisit visit = response.body().getData();
                         String youHaveVisit = response.body().getMessage();
                         tv_currentState.setText(youHaveVisit);
@@ -432,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
                         bt_availableOrders.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                startVisit();
+                                startVisit(id);
                                 bt_availableOrders.setClickable(false);
                                 bt_availableOrders.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -442,8 +444,8 @@ public class MainActivity extends AppCompatActivity {
                                 });
                             }
                         });
-                    }else if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS_205)){
-                        Log.i("schedule", "205");
+                    }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_205)){
+                        Log.i("cs", "205");
                         String nothing = response.body().getMessage();
                         tv_currentState.setText(nothing);
                         bt_availableOrders.setVisibility(View.VISIBLE);
@@ -453,12 +455,22 @@ public class MainActivity extends AppCompatActivity {
                                 availableOrders();
                             }
                         });
-                    }else if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS_210)){
-                        Log.i("schedule", "210");
+                    }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210)){
+                        Log.i("cs", "210");
                         String visitIsStarted = response.body().getMessage();
-                        tv_currentState.setText(visitIsStarted+"\n\n انتظر حتي انتهاء الجلسة");
-                    }else if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS_215)){
-                        Log.i("schedule", "215");
+                        tv_currentState.setText(visitIsStarted);
+                        DoctorSingleVisit visit = response.body().getData();
+                        id = visit.getId();
+                        bt_availableOrders.setVisibility(View.VISIBLE);
+                        bt_availableOrders.setText("انهاء الجلسة");
+                        bt_availableOrders.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finishVisit(id);
+                            }
+                        });
+                    }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_215)){
+                        Log.i("cs", "215");
                         String visitEnd = "الجلسة انتهت \n يرجى تقييم المريض و اعطاء التقرير اللازم";
                         DoctorSingleVisit visit = response.body().getData();
                         id = visit.getId();
@@ -472,12 +484,16 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("visit_id", id);
                                 intent.putExtra("patient_id", pateint_id);
                                 startActivity(intent);
+                                finish();
                             }
                         });
                         tv_currentState.setText(visitEnd);
-                    }
-                    else{
-                        Log.i("schedule", "403");
+                    }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_400)) {
+                    Log.i("cs", "400");
+                    String notActive = response.body().getMessage();
+                    tv_currentState.setText(notActive);
+                    }else {
+                        Log.i("cs", "403");
                         //here if code not successful
                         try{
                             Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -487,7 +503,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }else {
-                    Log.i("schedule", "is null");
+                    Log.i("cs", "is null");
                     //here if body null
                     Toast.makeText(getApplicationContext(), getString(R.string.contact_services), Toast.LENGTH_SHORT).show();
                 }
@@ -497,14 +513,78 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 //here if task failed
                 Toast.makeText(getApplicationContext(), getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
-                Log.e("ERROR",t.getMessage()+"   ");
-                Log.i("schedule", "out");
+                Log.e("ERROR-cs",t.getMessage()+"   ");
+                Log.i("cs", "out");
             }
         });
     }
 
+    private void finishVisit(String id){
+        Log.i("fv", "enter");
 
-    private void startVisit(){
+        Log.i("all", getSecret(getApplicationContext())+"\n"+
+                getToken(getApplicationContext())+"\n"+
+                id);
+
+        //show waiting progress
+        final ProgressDialog progressDialog=new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage(getString(R.string.please_wait));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<FinishVisitResponse> call = apiService.finishVisitDoctor(getSecret(getApplicationContext()),
+                getToken(getApplicationContext()),
+                 id);
+
+        call.enqueue(new Callback<FinishVisitResponse>() {
+            @Override
+            public void onResponse(Call<FinishVisitResponse> call, Response<FinishVisitResponse> response) {
+                //here if task successful
+                //dismiss the waiting progress
+                progressDialog.dismiss();
+                //check the respond body is null or not
+                //if body not null
+                if(response.body() != null){
+                    Log.i("fv", "not null");
+                    //check if response code is successful or not
+                    //if code successful
+                    if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS)){
+                        Log.i("fv", "200");
+                        //refresh the activity
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }else {
+                        Log.i("fv", "403");
+                        //here if code not successful
+                        try{
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e){
+                            Toast.makeText(getApplicationContext(), getString(R.string.something_error), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else {
+                    Log.i("fv", "is null");
+                    //here if body null
+                    Toast.makeText(getApplicationContext(), getString(R.string.contact_services), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<FinishVisitResponse> call, Throwable t) {
+                //dismiss the waiting progress
+                progressDialog.dismiss();
+                //here if task failed
+                Toast.makeText(getApplicationContext(), getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
+                Log.e("ERROR",t.getMessage()+"   ");
+                Log.i("fv", "out");
+            }
+        });
+
+    }
+
+
+    private void startVisit(String id){
 
         Log.i("sv", "enter");
 
@@ -514,9 +594,12 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
+        Log.i("all", id +"\n"+getToken(getApplicationContext())+"\n"+getSecret(getApplicationContext()));
+
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StartingVisit> call = apiService.doctorStartVisit(getSecret(getApplicationContext()), getToken(getApplicationContext()), id);
+        Call<StartingVisit> call = apiService.doctorStartVisit(getSecret(getApplicationContext()),
+                getToken(getApplicationContext()), id);
         call.enqueue(new Callback<StartingVisit>() {
             @Override
             public void onResponse(Call<StartingVisit> call, Response<StartingVisit> response) {
@@ -531,6 +614,9 @@ public class MainActivity extends AppCompatActivity {
                     //if code successful
                     if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS)){
                         Log.i("sv", "200");
+                        //refresh the activity
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }else {
                         Log.i("sv", "403");
                         //here if code not successful
@@ -567,6 +653,12 @@ public class MainActivity extends AppCompatActivity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+
 
         // Handle your other action bar items...
 
@@ -806,4 +898,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }

@@ -17,9 +17,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 import com.asi.m3alig.Responses.LoginResponse;
 import com.asi.m3alig.Responses.NormalResponse;
@@ -104,6 +107,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private static final String REGISTER_VALIDATION = "register-validation";
     final String TAG="M3alig";
 
+    private ArrayAdapter doctorWorkAreaAdapter;
+    private Spinner doctorWorkAreaSpinner;
+    private String doctorWorkArea;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,6 +145,23 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 }
             });
 
+            doctorWorkAreaSpinner = (Spinner) findViewById(R.id.sp_doctorWorkArea);
+            doctorWorkAreaAdapter = ArrayAdapter.createFromResource(this,
+                    R.array.work_areas, R.layout.support_simple_spinner_dropdown_item);
+            doctorWorkAreaAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+            doctorWorkAreaSpinner.setAdapter(doctorWorkAreaAdapter);
+            doctorWorkAreaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    doctorWorkArea = (String) doctorWorkAreaAdapter.getItem(i);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
             phone_number_login = (EditText) findViewById(R.id.et_phone_login);
 
             phone_number_register = (EditText) findViewById(R.id.et_doctor_phone_register);
@@ -155,6 +179,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     }
                 }
             });
+
+            fb_iv_login=(ImageView)findViewById(R.id.fb_login_iv);
+            fb_iv_login.setVisibility(View.GONE);
+            gmail_iv_login=(ImageView)findViewById(R.id.gmail_login_iv);
+            gmail_iv_login.setVisibility(View.GONE);
 
         }
         else
@@ -530,7 +559,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<LoginResponse> call = apiService.registerDoctor(
                 phoneNumber,code_register, name, idNumber, idNumberExpired, graduatedDate,
-                licenceNumber, theJob, otpView_register.getOTP(), "device_id", token);
+                licenceNumber, theJob, otpView_register.getOTP(), "device_id", token, doctorWorkArea);
         //send data and receive response
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -811,6 +840,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 return "ادخل رقم رخصة مزاولة المهنة";
             else if (theJob.equals(""))
                 return "ادخل المؤهل الصحي(المسمى الصحي)";
+            else if(doctorWorkArea.equals(getResources().getStringArray(R.array.work_areas)[0]))
+                return "ادخل مكان العمل";
             else if (phoneNumber.equals(""))
                 return getString(R.string.enter_phone);
             else if (otpView_register.getOTP().length() < 4)

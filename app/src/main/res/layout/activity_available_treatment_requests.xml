@@ -164,6 +164,21 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_emptyOrdersText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="لا يوجد طلبات متاحة الان"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"/>
+            </LinearLayout>
         </LinearLayout>
 
 

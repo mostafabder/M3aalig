@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.M3alig.DoctorNextVisitScheduleRecyclerViewAdapter;
@@ -39,6 +41,7 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
     private RecyclerView mDoctorOrdersRV;
     private DoctorNextVisitScheduleRecyclerViewAdapter mDoctorVisitsAdapter;
     private LinearLayoutManager layoutManager;
+    private TextView tv_emptyOrdersText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
         mDoctorOrdersRV = (RecyclerView) findViewById(R.id.rv_doctorNextVisitSchedule);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mDoctorOrdersRV.setLayoutManager(layoutManager);
+
+        tv_emptyOrdersText = (TextView) findViewById(R.id.tv_emptyOrdersText);
 
         prepareListData();
 
@@ -95,6 +100,10 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
                         mDoctorVisitsAdapter = new DoctorNextVisitScheduleRecyclerViewAdapter(
                                 DoctorTreatmentSessionsScheduleActivity.this, mOrders);
                         mDoctorOrdersRV.setAdapter(mDoctorVisitsAdapter);
+                        Log.i("size", mOrders.size()+"");
+                        if(mOrders.size() > 0){
+                            tv_emptyOrdersText.setVisibility(View.GONE);
+                        }
                     }else {
                         Log.i("schedule", "403");
                         //here if code not successful

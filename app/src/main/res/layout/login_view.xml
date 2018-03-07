@@ -121,7 +121,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:onClick="LoginNow"
-                android:src="@drawable/login_icon_not_active" />
+                android:src="@drawable/login_icon_not_active"
+                android:layout_marginBottom="16dp"/>
 
 
             <ImageView
