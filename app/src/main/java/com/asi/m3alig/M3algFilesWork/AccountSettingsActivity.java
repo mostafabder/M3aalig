@@ -54,6 +54,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_512;
 import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 
@@ -128,7 +129,6 @@ public class AccountSettingsActivity extends AppCompatActivity {
         tv_doctorWorkArea = (TextView) findViewById(R.id.tv_doctorWorkArea);
 
         countryCodePicker = (CountryCodePicker) findViewById(R.id.countryCodePicker);
-        Log.i("code022",countryCodePicker.getSelectedCountryCode());
 
         bt_saveChanges = (Button) findViewById(R.id.bt_saveChanges);
 
@@ -145,8 +145,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         String code = getDoctorDetails(et_editName.getText().toString().trim(),
                 et_editPhone.getText().toString().trim(), doctorWorkArea,
                 et_editLicenseNumber.getText().toString().trim(), et_editHealthName.getText().toString().trim());
-        Log.i("code022", code);
-        if(code != null && code .equals(FLAGE_CODE_SUCCSESS)) {
+        if(code != null && code.equals(FLAGE_CODE_SUCCSESS)) {
             Toast.makeText(getApplicationContext(), "تم حفظ التغييرات بنجاح", Toast.LENGTH_SHORT).show();
             //refresh the activity
             Intent intent = new Intent(AccountSettingsActivity.this, AccountSettingsActivity.class);
@@ -160,11 +159,11 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
 
 
-        if(new_name==null || new_name==et_editName.getHint().toString().trim()){new_name = "";}
-        if(new_phone==(null) || new_name==et_editPhone.getHint().toString().trim()){new_phone = "";}
-        if(new_area==(null) || new_name==tv_doctorWorkArea.getText().toString().trim()){new_area = "";}
-        if(new_license_number==(null) || new_name==et_editLicenseNumber.getHint().toString().trim()){new_license_number = "";}
-        if(new_health_name==(null) || new_name==et_editHealthName.getHint().toString().trim()){new_health_name = "";}
+        if(new_name==null || new_name.equals(et_editName.getHint().toString().trim())){new_name = "";}
+        if(new_phone==(null) || new_name.equals(et_editPhone.getHint().toString().trim())){new_phone = "";}
+        if(new_area==(null) || new_name.equals(tv_doctorWorkArea.getText().toString().trim())){new_area = "";}
+        if(new_license_number==(null) || new_name.equals(et_editLicenseNumber.getHint().toString().trim())){new_license_number = "";}
+        if(new_health_name==(null) || new_name.equals(et_editHealthName.getHint().toString().trim())){new_health_name = "";}
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<DoctorUpdateProfile> call = apiService.doctorUpdateProfile(
@@ -191,9 +190,9 @@ public class AccountSettingsActivity extends AppCompatActivity {
                                 response.body().getData().getArea(), response.body().getData().getLicense_number(),
                                 response.body().getData().getHealth_name());
                     }
-                    else if(response.body().getCode().equals("512")){
-                        code = "512";
-                        Toast.makeText(getApplicationContext(), "phone Error", Toast.LENGTH_SHORT).show();
+                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_512)){
+                        code = FLAG_CODE_SUCCESS_512;
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.wrong_number), Toast.LENGTH_SHORT).show();
                     }
                     else {
 
