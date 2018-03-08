@@ -61,6 +61,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
     private RecyclerView mDoctorOrdersRV;
     private DoctorOrdersRecyclerViewAdapter mDoctorOrdersAdapter;
     private LinearLayoutManager layoutManager;
+    private LinearLayout ll_emptyOrdersText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,9 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         addressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mOrders.size() <= 0){
+                    ll_emptyOrdersText.setVisibility(View.VISIBLE);
+                }
                 frameLayout.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
                 mapButton.setImageResource(R.drawable.map_not_clicked_icon);
@@ -96,6 +100,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ll_emptyOrdersText.setVisibility(View.GONE);
                 frameLayout.setVisibility(View.GONE);
                 mapButton.setImageResource(R.drawable.map_clicked_icon);
                 addressButton.setImageResource(R.drawable.write_address_not_clicked_icon);
@@ -110,6 +115,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         mDoctorOrdersRV = (RecyclerView) findViewById(R.id.rv_doctorOrders);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mDoctorOrdersRV.setLayoutManager(layoutManager);
+
+        ll_emptyOrdersText = (LinearLayout) findViewById(R.id.ll_emptyOrdersText);
 
         // preparing list data
         prepareListData();
@@ -205,7 +212,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                             String painPlace = "مكان الالم / " + orders.get(i).getPain_position();
                             String painPosition = "نوع الام / " + orders.get(i).getPainDeep();
                             String farFromYou = "المريض يبعد عنك بمقدار..";
-                            String address = "العنوان  /"+ orders.get(i).getLocation_region();
+                            String address = "العنوان / "+ orders.get(i).getLocation_region();
                             Log.e("PainPos",painPlace);
                             OrderDetails orderDetails = new OrderDetails(whenPainStart, farFromYou, painPosition, painPlace, address,orders.get(i).getId());
                             SingleOrder singleOrder = new SingleOrder(orderId, orderDate, orderTime, orderDetails);
@@ -216,6 +223,10 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                         mDoctorOrdersAdapter = new DoctorOrdersRecyclerViewAdapter(
                                 AvailableTreatmentRequestsActivity.this, mOrders, mOrderDetails);
                         mDoctorOrdersRV.setAdapter(mDoctorOrdersAdapter);
+                        Log.i("size", mOrders.size()+"");
+                        if(mOrders.size() > 0){
+                            ll_emptyOrdersText.setVisibility(View.GONE);
+                        }
                     }else {
                         //here if code not successful
                         try{

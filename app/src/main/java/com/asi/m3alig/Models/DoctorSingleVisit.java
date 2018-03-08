@@ -26,13 +26,13 @@ public class DoctorSingleVisit {
     Patient patient;
     Report report;
 
-    String doctor;
+    Doctor doctor;
 
-    public String getDoctor() {
+    public Doctor getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(String doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
 

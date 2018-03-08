@@ -11,6 +11,7 @@ import com.asi.m3alig.Responses.CreateVisitResponse;
 
 import com.asi.m3alig.Responses.DoctorRateVisit;
 import com.asi.m3alig.Responses.DoctorStartVisit;
+import com.asi.m3alig.Responses.DoctorUpdateProfile;
 import com.asi.m3alig.Responses.DoctorVisits;
 import com.asi.m3alig.Responses.DoctorVisitsOrder;
 import com.asi.m3alig.Responses.CurrentResponse;
@@ -90,6 +91,10 @@ public interface ApiInterface {
     @POST("/patient/visit/finish")
     Call<FinishVisitResponse> finishVisitPatient(@Field("token") String token, @Field("secret") String secret, @Field("visit_id") String visit_id);
 
+    //doctor finish visit
+    @FormUrlEncoded
+    @POST("/doctor/visit/finish")
+    Call<FinishVisitResponse> finishVisitDoctor(@Field("secret") String secret, @Field("token") String token, @Field("visit_id") String visit_id);
 
     //Doctor Register
     @FormUrlEncoded
@@ -100,7 +105,7 @@ public interface ApiInterface {
             @Field("national_id_expire") String national_id_expire, @Field("graduation_year") String graduation_year,
             @Field("license_number") String license_number, @Field("health_name") String health_name,
             @Field("verify_code") String verify_code, @Field("device_id")String device_id,
-            @Field("device_token") String device_token);
+            @Field("device_token") String device_token, @Field("area")String area);
 
     //doctor facebook register
     @FormUrlEncoded
@@ -209,6 +214,16 @@ public interface ApiInterface {
                                      @Field("need_follow")String need_follow, @Field("number_session")String number_session,
                                      @Field("other")String other, @Field("patient_id")String patient_id,
                                      @Field("visit_id")String visit_id);
+
+
+    //doctor update profile
+    @FormUrlEncoded
+    @POST("/doctor/updateProfile")
+    Call<DoctorUpdateProfile> doctorUpdateProfile(@Field("secret")String secret, @Field("token")String token,
+                                                  @Field("new_name")String new_name, @Field("new_phone")String new_phone,
+                                                  @Field("new_area")String new_area,
+                                                  @Field("new_license_number")String new_license_number,
+                                                  @Field("new_health_name")String new_health_name);
 
 
 }

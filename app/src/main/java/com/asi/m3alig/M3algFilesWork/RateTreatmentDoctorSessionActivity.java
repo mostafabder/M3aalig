@@ -43,6 +43,16 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
 
         rateReason = (EditText) findViewById(R.id.et_rateReason);
         ratingBar =(RatingBar)findViewById(R.id.rating_bar);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if(ratingBar.getRating() >= 3){
+                    rateReason.setVisibility(View.GONE);
+                }else {
+                    rateReason.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         id = getIntent().getExtras().getString("visit_id");
         patient_id = getIntent().getExtras().getString("patient_id");
@@ -61,6 +71,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
                 intent.putExtra("visit_id", id);
                 intent.putExtra("patient_id", patient_id);
                 startActivity(intent);
+                finish();
             }else {
                 rateReason.setVisibility(View.VISIBLE);
                 Toast.makeText(getApplicationContext(),"ادخل سبب هذا التقييم لانه اقل من ثلاثة نجوم",Toast.LENGTH_SHORT).show();
@@ -72,6 +83,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
             intent.putExtra("visit_id", id);
             intent.putExtra("patient_id", patient_id);
             startActivity(intent);
+            finish();
         }
     }
 

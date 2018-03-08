@@ -204,6 +204,8 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
                         doctorVisitsViewHolder.et_month,
                         doctorVisitsViewHolder.et_year,
                         doctorVisitsViewHolder.timeOrDay);
+
+                Log.i("OKAYBITCH", ok);
                 if(ok.equals("ok")){
                     if(doctorVisitsViewHolder.timeOrDay) {
                         Toast.makeText(context, "يمكنك حفظ اليوم الجديد الان", Toast.LENGTH_LONG).show();
@@ -226,10 +228,10 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
                     doctorVisitsViewHolder.et_year.setText("");
                 }else{
                     Toast.makeText(context, ok, Toast.LENGTH_LONG).show();
-                    doctorVisitsViewHolder.time =
+                    /*doctorVisitsViewHolder.time =
                             doctorVisitsViewHolder.et_day.getText().toString().trim() + ":" +
                                     doctorVisitsViewHolder.et_month.getText().toString().trim() + ":" +
-                                    doctorVisitsViewHolder.et_year.getText().toString().trim() + ":" ;
+                                    doctorVisitsViewHolder.et_year.getText().toString().trim() + ":" ;*/
                 }
             }
         });
