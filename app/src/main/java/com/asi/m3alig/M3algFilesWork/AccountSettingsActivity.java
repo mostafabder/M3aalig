@@ -86,6 +86,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private String code = "";
     private String area = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,7 +146,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 et_editPhone.getText().toString().trim(), doctorWorkArea,
                 et_editLicenseNumber.getText().toString().trim(), et_editHealthName.getText().toString().trim());
         Log.i("code022", code);
-        if(code != null && code == FLAGE_CODE_SUCCSESS) {
+        if(code != null && code .equals(FLAGE_CODE_SUCCSESS)) {
             Toast.makeText(getApplicationContext(), "تم حفظ التغييرات بنجاح", Toast.LENGTH_SHORT).show();
             //refresh the activity
             Intent intent = new Intent(AccountSettingsActivity.this, AccountSettingsActivity.class);
@@ -159,7 +160,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
 
 
-        if(new_name==(null) || new_name==et_editName.getHint().toString().trim()){new_name = "";}
+        if(new_name==null || new_name==et_editName.getHint().toString().trim()){new_name = "";}
         if(new_phone==(null) || new_name==et_editPhone.getHint().toString().trim()){new_phone = "";}
         if(new_area==(null) || new_name==tv_doctorWorkArea.getText().toString().trim()){new_area = "";}
         if(new_license_number==(null) || new_name==et_editLicenseNumber.getHint().toString().trim()){new_license_number = "";}
@@ -189,7 +190,13 @@ public class AccountSettingsActivity extends AppCompatActivity {
                         setHintsToEditText(response.body().getData().getName(), response.body().getData().getPhone(),
                                 response.body().getData().getArea(), response.body().getData().getLicense_number(),
                                 response.body().getData().getHealth_name());
-                    }else {
+                    }
+                    else if(response.body().getCode().equals("512")){
+                        code = "512";
+                        Toast.makeText(getApplicationContext(), "phone Error", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+
                         //here if code not successful
                         try{
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();

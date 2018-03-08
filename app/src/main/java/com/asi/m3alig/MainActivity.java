@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
             mNavItems.add(new NavItem("مركز المساعده والدعم", R.drawable.help_center_icon));
             mNavItems.add(new NavItem("تعرف علينا", R.drawable.discover_us_icon));
-            mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
+//            mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
         }
 
         if (!getType(MainActivity.this).equals(Constants.M3ALG_TYPE)) {
@@ -385,14 +385,14 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (position == 10) {
                 startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
-
-            } else if (position == 11) {
-                new SessionManager(MainActivity.this).setLogin(false);
-                new SQLiteHandler(getApplicationContext()).deleteUsers();
-                Intent intent=new Intent(MainActivity.this,BeforLoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
             }
+//            else if (position == 11) {
+//                new SessionManager(MainActivity.this).setLogin(false);
+//                new SQLiteHandler(getApplicationContext()).deleteUsers();
+//                Intent intent=new Intent(MainActivity.this,BeforLoginActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+//            }
         }
         mDrawerList.setItemChecked(position, true);
         setTitle(mNavItems.get(position).getmTitle());

@@ -765,7 +765,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             @Override
             public void onResponse(Call<NormalResponse> call, Response<NormalResponse> response)
             {
-                progressDialog.dismiss();
                 if(response.body()!=null)
                 {
                     Log.e("FLAG",response.body().getCode()+"   "+response.body().getMessage());
@@ -893,7 +892,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //take user type with intent
                         intent.putExtra(Constants.USER_KEY,Constants.M3ALG_TYPE);
-                        dialog.dismiss();
+
                         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
@@ -1499,6 +1498,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(dialog!=null)
+            dialog.dismiss();
     }
 
     @Override

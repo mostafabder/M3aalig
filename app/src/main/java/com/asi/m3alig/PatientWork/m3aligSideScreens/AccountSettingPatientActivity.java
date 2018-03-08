@@ -45,7 +45,7 @@ public class AccountSettingPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_account_settings);
+        setContentView(R.layout.activity_account_setting_patient);
         init();
     }
 
