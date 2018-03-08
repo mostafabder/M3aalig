@@ -96,6 +96,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
     public void nextPage(View view) {
         Intent intent=new Intent(WhenPainStartActivity.this, ChoosePlaceActivity.class);
         intent.putExtra("order",order);
+        Log.e("start,position",order.getWhen_pain_start()+","+order.getPain_position());
         startActivity(intent);
     }
 

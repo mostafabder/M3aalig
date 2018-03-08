@@ -7,15 +7,7 @@ package com.asi.m3alig.Responses;
 public class CreateVisitResponse {
     String code;
     String message;
-    String visit_id;
 
-    public String getVisit_id() {
-        return visit_id;
-    }
-
-    public void setVisit_id(String visit_id) {
-        this.visit_id = visit_id;
-    }
 
     public String getCode() {
         return code;

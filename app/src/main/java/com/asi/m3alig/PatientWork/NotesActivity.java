@@ -58,12 +58,12 @@ public class NotesActivity extends AppCompatActivity {
         Log.e("TOKEN,SECRET",getToken(NotesActivity.this)+"  "+getSecret(NotesActivity.this));
         Log.e("data",order.toString());
 
-        Call<CreateVisitResponse> call=apiService.createVisitOrderPatient(getToken(NotesActivity.this),getSecret(NotesActivity.this),order.getAge(),order.getGender(),order.getWho_need_session(),
-                order.getSocial_statue(),order.getMove_level(),order.getHealth_problem(),order.getWhen_pain_start(),order.getPain_position(),order.getLocation_floor_number(),
+        Call<NormalResponse> call=apiService.createVisitOrderPatient(getToken(NotesActivity.this),getSecret(NotesActivity.this),order.getAge(),order.getGender(),order.getWho_need_session(),
+                "as",order.getMove_level(),order.getHealth_problem(),order.getWhen_pain_start(),order.getPain_position(),order.getLocation_floor_number(),
                 order.getLocation_street_name(),order.getLocation_region(),order.getLocation_city(),order.getLat(),order.getLng(),order.getType(),order.getTime(),order.getDate());
-        call.enqueue(new Callback<CreateVisitResponse>() {
+        call.enqueue(new Callback<NormalResponse>() {
             @Override
-            public void onResponse(Call<CreateVisitResponse> call, Response<CreateVisitResponse> response)
+            public void onResponse(Call<NormalResponse> call, Response<NormalResponse> response)
             {
                 progressDialog.dismiss();
                 if(response.body()!=null)
@@ -90,7 +90,7 @@ public class NotesActivity extends AppCompatActivity {
 
             }
             @Override
-            public void onFailure(Call<CreateVisitResponse> call, Throwable t) {
+            public void onFailure(Call<NormalResponse> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(NotesActivity.this,getString(R.string.check_connection),Toast.LENGTH_SHORT).show();
                 Log.e("ERROR",t.getMessage()+"   ");

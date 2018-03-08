@@ -10,7 +10,7 @@ public class Orders {
     private String who_need_session;
     private String gender;
     private String age;
-    private String socialStatue;
+    private String social_statue;
     private String move_level;
     private String health_problem;
     private String when_pain_start;
@@ -65,11 +65,11 @@ public class Orders {
     }
 
     public String getSocialStatue() {
-        return socialStatue;
+        return social_statue;
     }
 
     public void setSocialStatue(String socialStatue) {
-        this.socialStatue = socialStatue;
+        this.social_statue = socialStatue;
     }
 
     public String getMove_level() {

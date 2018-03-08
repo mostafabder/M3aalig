@@ -64,7 +64,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/patient/visit-order/create")
-    Call<CreateVisitResponse> createVisitOrderPatient(@Field("token") String token, @Field("secret") String secret, @Field("age") String age, @Field("gender") String gender,
+    Call<NormalResponse> createVisitOrderPatient(@Field("token") String token, @Field("secret") String secret, @Field("age") String age, @Field("gender") String gender,
                                                       @Field("who_need_session") String who_need_session, @Field("social_statue") String social_statue, @Field("move_level") String move_level,
                                                       @Field("health_problem") String health_problem, @Field("when_pain_start") String when_pain_start, @Field("pain_position") String pain_position,
                                                       @Field("location_floor_number") String location_floor_number, @Field("location_street_name") String location_street_name,

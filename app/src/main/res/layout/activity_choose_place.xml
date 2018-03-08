@@ -214,7 +214,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/blue"
                         android:dropDownSelector="@drawable/down_arrow_black"
                         android:entries="@array/places"
                         android:layoutDirection="rtl"

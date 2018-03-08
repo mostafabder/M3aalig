@@ -3,6 +3,7 @@ package com.asi.m3alig.PatientWork;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,7 +39,7 @@ public class ScheduleActivity extends AppCompatActivity {
         order.setType("normal");
         getDateTime();
         calendar=Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR,1);
+        calendar.add(Calendar.DAY_OF_MONTH,1);
         singleDateAndTimePicker.setMinDate(calendar.getTime());
         urgentOrderLayout = (LinearLayout) findViewById(R.id.urgent_order_layout);
         bookOrderLayout = (LinearLayout) findViewById(R.id.book_date_layout);
@@ -84,10 +85,11 @@ public class ScheduleActivity extends AppCompatActivity {
         getDateTime();
         Intent intent=new Intent(ScheduleActivity.this, NotesActivity.class);
         intent.putExtra("order",order);
+        Log.e("type,date,time",order.getType()+","+order.getDate()+","+order.getTime());
         startActivity(intent);
     }
     public void getDateTime(){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-DD");
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("hh:mm");
         date=simpleDateFormat.format(singleDateAndTimePicker.getDate());
         time=simpleDateFormat1.format(singleDateAndTimePicker.getDate());

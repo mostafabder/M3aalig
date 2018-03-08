@@ -84,9 +84,8 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private Button bt_saveChanges;
     private TextWatcher textWatcher;
 
-    private String code = "";
     private String area = "";
-
+    Boolean start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +93,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_account_settings);
-
-
+        start=false;
         doctorWorkAreaSpinner = (Spinner) findViewById(R.id.sp_doctorWorkArea);
         doctorWorkAreaAdapter = ArrayAdapter.createFromResource(this,
                 R.array.work_areas, R.layout.support_simple_spinner_dropdown_item);
@@ -142,23 +140,14 @@ public class AccountSettingsActivity extends AppCompatActivity {
     }
 
     public void saveChanges(View view){
-        String code = getDoctorDetails(et_editName.getText().toString().trim(),
+        start=true;
+        getDoctorDetails(et_editName.getText().toString().trim(),
                 et_editPhone.getText().toString().trim(), doctorWorkArea,
                 et_editLicenseNumber.getText().toString().trim(), et_editHealthName.getText().toString().trim());
-        if(code != null && code.equals(FLAGE_CODE_SUCCSESS)) {
-            Toast.makeText(getApplicationContext(), "تم حفظ التغييرات بنجاح", Toast.LENGTH_SHORT).show();
-            //refresh the activity
-            Intent intent = new Intent(AccountSettingsActivity.this, AccountSettingsActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
 
-    private String getDoctorDetails(String new_name, String new_phone, String new_area,
+    private void getDoctorDetails(String new_name, String new_phone, String new_area,
                                   String new_license_number, String new_health_name){
-
-
-
         if(new_name==null || new_name.equals(et_editName.getHint().toString().trim())){new_name = "";}
         if(new_phone==(null) || new_name.equals(et_editPhone.getHint().toString().trim())){new_phone = "";}
         if(new_area==(null) || new_name.equals(tv_doctorWorkArea.getText().toString().trim())){new_area = "";}
@@ -172,6 +161,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         call.enqueue(new Callback<DoctorUpdateProfile>() {
             @Override
             public void onResponse(Call<DoctorUpdateProfile> call, Response<DoctorUpdateProfile> response) {
+
                 //here if task successful
                 //check the respond body is null or not
                 //if body not null
@@ -179,8 +169,12 @@ public class AccountSettingsActivity extends AppCompatActivity {
                     //check if response code is successful or not
                     //if code successful
                     if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS)){
-                        code = FLAGE_CODE_SUCCSESS;
-
+                        if(start)
+                        {
+                            startActivity(getIntent());
+                            finish();
+                        }
+                        else{
                         area = response.body().getData().getArea();
                         ArrayList<String> lol = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
                         int x = lol.indexOf(area);
@@ -189,9 +183,9 @@ public class AccountSettingsActivity extends AppCompatActivity {
                         setHintsToEditText(response.body().getData().getName(), response.body().getData().getPhone(),
                                 response.body().getData().getArea(), response.body().getData().getLicense_number(),
                                 response.body().getData().getHealth_name());
+                        }
                     }
                     else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_512)){
-                        code = FLAG_CODE_SUCCESS_512;
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.wrong_number), Toast.LENGTH_SHORT).show();
                     }
                     else {
@@ -216,7 +210,6 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 Log.e("ERROR",t.getMessage()+"   ");
             }
         });
-        return code;
     }
 
     private void setHintsToEditText(String name, String phone, String area, String license, String health){

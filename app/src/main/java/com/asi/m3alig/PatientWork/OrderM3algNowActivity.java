@@ -275,7 +275,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             }
             order.setAge(String.valueOf(numberPicker.getValue()));
             order.setHealth_problem(health);
-            Log.e("HEALTH", health);
+            Log.e("who,age,gen,move,health",order.getWho_need_session()+","+order.getAge()+","+order.getGender()+","+order.getMove_level()+","+order.getHealth_problem());
             Intent intent = new Intent(OrderM3algNowActivity.this, WhenPainStartActivity.class);
             intent.putExtra("order", order);
             startActivity(intent);

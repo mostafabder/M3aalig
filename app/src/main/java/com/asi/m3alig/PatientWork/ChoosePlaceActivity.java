@@ -138,6 +138,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
 //                order.setLocation_city(city.getText().toString());
                 Intent intent=new Intent(ChoosePlaceActivity.this, ScheduleActivity.class);
                 intent.putExtra("order",order);
+                Log.e("flr,st,reg,city,lat,lng",order.getLocation_floor_number()+","+order.getLocation_street_name()+","+order.getLocation_region()+","+order.getLocation_city()+","+order.getLocation_city()
+                        +","+order.getLat()+","+order.getLng());
                 startActivity(intent);
             }
             else Toast.makeText(ChoosePlaceActivity.this,validate(),Toast.LENGTH_SHORT).show();
