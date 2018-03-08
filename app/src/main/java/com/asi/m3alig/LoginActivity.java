@@ -144,18 +144,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
             phone_number_login = (EditText) findViewById(R.id.et_phone_login);
             phone_number_register = (EditText) findViewById(R.id.et_phone_register);
-            otpView_register = (OtpView) findViewById(R.id.enter_code_doctor_register);
-            send_sms_register =(ImageView)findViewById(R.id.iv_send_verify_doctor_register);
-            send_sms_register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!phone_number_register.getText().toString().trim().equals("")) {
-                        send_sms(phone_number_register.getText().toString(),code_register);
-                    }else {
-                        Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+//            otpView_register = (OtpView) findViewById(R.id.enter_code_doctor_register);
+//            send_sms_register =(ImageView)findViewById(R.id.iv_send_verify_doctor_register);
+//            send_sms_register.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if(!phone_number_register.getText().toString().trim().equals("")) {
+//                        send_sms(phone_number_register.getText().toString(),code_register);
+//                    }else {
+//                        Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
 
             doctorWorkAreaSpinner = (Spinner) findViewById(R.id.sp_doctorWorkArea);
             doctorWorkAreaAdapter = ArrayAdapter.createFromResource(this,
@@ -176,19 +176,19 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
 
-            otpView_login=(OtpView)findViewById(R.id.enter_code_login);
-
-            send_sms_login=(ImageView)findViewById(R.id.iv_sendverify_login);
-            send_sms_login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!phone_number_login.getText().toString().trim().equals("")) {
-                        send_sms(phone_number_login.getText().toString(),code_login);
-                    }else{
-                        Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+//            otpView_login=(OtpView)findViewById(R.id.enter_code_login);
+//
+//            send_sms_login=(ImageView)findViewById(R.id.iv_sendverify_login);
+//            send_sms_login.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if(!phone_number_login.getText().toString().trim().equals("")) {
+//                        send_sms(phone_number_login.getText().toString(),code_login);
+//                    }else{
+//                        Toast.makeText(LoginActivity.this, R.string.enter_phone,Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
 
             fb_iv_login=(ImageView)findViewById(R.id.fb_login_iv);
             fb_iv_login.setVisibility(View.GONE);
@@ -471,7 +471,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void LoginNow(View view) {
 
         if(getIntent().getStringExtra(Constants.USER_KEY).equals(Constants.M3ALG_TYPE)) {
-            if(!phone_number_login.getText().toString().trim().equals(""))
+            if(doctorValidation(LOGIN_VALIDATION).equals("ok"))
             {
                 send_sms(phone_number_login.getText().toString(),code_login);
                 dialog=new Dialog(LoginActivity.this);
@@ -501,7 +501,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 });
                 dialog.show();
             }
-           else Toast.makeText(getApplicationContext(),  getString(R.string.enter_ver_code), Toast.LENGTH_SHORT).show();
+           else Toast.makeText(getApplicationContext(),  doctorValidation(LOGIN_VALIDATION), Toast.LENGTH_SHORT).show();
         }
         else {
             if (!phone_number_login.getText().toString().trim().equals("")) {
@@ -690,7 +690,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<LoginResponse> call = apiService.registerDoctor(
                 phoneNumber,code_register, name, idNumber, idNumberExpired, graduatedDate,
-                licenceNumber, theJob, otpView_register.getOTP(), "device_id", token, doctorWorkArea);
+                licenceNumber, theJob, code, "device_id", token, doctorWorkArea);
 
         //send data and receive response
         call.enqueue(new Callback<LoginResponse>() {
@@ -865,6 +865,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         //login doctor
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<LoginResponse> call = apiService.loginDoctor(phoneNumber, code_login, code);
+        Log.e("phone,ctr,code",phoneNumber+" "+code_login+" "+code);
         //send data and receive response
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -888,17 +889,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         db.addUser(doctorSecret, doctorToken, M3ALG_TYPE);
                         //make application has user was login
                         session.setLogin(true);
-
-                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString("secret", doctorSecret);
-                        editor.putString("token", doctorToken);
-                        editor.apply();
-
                         //move user to MainActivity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //take user type with intent
                         intent.putExtra(Constants.USER_KEY,Constants.M3ALG_TYPE);
+                        dialog.dismiss();
                         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
@@ -1004,6 +999,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                         intent.putExtra(Constants.USER_KEY,Constants.PATIENT_TYPE);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         startActivity(intent);
                         finish();
                     }
@@ -1052,6 +1048,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                         intent.putExtra(Constants.USER_KEY,Constants.PATIENT_TYPE);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         startActivity(intent);
                         finish();
                     }
@@ -1109,6 +1106,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         session.setLogin(true);
                         intent.putExtra(Constants.USER_KEY,Constants.PATIENT_TYPE);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         startActivity(intent);
                         finish();
                     }
@@ -1166,6 +1164,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         session.setLogin(true);
                         intent.putExtra(Constants.USER_KEY,Constants.PATIENT_TYPE);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         startActivity(intent);
                         finish();
                     }
@@ -1266,6 +1265,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                         intent.putExtra(Constants.USER_KEY,Constants.M3ALG_TYPE);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         startActivity(intent);
                         finish();
                     }
@@ -1407,7 +1407,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
     }
 
-    public void loginGmail(){
+    public void loginGmail()
+    {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }

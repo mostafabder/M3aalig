@@ -247,10 +247,10 @@ public class AccountSettingsActivity extends AppCompatActivity {
     }
 
     public void logout(View view){
-        session = new SessionManager(AccountSettingsActivity.this);
-        session.setLogin(false);
         Intent intent = new Intent(AccountSettingsActivity.this, BeforLoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         new SQLiteHandler(getApplicationContext()).deleteUsers();
+        new SessionManager(AccountSettingsActivity.this).setLogin(false);
         startActivity(intent);
         finish();
     }
