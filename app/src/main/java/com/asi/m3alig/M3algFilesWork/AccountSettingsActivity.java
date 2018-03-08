@@ -37,139 +37,15 @@ import static com.asi.m3alig.Utility.Constants.getType;
 
 public class AccountSettingsActivity extends AppCompatActivity {
 
-    private SessionManager session;
-    Map<String,String>params;
-    EditText name_et,phone_et;
-    TextView submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_account_settings);
-        init();
+
     }
 
 
-    public void logout(View view){
-        session = new SessionManager(AccountSettingsActivity.this);
-        session.setLogin(false);
-        Intent intent = new Intent(AccountSettingsActivity.this, BeforLoginActivity.class);
-        new SQLiteHandler(getApplicationContext()).deleteUsers();
-        startActivity(intent);
-        finish();
-    }
-    public void init(){
-        name_et=(EditText)findViewById(R.id.name_profile_et);
-        phone_et=(EditText)findViewById(R.id.phone_profile_et);
-        submit=(TextView)findViewById(R.id.submit_profile);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(getType(AccountSettingsActivity.this).equals(M3ALG_TYPE))
-                {
-
-                }
-                else
-                {
-                    update_patient();
-                }
-            }
-        });
-        get_patient_data();
-    }
-    public void goBack(View view) {
-        onBackPressed();
-    }
-    public void update_patient(){
-        params=new HashMap<>();
-        if(!name_et.getText().toString().trim().equals(""))
-        params.put("new_name",name_et.getText().toString());
-        if(!phone_et.getText().toString().trim().equals(""))
-        params.put("new_phone",phone_et.getText().toString());
-        final ProgressDialog progressDialog=new ProgressDialog(AccountSettingsActivity.this);
-        progressDialog.setMessage(getString(R.string.please_wait));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<ProfileUpdateResponse> call=apiService.update_profile(getToken(AccountSettingsActivity.this),getSecret(AccountSettingsActivity.this),params);
-        call.enqueue(new Callback<ProfileUpdateResponse>() {
-            @Override
-            public void onResponse(Call<ProfileUpdateResponse> call, Response<ProfileUpdateResponse> response)
-            {
-                progressDialog.dismiss();
-                if(response.body()!=null)
-                {
-                    Log.e("FLAG",response.body().getCode()+"   "+response.body().getMessage());
-                    if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS))
-                    {
-                        Toast.makeText(AccountSettingsActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                    else if(response.body().getCode().equals("512"))
-                    {
-                        Toast.makeText(AccountSettingsActivity.this, R.string.wrong_number,Toast.LENGTH_SHORT).show();
-                    }
-                    else  {
-                        try{
-                            Toast.makeText(AccountSettingsActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                        catch (Exception e){
-                            Toast.makeText(AccountSettingsActivity.this,getString(R.string.something_error),Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                }
-                else Toast.makeText(AccountSettingsActivity.this,getString(R.string.contact_services),Toast.LENGTH_SHORT).show();
-
-            }
-            @Override
-            public void onFailure(Call<ProfileUpdateResponse> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(AccountSettingsActivity.this,getString(R.string.check_connection),Toast.LENGTH_SHORT).show();
-                Log.e("ERROR",t.getMessage()+"   ");
-            }
-        });
-    }
-    public void get_patient_data(){
-        params=new HashMap<>();
-        final ProgressDialog progressDialog=new ProgressDialog(AccountSettingsActivity.this);
-        progressDialog.setMessage(getString(R.string.please_wait));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<ProfileUpdateResponse> call=apiService.update_profile(getToken(AccountSettingsActivity.this),getSecret(AccountSettingsActivity.this),params);
-        call.enqueue(new Callback<ProfileUpdateResponse>() {
-            @Override
-            public void onResponse(Call<ProfileUpdateResponse> call, Response<ProfileUpdateResponse> response)
-            {
-                progressDialog.dismiss();
-                if(response.body()!=null)
-                {
-                    Log.e("FLAG",response.body().getCode()+"   "+response.body().getMessage());
-                    if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS))
-                    {
-                            name_et.setText(response.body().getData().getName());
-                            phone_et.setText(response.body().getData().getPhone());
-                    }
-                    else  {
-                        try{
-                            Toast.makeText(AccountSettingsActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                        catch (Exception e){
-                            Toast.makeText(AccountSettingsActivity.this,getString(R.string.something_error),Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                }
-                else Toast.makeText(AccountSettingsActivity.this,getString(R.string.contact_services),Toast.LENGTH_SHORT).show();
-
-            }
-            @Override
-            public void onFailure(Call<ProfileUpdateResponse> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(AccountSettingsActivity.this,getString(R.string.check_connection),Toast.LENGTH_SHORT).show();
-                Log.e("ERROR",t.getMessage()+"   ");
-            }
-        });
-    }
 }

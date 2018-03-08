@@ -3,6 +3,10 @@ package com.asi.m3alig.PatientWork;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +18,9 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.asi.m3alig.Adapters.Patient.HealthSatusAdapter;
+import com.asi.m3alig.Adapters.Patient.PatientHealthSummryAdapter;
+import com.asi.m3alig.Models.HealthStatusModel;
 import com.asi.m3alig.Models.VisitOrderPatient;
 import com.asi.m3alig.R;
 
@@ -22,7 +29,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OrderM3algNowActivity extends AppCompatActivity {
-    ListView listView;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
+    ArrayList<HealthStatusModel> status_list;
     TextView orderForMeTextView, orderForFamilyTextView, orderForOthersTextView,
             maleTextView, FemaleTextView,
             marriedTextView, singleTextView,
@@ -38,11 +48,20 @@ public class OrderM3algNowActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_order_m3alg_now);
         list=Arrays.asList(getResources().getStringArray(R.array.diseases));
-        listView=(ListView)findViewById(R.id.diseases_lv);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice,list);
-        listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-        listView.setAdapter(adapter);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_health_status);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        status_list=new ArrayList<HealthStatusModel>();
+        for(int i=0;i<list.size();i++)
+        {
+            HealthStatusModel model=new HealthStatusModel(false,list.get(i));
+            status_list.add(model);
+        }
+        adapter = new HealthSatusAdapter(status_list,OrderM3algNowActivity.this);
+        recyclerView.setAdapter(adapter);
 
         orderForMeTextView = (TextView) findViewById(R.id.order_for_me_text_view);
         orderForFamilyTextView = (TextView) findViewById(R.id.order_for_family_text_view);
@@ -239,27 +258,30 @@ public class OrderM3algNowActivity extends AppCompatActivity {
     }
 
     public void nextPage(View view) {
-        if(listView.getCount()==0)
-            Toast.makeText(this, R.string.choose_health,Toast.LENGTH_SHORT).show();
-        else{
-            String health="";
-            SparseBooleanArray sparseBooleanArray = listView.getCheckedItemPositions();
-            for(int i = 0; i < listView.getCount(); i++){
-                if(sparseBooleanArray.get(i))
-                {
-                    if(i==listView.getCount()-1)
-                        health += listView.getItemAtPosition(i).toString();
+        int count = 0;
+        for (int i = 0; i < status_list.size(); i++)
+            if (status_list.get(i).getChecked()) count++;
+        if (count == 0)
+            Toast.makeText(this, R.string.choose_health, Toast.LENGTH_SHORT).show();
+        else {
+            String health = "";
+            for (int i = 0; i < status_list.size(); i++) {
+                if (status_list.get(i).getChecked()) {
+                    if (i == status_list.size() - 1)
+                        health += status_list.get(i).getStatus();
                     else
-                        health += listView.getItemAtPosition(i).toString() + "/";
+                        health += status_list.get(i).getStatus() + "/";
                 }
             }
             order.setAge(String.valueOf(numberPicker.getValue()));
-            Intent intent=new Intent(OrderM3algNowActivity.this, WhenPainStartActivity.class);
-            intent.putExtra("order",order);
+            order.setHealth_problem(health);
+            Log.e("HEALTH", health);
+            Intent intent = new Intent(OrderM3algNowActivity.this, WhenPainStartActivity.class);
+            intent.putExtra("order", order);
             startActivity(intent);
         }
-
     }
+
     public void setInitialValues(){
         order=new VisitOrderPatient();
         order.setWho_need_session(orderForMeTextView.getText().toString());

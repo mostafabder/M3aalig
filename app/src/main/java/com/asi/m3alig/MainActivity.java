@@ -42,6 +42,7 @@ import com.asi.m3alig.PatientWork.OrderM3algNowActivity;
 import com.asi.m3alig.NavDrawWork.DrawerListAdapter;
 import com.asi.m3alig.NavDrawWork.NavItem;
 import com.asi.m3alig.PatientWork.RateTreatmentSessionActivity;
+import com.asi.m3alig.PatientWork.m3aligSideScreens.AccountSettingPatientActivity;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.ContactDoctorActivty;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.MesseageCenterActivity;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.MyHealthSummaryActivity;
@@ -374,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             else if (position == 7) {
-                startActivity(new Intent(MainActivity.this, AccountSettingsActivity.class));
+                startActivity(new Intent(MainActivity.this, AccountSettingPatientActivity.class));
             }
             else if (position == 8) {
                 startActivity(new Intent(MainActivity.this, PrivacyActivity.class));

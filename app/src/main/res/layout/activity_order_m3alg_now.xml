@@ -447,22 +447,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
-                <ListView
-                    android:id="@+id/diseases_lv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/diseases"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no_thing"
-                    android:textSize="15sp"
-                    android:id="@+id/no_disease_text_view"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:layout_margin="4dp"
-                    android:visibility="gone"/>
+               <android.support.v7.widget.RecyclerView
+                   android:id="@+id/rv_health_status"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   />
                 <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="wrap_content"-->
