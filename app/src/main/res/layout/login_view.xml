@@ -78,8 +78,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.7"
                     android:gravity="center"
-                    app:countryPreference="EG,SA"
-                    app:defaultNameCode="EG"/>
+                    app:countryPreference="SA,EG"
+                    app:defaultNameCode="SA"/>
 
                 <EditText
                     android:id="@+id/et_phone_login"

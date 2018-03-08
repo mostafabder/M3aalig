@@ -19,6 +19,7 @@ public class Constants {
     public final static String FLAG_CODE_SUCCESS_210 ="210";
     public final static String FLAG_CODE_SUCCESS_215 ="215";
     public final static String FLAG_CODE_SUCCESS_400 ="400";
+    public final static String FLAG_CODE_SUCCESS_512 ="512";
 
 
     public static String getToken(Context context)
