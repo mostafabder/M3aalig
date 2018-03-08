@@ -42,6 +42,7 @@ import com.asi.m3alig.PatientWork.OrderM3algNowActivity;
 import com.asi.m3alig.NavDrawWork.DrawerListAdapter;
 import com.asi.m3alig.NavDrawWork.NavItem;
 import com.asi.m3alig.PatientWork.RateTreatmentSessionActivity;
+import com.asi.m3alig.PatientWork.m3aligSideScreens.AccountSettingPatientActivity;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.ContactDoctorActivty;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.MesseageCenterActivity;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.MyHealthSummaryActivity;
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             mNavItems.add(new NavItem("العروض والخصومات", R.drawable.offers));
-            //mNavItems.add(new NavItem("إعدادات الحساب", R.drawable.account_settings_icon));
+            mNavItems.add(new NavItem("إعدادات الحساب", R.drawable.account_settings_icon));
             mNavItems.add(new NavItem("سياسه الخصوصيه \n وشروط الاستخدام", R.drawable.privacy_icon));
 
 
@@ -373,17 +374,24 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (position == 6) {
 
-            } else if (position == 7) {
+            }
+            else if (position == 7) {
+                startActivity(new Intent(MainActivity.this, AccountSettingPatientActivity.class));
+            }
+            else if (position == 8) {
                 startActivity(new Intent(MainActivity.this, PrivacyActivity.class));
-            } else if (position == 8) {
-                startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
-
             } else if (position == 9) {
                 startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
 
             } else if (position == 10) {
+                startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
+
+            } else if (position == 11) {
                 new SessionManager(MainActivity.this).setLogin(false);
                 new SQLiteHandler(getApplicationContext()).deleteUsers();
+                Intent intent=new Intent(MainActivity.this,BeforLoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         }
         mDrawerList.setItemChecked(position, true);

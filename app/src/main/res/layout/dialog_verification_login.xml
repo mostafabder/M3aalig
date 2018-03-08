@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    fancy:cardCornerRadius="10dp"
+    fancy:cardElevation="4dp"
+    fancy:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/enter_ver_code"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.mukesh.OtpView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="number"
+            android:layoutDirection="ltr"
+            android:textColor="@color/tinyblack"
+            >
+
+            <requestFocus />
+        </com.mukesh.OtpView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp">
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_verify"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                fancy:fb_borderColor="#FFFFFF"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="@color/blue"
+                fancy:fb_focusColor="@color/white_blue"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="30dp"
+                fancy:fb_text="تأكيد"
+                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textSize="15sp" />
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_close"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                fancy:fb_borderColor="#FFFFFF"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="@color/blue"
+                fancy:fb_focusColor="@color/white_blue"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="30dp"
+                fancy:fb_text="تعديل الرقم"
+                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layoutDirection="rtl">
+
+            <LinearLayout
+                android:id="@+id/send_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/tv_not"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="لم يصلك رمز التفعيل؟"
+                    android:textColor="#696969"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_send_sms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اعادة ارسال رمز التفعيل"
+                    android:textColor="@color/tinyblue"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/seconds_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:orientation="horizontal"
+               >
+
+                <TextView
+                    android:id="@+id/tv_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اعادة ارسال رمز التفعيل بعد"
+                    android:textColor="#696969"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_seconds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="30"
+                    android:textColor="@color/tinyblue"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

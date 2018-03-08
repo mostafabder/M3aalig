@@ -72,16 +72,6 @@
                 android:layout_margin="5dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
-
-
-                <ImageView
-                    android:id="@+id/iv_sendverify_login"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight=".3"
-                    android:src="@drawable/phone_check_icon_not_active" />
-
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp_login"
                     android:layout_width="0dp"
@@ -95,31 +85,31 @@
                     android:id="@+id/et_phone_login"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-
-                    android:inputType="number" />
+                    android:layout_weight="1.3"
+                    android:inputType="phone" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/enter_ver_code" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/enter_ver_code" />-->
 
-            <com.mukesh.OtpView
-                android:id="@+id/enter_code_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:inputType="number"
-                android:layoutDirection="ltr"
-                android:textColor="@color/tinyblack">
+            <!--<com.mukesh.OtpView-->
+                <!--android:id="@+id/enter_code_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:inputType="number"-->
+                <!--android:layoutDirection="ltr"-->
+                <!--android:textColor="@color/tinyblack">-->
 
-                <requestFocus />
-            </com.mukesh.OtpView>
+                <!--<requestFocus />-->
+            <!--</com.mukesh.OtpView>-->
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginTop="15dp"
                 android:onClick="LoginNow"
                 android:src="@drawable/login_icon_not_active"
                 android:layout_marginBottom="16dp"/>

@@ -56,7 +56,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/round_layout_otp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="match_parent"

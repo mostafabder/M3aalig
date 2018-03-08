@@ -76,22 +76,22 @@ public class PatientHealthSummryAdapter extends RecyclerView.Adapter<PatientHeal
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        RelativeLayout headerLayout;
-        LinearLayout fotterLayout;
-        TextView name_visit,date_visit,dr_name_visit,gried_visit,near_goal_visit,far_goal_visit,treatment_goal,treatment_desc;
+            RelativeLayout headerLayout;
+            LinearLayout fotterLayout;
+            TextView name_visit,date_visit,dr_name_visit,gried_visit,near_goal_visit,far_goal_visit,treatment_goal,treatment_desc;
 
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            this.headerLayout = (RelativeLayout) itemView.findViewById(R.id.health_sum_header);
-            this.fotterLayout = (LinearLayout) itemView.findViewById(R.id.health_sum_footer);
-            name_visit=(TextView)itemView.findViewById(R.id.name_prev_visit);
-            date_visit=(TextView)itemView.findViewById(R.id.date_prev_visit);
-            dr_name_visit=(TextView)itemView.findViewById(R.id.dr_name_prev_visit);
-            gried_visit=(TextView)itemView.findViewById(R.id.gried_prev_visit);
-            near_goal_visit=(TextView)itemView.findViewById(R.id.neargoal_prev_visit);
-            far_goal_visit=(TextView)itemView.findViewById(R.id.fargoal_prev_visit);
-            treatment_goal=(TextView)itemView.findViewById(R.id.prev_visit_treat_goal);
-            treatment_desc=(TextView)itemView.findViewById(R.id.prev_visit_treat_desc);
-        }
+            public MyViewHolder(View itemView) {
+                super(itemView);
+                this.headerLayout = (RelativeLayout) itemView.findViewById(R.id.health_sum_header);
+                this.fotterLayout = (LinearLayout) itemView.findViewById(R.id.health_sum_footer);
+                name_visit=(TextView)itemView.findViewById(R.id.name_prev_visit);
+                date_visit=(TextView)itemView.findViewById(R.id.date_prev_visit);
+                dr_name_visit=(TextView)itemView.findViewById(R.id.dr_name_prev_visit);
+                gried_visit=(TextView)itemView.findViewById(R.id.gried_prev_visit);
+                near_goal_visit=(TextView)itemView.findViewById(R.id.neargoal_prev_visit);
+                far_goal_visit=(TextView)itemView.findViewById(R.id.fargoal_prev_visit);
+                treatment_goal=(TextView)itemView.findViewById(R.id.prev_visit_treat_goal);
+                treatment_desc=(TextView)itemView.findViewById(R.id.prev_visit_treat_desc);
+            }
     }
 }

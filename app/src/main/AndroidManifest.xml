@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -20,14 +20,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeWithNoActionBar">
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <meta-data android:name="com.facebook.sdk.AutoLogAppEventEnabled" android:value="false"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.AutoLogAppEventEnabled"
+            android:value="false" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher" />
@@ -36,7 +37,8 @@
             android:resource="@color/blue" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_id"/>
+            android:value="@string/default_notification_channel_id" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -62,7 +64,7 @@
             android:theme="@style/AppThemeWithNoActionBar" />
         <activity
             android:name=".BeforLoginActivity"
-            android:theme="@style/AppThemeWithNoActionBar"></activity>
+            android:theme="@style/AppThemeWithNoActionBar" />
         <activity
             android:name=".M3algFilesWork.AvailableTreatmentRequestsActivity"
             android:theme="@style/AppThemeWithNoActionBar" />
@@ -124,25 +126,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".M3algFilesWork.DoctorTreatmentSessionsScheduleActivity"></activity>
-        <service
-            android:name=".Utility.Notification.MyFirebaseMessagingService">
+        <activity android:name=".M3algFilesWork.DoctorTreatmentSessionsScheduleActivity" />
+
+        <service android:name=".Utility.Notification.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".Utility.Notification.MyFirebaseInstanceIDService">
+        <service android:name=".Utility.Notification.MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <!-- [END firebase_iid_service] -->
-        <service android:name=".Utility.Notification.MyJobService"
+        <service
+            android:name=".Utility.Notification.MyJobService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
+        <activity android:name=".PatientWork.m3aligSideScreens.AccountSettingPatientActivity"></activity>
     </application>
+
 </manifest>
