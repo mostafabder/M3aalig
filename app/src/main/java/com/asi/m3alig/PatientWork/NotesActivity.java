@@ -39,6 +39,7 @@ public class NotesActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_notes);
         order=(VisitOrderPatient)getIntent().getSerializableExtra("order");
+        Log.e("data-1",order.toString());
     }
 
     public void goBack(View view) {
@@ -58,9 +59,31 @@ public class NotesActivity extends AppCompatActivity {
         Log.e("TOKEN,SECRET",getToken(NotesActivity.this)+"  "+getSecret(NotesActivity.this));
         Log.e("data",order.toString());
 
-        Call<NormalResponse> call=apiService.createVisitOrderPatient(getToken(NotesActivity.this),getSecret(NotesActivity.this),order.getAge(),order.getGender(),order.getWho_need_session(),
-                "as",order.getMove_level(),order.getHealth_problem(),order.getWhen_pain_start(),order.getPain_position(),order.getLocation_floor_number(),
-                order.getLocation_street_name(),order.getLocation_region(),order.getLocation_city(),order.getLat(),order.getLng(),order.getType(),order.getTime(),order.getDate());
+        if(order.getLocation_floor_number().equals("")){
+            order.setLocation_floor_number("floor");
+        }
+
+        Call<NormalResponse> call=apiService.createVisitOrderPatient(
+                getToken(NotesActivity.this),
+                getSecret(NotesActivity.this),
+                order.getAge(),
+                order.getGender(),
+                order.getWho_need_session(),
+                "as",
+                order.getMove_level(),
+                order.getHealth_problem(),
+                order.getWhen_pain_start(),
+                order.getPain_position(),
+                order.getLocation_floor_number(),
+                order.getLocation_street_name(),
+                order.getLocation_region(),
+                order.getLocation_city(),
+                order.getLat(),
+                order.getLng(),
+                order.getType(),
+                order.getTime(),
+                order.getDate());
+        Log.e("data2",order.toString());
         call.enqueue(new Callback<NormalResponse>() {
             @Override
             public void onResponse(Call<NormalResponse> call, Response<NormalResponse> response)

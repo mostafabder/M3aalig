@@ -173,7 +173,22 @@ public class VisitOrderPatient implements Serializable {
 
     @Override
     public String toString() {
-        return "["+getWho_need_session()+" /"+getGender()+" /"+getAge()+" /"+getSocial_statue()+" /"+getMove_level()+" /" +getHealth_problem()+"/ "+getWhen_pain_start()+"/ "+getPain_position()+"/ "+
-                getLocation_floor_number()+"/ "+getLocation_street_name()+" /"+getLocation_region()+" /"+getLocation_city()+"/"+getLat()+"/"+getLng()+" /"+getType()+" /"+getTime()+"/ "+getDate()+"]";
+        return "["+"who "+getWho_need_session()+" /"+
+                "gender "+getGender()+" /"+
+                "age "+getAge()+" /"+
+                "ss "+getSocial_statue()+" /"+
+                "ml "+getMove_level()+" /" +
+                "hp "+getHealth_problem()+"/ "+
+                "when "+getWhen_pain_start()+"/ "+
+                "pp "+getPain_position()+"/ "+
+                "locf "+getLocation_floor_number()+"/ "+
+                "locs "+getLocation_street_name()+" /"+
+                "locr "+getLocation_region()+" /"+
+                "locc "+getLocation_city()+"/"+
+                "lat "+getLat()+"/"+
+                "lng "+getLng()+" /"+
+                "type "+getType()+" /"+
+                "time "+getTime()+"/ "+
+                "date "+getDate()+"]";
     }
 }
