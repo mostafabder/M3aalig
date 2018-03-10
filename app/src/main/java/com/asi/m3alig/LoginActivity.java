@@ -541,6 +541,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if(getIntent().getStringExtra(Constants.USER_KEY).equals(Constants.M3ALG_TYPE)) {
             if (doctorValidation(REGISTER_VALIDATION).equals("ok"))
             {
+                send_sms(phone_number_register.getText().toString(),code_register);
                 dialog=new Dialog(LoginActivity.this);
                 dialog.setContentView(R.layout.dialog_verification_login);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -573,6 +574,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         } else{
             if(validate().equals("ok"))
             {
+                send_sms(phone_number_register.getText().toString(),code_register);
                 dialog=new Dialog(LoginActivity.this);
                 dialog.setContentView(R.layout.dialog_verification_login);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -765,6 +767,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             @Override
             public void onResponse(Call<NormalResponse> call, Response<NormalResponse> response)
             {
+
+                progressDialog.cancel();
+
                 if(response.body()!=null)
                 {
                     Log.e("FLAG",response.body().getCode()+"   "+response.body().getMessage());
@@ -918,13 +923,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 progressDialog.dismiss();
                 Toast.makeText(LoginActivity.this,getString(R.string.check_connection),Toast.LENGTH_SHORT).show();
                 Log.e("ERROR",t.getMessage()+"   ");
-                //show dialog for no internet connection
-                Utils.showDialog(
-                        Utils.getBuilder(LoginActivity.this),
-                        "لم يتم الاتصال",
-                        getString(R.string.check_connection),
-                        true,
-                        true);
             }
         });
     }
