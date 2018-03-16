@@ -314,7 +314,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:inputType="phone"
-                    android:id="@+id/et_doctor_phone_register"
+                    android:id="@+id/et_phone_register"
                     />
             </LinearLayout>
             <TextView
