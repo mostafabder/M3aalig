@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.M3alig.DoctorOrdersRecyclerViewAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.OrderDetails;
 import com.asi.m3alig.Models.Orders;
 import com.asi.m3alig.Models.SingleOrder;
@@ -21,6 +22,7 @@ import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.DoctorVisitsOrder;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -68,6 +70,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(AvailableTreatmentRequestsActivity.this, PreferenceUtilities.getLanguage(AvailableTreatmentRequestsActivity.this));
         setContentView(R.layout.activity_available_treatment_requests);
 
 

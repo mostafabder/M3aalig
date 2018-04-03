@@ -10,11 +10,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
+import com.asi.m3alig.M3algFilesWork.TreatmentDoctorSessionMain;
 import com.asi.m3alig.R;
 
 import com.asi.m3alig.Responses.NormalResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.sendMessageToAdminDialog;
 
 import retrofit2.Call;
@@ -32,6 +35,7 @@ public class TreatmentSessionMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(TreatmentSessionMain.this, PreferenceUtilities.getLanguage(TreatmentSessionMain.this));
         setContentView(R.layout.activity_treatment_session_main);
         visit_id =getIntent().getStringExtra("visit_id");
     }

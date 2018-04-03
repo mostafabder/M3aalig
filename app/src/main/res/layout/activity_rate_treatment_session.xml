@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="إنتهت جلسة التشخيص"
+                android:text="@string/ended"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
@@ -141,7 +141,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:gravity="center"
-        android:text="مع تمنياتنا بالشفاء العاجل"
+        android:text="@string/with_our_wishes"
         android:textColor="@color/tinytext"
         android:textSize="15sp" />
 

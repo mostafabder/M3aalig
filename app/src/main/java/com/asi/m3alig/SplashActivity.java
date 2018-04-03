@@ -5,9 +5,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.SQLiteHandler;
 import com.asi.m3alig.Utility.SessionManager;
+
+import java.util.Locale;
 
 import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.PATIENT_TYPE;
@@ -19,10 +23,21 @@ import static com.asi.m3alig.Utility.Constants.getType;
 public class SplashActivity extends AppCompatActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 2000;
+
+    private ImageView mo3alij;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        PreferenceUtilities.setLocale(SplashActivity.this, PreferenceUtilities.getLanguage(SplashActivity.this));
+
+        mo3alij = (ImageView) findViewById(R.id.mo3alij);
+        if (Locale.getDefault().getLanguage().equals("en")) {
+            mo3alij.setImageResource(R.drawable.asset_129xhdpi);
+        }else if(Locale.getDefault().getLanguage().equals("ar")){
+            mo3alij.setImageResource(R.drawable.maleg);
+        }
 
         new Handler().postDelayed(new Runnable(){
             @Override

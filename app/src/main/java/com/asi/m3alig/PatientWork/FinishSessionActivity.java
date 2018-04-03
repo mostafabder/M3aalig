@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.R;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 public class FinishSessionActivity extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class FinishSessionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(FinishSessionActivity.this, PreferenceUtilities.getLanguage(FinishSessionActivity.this));
         setContentView(R.layout.activity_finish_session);
 
 

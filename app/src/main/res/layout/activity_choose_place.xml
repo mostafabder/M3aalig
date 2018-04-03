@@ -37,9 +37,8 @@
                     />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/back"
-                    android:layout_marginTop="15dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -66,7 +65,7 @@
                 >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/cont"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"
@@ -74,7 +73,6 @@
                     android:textStyle="bold"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
 
                     />
                 <ImageView
@@ -125,11 +123,14 @@
                 android:weightSum="2"
                 android:layout_marginTop="10dp"
                 >
+
                 <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/map_button"
+
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+
                     android:layout_marginStart="5dp"
                     android:paddingBottom="10dp"
                     android:paddingLeft="20dp"
@@ -159,6 +160,7 @@
                     fancy:fb_text="اكتب العنوان"
                     fancy:fb_textColor="#FFFFFF"
                     fancy:fb_textSize="20sp"
+
                     />
                 <!--<ImageView-->
                     <!--android:layout_width="0dp"-->
@@ -196,13 +198,11 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:text="@string/flat_num"
                             android:textSize="16sp"
                             android:textStyle="bold" />

@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -20,13 +21,16 @@ import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.Patient.HealthSatusAdapter;
 import com.asi.m3alig.Adapters.Patient.PatientHealthSummryAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.HealthStatusModel;
 import com.asi.m3alig.Models.VisitOrderPatient;
 import com.asi.m3alig.R;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class OrderM3algNowActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -41,11 +45,15 @@ public class OrderM3algNowActivity extends AppCompatActivity {
     com.shawnlin.numberpicker.NumberPicker numberPicker;
     VisitOrderPatient order;
     List<String> list;
+
+    private ImageView ivBackArrow, ivMoreArrow, ivRow1, ivRow2, ivRow3, ivRow4, ivRow5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(OrderM3algNowActivity.this, PreferenceUtilities.getLanguage(OrderM3algNowActivity.this));
         setContentView(R.layout.activity_order_m3alg_now);
         list=Arrays.asList(getResources().getStringArray(R.array.diseases));
         recyclerView = (RecyclerView) findViewById(R.id.rv_health_status);
@@ -250,6 +258,32 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //            }
 //        });
         setInitialValues();
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        ivMoreArrow = (ImageView) findViewById(R.id.ivMoreArrow);
+        ivRow1 = (ImageView) findViewById(R.id.ivRow1);
+        ivRow2 = (ImageView) findViewById(R.id.ivRow2);
+        ivRow3 = (ImageView) findViewById(R.id.ivRow3);
+        ivRow4 = (ImageView) findViewById(R.id.ivRow4);
+        ivRow5 = (ImageView) findViewById(R.id.ivRow5);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivMoreArrow.setImageResource(R.drawable.more_icon_en);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow3.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow4.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow5.setImageResource(R.drawable.main_screen_arrow_icon);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivMoreArrow.setImageResource(R.drawable.more_icon);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow3.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow4.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow5.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        }
+
     }
 
 

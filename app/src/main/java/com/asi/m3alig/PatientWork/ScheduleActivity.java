@@ -7,10 +7,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.VisitOrderPatient;
 import com.asi.m3alig.R;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
 
 import java.text.DateFormat;
@@ -28,11 +31,14 @@ public class ScheduleActivity extends AppCompatActivity {
     String date,time;
     Calendar calendar;
 
+    private ImageView ivBackArrow, ivMoreArrow, ivRow1, ivRow2, ivRow3, ivRow4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(ScheduleActivity.this, PreferenceUtilities.getLanguage(ScheduleActivity.this));
         setContentView(R.layout.activity_schedule);
         singleDateAndTimePicker=(SingleDateAndTimePicker)findViewById(R.id.singledateandtimepicker);
         order=(VisitOrderPatient)getIntent().getSerializableExtra("order");
@@ -76,6 +82,29 @@ public class ScheduleActivity extends AppCompatActivity {
                 urgentOrderLayout.setVisibility(View.VISIBLE);
             }
         });
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        ivMoreArrow = (ImageView) findViewById(R.id.ivMoreArrow);
+        ivRow1 = (ImageView) findViewById(R.id.ivRow1);
+        ivRow2 = (ImageView) findViewById(R.id.ivRow2);
+        ivRow3 = (ImageView) findViewById(R.id.ivRow3);
+        ivRow4 = (ImageView) findViewById(R.id.ivRow4);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivMoreArrow.setImageResource(R.drawable.more_icon_en);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow3.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow4.setImageResource(R.drawable.main_screen_arrow_icon);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivMoreArrow.setImageResource(R.drawable.more_icon);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow3.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow4.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        }
+
     }
     public void goBack(View view) {
         onBackPressed();

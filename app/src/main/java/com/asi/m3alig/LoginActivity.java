@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.telephony.TelephonyManager;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -35,6 +36,7 @@ import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
 import com.asi.m3alig.Tools.Utils;
 import com.asi.m3alig.Utility.Constants;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.SQLiteHandler;
 import com.asi.m3alig.Utility.SessionManager;
 import com.facebook.AccessToken;
@@ -68,6 +70,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.hbb20.CountryCodePicker;
 import com.mukesh.OtpView;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.Calendar;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
@@ -129,6 +133,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         type=getIntent().getStringExtra(Constants.USER_KEY);
+        PreferenceUtilities.setLocale(LoginActivity.this, PreferenceUtilities.getLanguage(LoginActivity.this));
         if (getIntent().getStringExtra(Constants.USER_KEY).equals(Constants.M3ALG_TYPE))
         {
             setContentView(R.layout.activity_login_as_moalg);
@@ -779,13 +784,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 progressDialog.dismiss();
                 Toast.makeText(LoginActivity.this,getString(R.string.check_connection),Toast.LENGTH_SHORT).show();
                 Log.e("ERROR",t.getMessage()+"   ");
-                //show dialog for no internet connection
-                Utils.showDialog(
-                        Utils.getBuilder(LoginActivity.this),
-                        "لم يتم الاتصال",
-                        getString(R.string.check_connection),
-                        true,
-                        true);
             }
         });
     }
@@ -994,24 +992,23 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             if (name.equals(""))
                 return getString(R.string.enter_fullanme);
             else if (idNumber.equals(""))
-                return "ادخل رقم بطاقة الهوية";
+                return getString(R.string.enter_national_id);
             else if (idNumberExpired.equals(""))
-                return "ادخل تاريخ انتهاء بطاقة الهوية";
+                return getString(R.string.enter_end_date_of_id);
             else if (graduatedDate.equals(""))
-                return "ادخل تاريخ التخرج";
+                return getString(R.string.enter_your_date_of_grad);
             else if (licenceNumber.equals(""))
-                return "ادخل رقم رخصة مزاولة المهنة";
+                return getString(R.string.enter_rokhsa_number);
             else if (theJob.equals(""))
-                return "ادخل المؤهل الصحي(المسمى الصحي)";
+                return getString(R.string.enter_moahel);
             else if(doctorWorkArea.equals(getResources().getStringArray(R.array.work_areas)[0]))
-                return "ادخل مكان العمل";
+                return getString(R.string.enter_work_area);
             else if (phoneNumber.equals(""))
                 return getString(R.string.enter_phone);
         }
         //return ok if all fields correct
         return "ok";
     }
-
 
     public void registerPatientFB(String name,String phone,String fb_id,String token) {
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);

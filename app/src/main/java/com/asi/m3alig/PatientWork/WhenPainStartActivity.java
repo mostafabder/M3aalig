@@ -2,21 +2,27 @@ package com.asi.m3alig.PatientWork;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.VisitOrderPatient;
 import com.asi.m3alig.R;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 
@@ -27,11 +33,15 @@ public class WhenPainStartActivity extends AppCompatActivity {
     TextView whenPainStartTextView;
     VisitOrderPatient order;
      Calendar c;
+
+    private ImageView ivBackArrow, ivMoreArrow, ivRow1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(WhenPainStartActivity.this, PreferenceUtilities.getLanguage(WhenPainStartActivity.this));
         setContentView(R.layout.activity_when_pain_start);
         order=(VisitOrderPatient)getIntent().getSerializableExtra("order");
         c = Calendar.getInstance();
@@ -87,6 +97,19 @@ public class WhenPainStartActivity extends AppCompatActivity {
 //            }
 //        });
 
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        ivMoreArrow = (ImageView) findViewById(R.id.ivMoreArrow);
+        ivRow1 = (ImageView) findViewById(R.id.ivRow1);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivMoreArrow.setImageResource(R.drawable.more_icon_en);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivMoreArrow.setImageResource(R.drawable.more_icon);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        }
+
     }
 
     public void goBack(View view) {
@@ -118,6 +141,5 @@ public class WhenPainStartActivity extends AppCompatActivity {
         datePickerDialog.show();
         //
     }
-
 
 }

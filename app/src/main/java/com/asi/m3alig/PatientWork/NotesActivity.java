@@ -12,10 +12,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.asi.m3alig.BeforLoginActivity;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asi.m3alig.LoginActivity;
+
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.Models.Visit;
 import com.asi.m3alig.Models.VisitOrderPatient;
@@ -24,6 +31,9 @@ import com.asi.m3alig.Responses.CreateVisitResponse;
 import com.asi.m3alig.Responses.NormalResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
+
+import java.util.Locale;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
@@ -38,18 +48,62 @@ import static com.asi.m3alig.Utility.Constants.getToken;
 
 public class NotesActivity extends AppCompatActivity {
     VisitOrderPatient order;
+
+
+    private ImageView ivBackArrow, ivRow1, ivRow2, ivRow3, ivRow4, ivRow5, ivRow6, ivRow7, ivRow8, ivRow9;
+
+
     FancyButton submit,back;
     Dialog dialog;
     TextView price_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(NotesActivity.this, PreferenceUtilities.getLanguage(NotesActivity.this));
         setContentView(R.layout.activity_notes);
         init_dialog();
         order=(VisitOrderPatient)getIntent().getSerializableExtra("order");
         Log.e("data-1",order.toString());
+
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        ivRow1 = (ImageView) findViewById(R.id.ivRow1);
+        ivRow2 = (ImageView) findViewById(R.id.ivRow2);
+        ivRow3 = (ImageView) findViewById(R.id.ivRow3);
+        ivRow4 = (ImageView) findViewById(R.id.ivRow4);
+        ivRow5 = (ImageView) findViewById(R.id.ivRow5);
+        ivRow6 = (ImageView) findViewById(R.id.ivRow6);
+        ivRow7 = (ImageView) findViewById(R.id.ivRow7);
+        ivRow8 = (ImageView) findViewById(R.id.ivRow8);
+        ivRow9 = (ImageView) findViewById(R.id.ivRow9);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow3.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow4.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow5.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow6.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow7.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow8.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow9.setImageResource(R.drawable.main_screen_arrow_icon);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow1.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow3.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow4.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow5.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow6.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow7.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow8.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow9.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        }
+
+
         price_tv=(TextView)findViewById(R.id.price_visit);
         if(order.getType().equals("normal"))
             price_tv.setText(getString(R.string.visit_money_300));
@@ -76,6 +130,7 @@ public class NotesActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+
     }
     public void goBack(View view) {
         onBackPressed();

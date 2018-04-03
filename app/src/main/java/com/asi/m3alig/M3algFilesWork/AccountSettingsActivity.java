@@ -41,6 +41,7 @@ import com.asi.m3alig.Responses.ProfileUpdateResponse;
 
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.SQLiteHandler;
 import com.asi.m3alig.Utility.SessionManager;
 import com.hbb20.CountryCodePicker;
@@ -70,6 +71,8 @@ import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 import static com.asi.m3alig.Utility.Constants.getType;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ARABIC_LANGUAGE;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ENGLISH_LANGUAGE;
 
 public class AccountSettingsActivity extends AppCompatActivity {
 
@@ -92,8 +95,12 @@ public class AccountSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(AccountSettingsActivity.this, PreferenceUtilities.getLanguage(AccountSettingsActivity.this));
         setContentView(R.layout.activity_account_settings);
+
+        //false mean data came without change button
         start=false;
+
         doctorWorkAreaSpinner = (Spinner) findViewById(R.id.sp_doctorWorkArea);
         doctorWorkAreaAdapter = ArrayAdapter.createFromResource(this,
                 R.array.work_areas, R.layout.support_simple_spinner_dropdown_item);
@@ -255,6 +262,20 @@ public class AccountSettingsActivity extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void changeLanguage(View view){
+        String language = PreferenceUtilities.getLanguage(this);
+        if(language.equals(ARABIC_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ENGLISH_LANGUAGE);
+            recreate();
+        }
+        if(language.equals(ENGLISH_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ARABIC_LANGUAGE);
+            recreate();
+        }
     }
 }

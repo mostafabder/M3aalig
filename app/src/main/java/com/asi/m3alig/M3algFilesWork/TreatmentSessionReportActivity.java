@@ -11,11 +11,13 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.StartingVisit;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,6 +40,7 @@ public class TreatmentSessionReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(TreatmentSessionReportActivity.this, PreferenceUtilities.getLanguage(TreatmentSessionReportActivity.this));
         setContentView(R.layout.activity_treatment_session_report);
 
         et_subjective = (EditText) findViewById(R.id.et_subjective);

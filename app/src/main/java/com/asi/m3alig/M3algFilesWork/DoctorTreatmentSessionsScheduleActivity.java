@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.M3alig.DoctorNextVisitScheduleRecyclerViewAdapter;
 import com.asi.m3alig.Adapters.M3alig.DoctorOrdersRecyclerViewAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.Models.DoctorSingleVisit;
 import com.asi.m3alig.Models.OrderDetails;
@@ -23,6 +24,7 @@ import com.asi.m3alig.Responses.DoctorVisits;
 import com.asi.m3alig.Responses.DoctorVisitsOrder;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,7 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PreferenceUtilities.setLocale(DoctorTreatmentSessionsScheduleActivity.this, PreferenceUtilities.getLanguage(DoctorTreatmentSessionsScheduleActivity.this));
         setContentView(R.layout.activity_doctor_treatment_sessions_schedule);
 
         mOrders = new ArrayList<>();
