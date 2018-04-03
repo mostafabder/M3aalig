@@ -50,7 +50,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 order.setPain_position("from front");
-                backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.yellow));
+                backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.green_highlighted));
                 frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.appcolor));
                 bodyImageView.setImageResource(R.mipmap.back_man_icon);
             }
@@ -61,7 +61,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 order.setPain_position("from back");
-                frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.yellow));
+                frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.green_highlighted));
                 backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.appcolor));
                 bodyImageView.setImageResource(R.mipmap.front_man_icon);
             }
@@ -72,7 +72,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                order.setPain_position("0");
-//                deepPainButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.yellow));
+//                deepPainButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.green_highlighted));
 //                littlePainButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.appcolor));
 //            }
 //        });
@@ -82,7 +82,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                order.setPain_position("1");
-//                littlePainButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.yellow));
+//                littlePainButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.green_highlighted));
 //                deepPainButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.appcolor));
 //            }
 //        });

@@ -54,7 +54,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".4"
-                android:src="@drawable/side_menu_logo"
+                android:src="@drawable/logo_icon_white"
                 android:padding="8dp"
                 />
             <LinearLayout
@@ -174,6 +174,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:layout_margin="4dp"
+                    android:background="#1c3f81"
                     />
             </LinearLayout>
 

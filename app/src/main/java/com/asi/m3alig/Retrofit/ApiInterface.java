@@ -226,5 +226,8 @@ public interface ApiInterface {
                                                   @Field("new_health_name")String new_health_name);
 
 
+    @FormUrlEncoded
+    @POST("/patient/sendtoken")
+    Call<NormalResponse> send_token(@Field("token")String token,@Field("secret")String secret,@Field("device_token")String device_token);
 }
 

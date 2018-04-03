@@ -11,20 +11,19 @@
     <string name="knowaboutapp">تعرف علي التطبيق</string>
     <string name="tableof3lag">جدول جلسات العلاج</string>
     <string name="invitefriend">دعوة صديق</string>
-    <string name="invite_txt">قم بدعوه اصدقائك واحصل علي نقاط مجانية يمكنك استبدالها بجلسات علاجيه عن كل صديق يقوم بتحميل البرنامج</string>
+    <string name="invite_txt">قم بدعوه اصدقائك لتحميل البرنامج</string>
     <string name="clicktoshareOn">أضغط لمشاركه الرابط علي</string>
     <string name="back">رجوع</string>
     <string name="treatment_guidelines_header">إرشادات العلاج و التمارين</string>
     <string name="treatment_schedule_header">جدول جلسات العلاج</string>
-
     <string name="cont">متابعة</string>
     <string name="my_helth_summry">ملخص حالتي الصحية</string>
     <string name="contact_doctor_header">التواصل مع أخصائي</string>
     <string name="message_center_header">مركز الرسائل</string>
     <string name="general_info_about_case">معلومات عامة عن الحاله الطبية</string>
     <string name="for_who">لمن تطلب الجلسة</string>
-    <string name="for_me">أطلبها لي</string>
-    <string name="for_one_of_my_family">أطلبها لاحد افراد العائلة</string>
+    <string name="for_me">أنا</string>
+    <string name="for_one_of_my_family">أحد افراد العائلة</string>
     <string name="for_other">اطلبها لشخص اخر</string>
     <string name="gender">الجنس</string>
     <string name="male">ذكر</string>
@@ -99,9 +98,9 @@
     <string name="blood">اضرابات في ضغط الدم</string>
     <string name="heart">مريض في القلب</string>
     <string name="other">مرض اخر ...</string>
-    <string name="when_pain_start">متي بدأ الالم</string>
+    <string name="when_pain_start">متي بدأت المشكلة</string>
     <string name="what_is_your_complaint">بماذا تشكو</string>
-    <string name="pain_postion">حدد  موضع الالم (يسمح بتعدد الاختيار )</string>
+    <string name="pain_postion">حدد  موضع الالم </string>
     <string name="click_to_choose_pain_position">أضغط لتحديد مكان الالم</string>
     <string name="click_to_remove_pain_position">اضغط مره اخري لازاله العلامه</string>
     <string name="where_you_will_recive_treatment">أين ستتلقي العلاج</string>
@@ -120,7 +119,8 @@
     <string name="save">حفظ</string>
     <string name="service_coast_text">يتم احتساب سعر الخدمة كالتالي :</string>
     <string name="visitation_time">مدة الزيارة التشخيصية ساعة كحد أقصي .</string>
-    <string name="visit_money">سعر الزيارة التشخيصية  300 ريال</string>
+    <string name="visit_money_300">سعر الزيارة   300 ريال</string>
+    <string name="visit_money_350">سعر الزيارة   350 ريال</string>
     <string name="note_one">اذا تطلبت الجلسه اكثر من ساعة سيتم تحديد موعد اخر</string>
     <string name="note_two">
     تسعد ادارة التطبيق بتقديم اقصي درجات العناية الطبية وتشترط التالي للتاكد
@@ -129,7 +129,7 @@
     <string name="note_four">يجب وجود ولي امر المريض (اذا كان طفلا)</string>
     <string name="note_five">يجب وجود محرم بالغ (اذا كان المريض انثي )</string>
     <string name="note_six">يتم الغاء الزياره فورا اذا تم مخالفه ايا من الامور السابقة</string>
-    <string name="note_seven">يتم حظرك من التطبيق اذا قمت بمعامله المعالج بشكل لا يليق</string>
+    <string name="note_seven">يتم حظرك من التطبيق اذا قمت بمعامله المعالج بشكل غير لائق</string>
     <string name="note_eight">يرجي العلم انه يتم تحديد مكان المعالج بشكل مستمر خلال فتره الزياره وذالك لضمان جوده الخدمه</string>
     <string name="enter_your_phone_num">ادخل رقم الهاتف</string>
     <string name="enter_ver_code">ادخل كود التفعيل</string>
@@ -358,5 +358,7 @@
     <string name="optional">( أختياري )</string>
     <string name="update_info">تعديل البيانات</string>
     <string name="wrong_number">رقم الهاتف غير صحيح!</string>
-
+    <string name="wrong_code"> كود التفعيل غير صحيح!</string>
+    <string name="share_whatsapp_not_instaled">واتس اب غير مثبت</string>
+    <string name="share_intent_title">شارك تطبيق معالج</string>
 </resources>

@@ -84,17 +84,17 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //        heartPatientTextView = (TextView) findViewById(R.id.heart_patient_text_view);
 //        otherDiseaseTextView = (TextView) findViewById(R.id.other_disease_text_view);
 
-        orderForMeTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+        orderForMeTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
         orderForFamilyTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
         orderForOthersTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-        maleTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+        maleTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
         FemaleTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//        marriedTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//        marriedTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //        singleTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-        canWalkTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+        canWalkTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
         sittingTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
         canNotMoveTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//        noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//        noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //        diabeticTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //        bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //        heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
@@ -104,7 +104,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 order.setWho_need_session(orderForMeTextView.getText().toString());
-                orderForMeTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                orderForMeTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
                 orderForFamilyTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
                 orderForOthersTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
             }
@@ -114,7 +114,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             public void onClick(View v) {
                 order.setWho_need_session(orderForFamilyTextView.getText().toString());
                 orderForMeTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-                orderForFamilyTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                orderForFamilyTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
                 orderForOthersTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
             }
         });
@@ -124,7 +124,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
                 order.setWho_need_session(orderForOthersTextView.getText().toString());
                 orderForMeTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
                 orderForFamilyTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-                orderForOthersTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                orderForOthersTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
             }
         });
 
@@ -132,7 +132,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 order.setGender(maleTextView.getText().toString());
-                maleTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                maleTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
                 FemaleTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
             }
         });
@@ -141,7 +141,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             public void onClick(View v) {
                 order.setGender(FemaleTextView.getText().toString());
                 maleTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-                FemaleTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                FemaleTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
             }
         });
 
@@ -149,7 +149,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                order.setSocial_statue(marriedTextView.getText().toString());
-//                marriedTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                marriedTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //                singleTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //            }
 //        });
@@ -158,7 +158,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                order.setSocial_statue(singleTextView.getText().toString());
 //                marriedTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//                singleTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                singleTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //            }
 //        });
 
@@ -166,7 +166,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 order.setMove_level(canWalkTextView.getText().toString());
-                canWalkTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                canWalkTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
                 sittingTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
                 canNotMoveTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 
@@ -178,7 +178,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
             public void onClick(View v) {
                 order.setMove_level(sittingTextView.getText().toString());
                 canWalkTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-                sittingTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                sittingTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
                 canNotMoveTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 
             }
@@ -189,7 +189,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
                 order.setMove_level(canNotMoveTextView.getText().toString());
                 canWalkTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
                 sittingTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-                canNotMoveTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+                canNotMoveTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 
             }
         });
@@ -198,7 +198,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                order.setHealth_problem(noDiseaseTextView.getText().toString());
-//                noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //                diabeticTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
@@ -210,7 +210,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                order.setHealth_problem(diabeticTextView.getText().toString());
 //                noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//                diabeticTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                diabeticTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //                bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                otherDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
@@ -222,7 +222,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //                order.setHealth_problem(bloodPressureTextView.getText().toString());
 //                noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                diabeticTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//                bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //                heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                otherDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //            }
@@ -234,7 +234,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //                noDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                diabeticTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//                heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //                otherDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //            }
 //        });
@@ -246,7 +246,7 @@ public class OrderM3algNowActivity extends AppCompatActivity {
 //                diabeticTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                bloodPressureTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
 //                heartPatientTextView.setBackgroundColor(getResources().getColor(R.color.appcolor));
-//                otherDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.yellow));
+//                otherDiseaseTextView.setBackgroundColor(getResources().getColor(R.color.highlighted_blue));
 //            }
 //        });
         setInitialValues();

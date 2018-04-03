@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.asi.m3alig.SplashActivity"
-    android:background="@drawable/befor_login_back">
+    android:background="@drawable/splash_screen">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:src="@drawable/maleg"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="70dp"
         android:layout_alignParentBottom="true"
         />
 </RelativeLayout>

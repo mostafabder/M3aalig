@@ -17,13 +17,14 @@
     <color name="tinytext">#7EA5C8</color>
     <color name="tinytext2">#4BFBE7</color>
     <color name="yellow">#f5fccb0d</color>
-
+    <color name="highlighted_blue">#1c3f81</color>
     <color name="tiny_appcolor">#9c0072bb</color>
     <color name="transparent">#000072bb</color>
 
     <color name="duskYellow">#ffd700</color>
     <color name="lightGrey">#b3b3b3</color>
-
+    <color name="green_highlighted">#159f94</color>
+    <color name="blue_unhighlighted">#0567a6</color>
 
 
 

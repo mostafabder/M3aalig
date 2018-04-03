@@ -45,7 +45,7 @@ public class ScheduleActivity extends AppCompatActivity {
         bookOrderLayout = (LinearLayout) findViewById(R.id.book_date_layout);
         urgentOrderButton = (FancyButton) findViewById(R.id.urgent_order_button);
         bookOrderButton = (FancyButton) findViewById(R.id.book_date_button);
-        bookOrderButton.setBackgroundColor(getResources().getColor(R.color.yellow));
+        bookOrderButton.setBackgroundColor(getResources().getColor(R.color.green_highlighted));
         urgentOrderButton.setBackgroundColor(getResources().getColor(R.color.appcolor));
         bookOrderLayout.setVisibility(View.VISIBLE);
         urgentOrderLayout.setVisibility(View.GONE);
@@ -54,7 +54,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 order.setType("normal");
-                bookOrderButton.setBackgroundColor(getResources().getColor(R.color.yellow));
+                bookOrderButton.setBackgroundColor(getResources().getColor(R.color.green_highlighted));
                 urgentOrderButton.setBackgroundColor(getResources().getColor(R.color.appcolor));
                 bookOrderLayout.setVisibility(View.VISIBLE);
                 urgentOrderLayout.setVisibility(View.GONE);
@@ -70,7 +70,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 String time=new SimpleDateFormat("hh:mm").format(c.getTime());
                 order.setTime(time);
                 order.setDate(date);
-                urgentOrderButton.setBackgroundColor(getResources().getColor(R.color.yellow));
+                urgentOrderButton.setBackgroundColor(getResources().getColor(R.color.green_highlighted));
                 bookOrderButton.setBackgroundColor(getResources().getColor(R.color.appcolor));
                 bookOrderLayout.setVisibility(View.GONE);
                 urgentOrderLayout.setVisibility(View.VISIBLE);

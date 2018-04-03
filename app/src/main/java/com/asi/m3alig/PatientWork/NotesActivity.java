@@ -1,7 +1,10 @@
 package com.asi.m3alig.PatientWork;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +12,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.asi.m3alig.LoginActivity;
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.Models.Visit;
 import com.asi.m3alig.Models.VisitOrderPatient;
@@ -20,6 +25,7 @@ import com.asi.m3alig.Responses.NormalResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
 
+import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,16 +38,45 @@ import static com.asi.m3alig.Utility.Constants.getToken;
 
 public class NotesActivity extends AppCompatActivity {
     VisitOrderPatient order;
+    FancyButton submit,back;
+    Dialog dialog;
+    TextView price_tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_notes);
+        init_dialog();
         order=(VisitOrderPatient)getIntent().getSerializableExtra("order");
         Log.e("data-1",order.toString());
+        price_tv=(TextView)findViewById(R.id.price_visit);
+        if(order.getType().equals("normal"))
+            price_tv.setText(getString(R.string.visit_money_300));
+        else price_tv.setText(getString(R.string.visit_money_350));
     }
-
+    public void init_dialog(){
+        dialog=new Dialog(NotesActivity.this);
+        dialog.setContentView(R.layout.dialog_payment);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        submit=(FancyButton)dialog.findViewById(R.id.submit_payment);
+        back=(FancyButton)dialog.findViewById(R.id.back_payment);
+        dialog.setCancelable(false);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                NotesActivity.this.finish();
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
     public void goBack(View view) {
         onBackPressed();
     }

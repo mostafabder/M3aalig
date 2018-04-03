@@ -85,209 +85,209 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/round_layout_pay"
-            android:orientation="vertical"
-            android:padding="5dp">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:background="@drawable/round_layout_pay"-->
+            <!--android:orientation="vertical"-->
+            <!--android:padding="5dp">-->
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:weightSum="1">-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--android:layout_weight="0.5"-->
+                    <!--android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/health_sum_top" />
+                    <!--<ImageView-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:src="@drawable/health_sum_top" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/patient_status"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:layout_weight="0.5"-->
+                    <!--android:text="@string/patient_status"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textStyle="bold" />-->
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:text="يتابع مع معالج الطبيعي"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+            <!--</LinearLayout>-->
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="د / محمد محسن"
-                android:textColor="@color/orang"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/tinytext" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="@string/achieved_goals"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="الإلتزام بمواعيد العلاج"
-                android:textColor="@color/orang"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/tinytext" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="@string/closed_goals"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="الإلتزام بجداول الجلسات العلاجية"
-                android:textColor="@color/orang"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/tinytext" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="@string/Long_term_goals"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="الفضاء علي التهاب المفاصل"
-                android:textColor="@color/orang"
-                android:textSize="16sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="يتابع مع معالج الطبيعي"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="16sp" />-->
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/button_border">
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="د / محمد محسن"-->
+                <!--android:textColor="@color/orang"-->
+                <!--android:textSize="16sp" />-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/view_last_session"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/tinytext" />-->
 
-            </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/textView4"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/achieved_goals"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="16sp" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_border_red"
-                android:orientation="vertical">
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="الإلتزام بمواعيد العلاج"-->
+                <!--android:textColor="@color/orang"-->
+                <!--android:textSize="16sp" />-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/cancel_medecine"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/tinytext" />-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/cancel_medecine_message"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/closed_goals"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="16sp" />-->
 
-            </LinearLayout>
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/textView3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="الإلتزام بجداول الجلسات العلاجية"-->
+                <!--android:textColor="@color/orang"-->
+                <!--android:textSize="16sp" />-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/tinytext" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/Long_term_goals"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="16sp" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="الفضاء علي التهاب المفاصل"-->
+                <!--android:textColor="@color/orang"-->
+                <!--android:textSize="16sp" />-->
+
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginLeft="25dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginRight="25dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="15dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@drawable/button_border">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="@string/view_last_session"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="16sp" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginBottom="10dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginLeft="25dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginRight="25dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@drawable/button_border_red"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="@string/cancel_medecine"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="16sp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textStyle="bold" />&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="@string/cancel_medecine_message"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="14sp" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
