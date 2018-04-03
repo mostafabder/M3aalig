@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".4"
                 android:padding="8dp"
-                android:src="@drawable/side_menu_logo" />
+                android:src="@drawable/logo_icon_white" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -148,6 +148,7 @@
                 android:padding="7dp"
                 android:weightSum="2">
 
+
                 <ImageView
                     android:id="@+id/ivRow1"
                     android:layout_width="0dp"
@@ -155,6 +156,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight=".2"
                     android:src="@drawable/main_screen_arrow_icon" />
+
 
                 <TextView
                     android:layout_width="0dp"
@@ -191,7 +193,6 @@
                     fancy:fb_radius="30dp"
                     fancy:fb_text="من الامام"
                     fancy:fb_textColor="#FFFFFF" />
-
                 <mehdi.sakout.fancybuttons.FancyButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -205,12 +206,14 @@
                     android:paddingTop="10dp"
                     fancy:fb_borderColor="#FFFFFF"
                     fancy:fb_borderWidth="1dp"
-                    fancy:fb_defaultColor="@color/appcolor"
-                    fancy:fb_focusColor="#9bd823"
+
+                    fancy:fb_defaultColor="@color/green_highlighted"
+                    fancy:fb_focusColor="#2d7145"
                     fancy:fb_iconPosition="left"
                     fancy:fb_radius="30dp"
                     fancy:fb_text="من الخلف"
-                    fancy:fb_textColor="#FFFFFF" />
+                    fancy:fb_textColor="@color/white" />
+
             </LinearLayout>
 
             <!--<LinearLayout-->
@@ -259,13 +262,13 @@
                     <!--fancy:fb_textColor="#FFFFFF" />-->
             <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:weightSum="2">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="5dp"-->
+                <!--android:weightSum="2">-->
 
                 <ImageView
                     android:layout_width="0dp"
@@ -276,25 +279,24 @@
                     android:tint="@color/tinyblack" />
 
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
-                    android:text="@string/click_to_choose_pain_position"
-                    android:textColor="@color/tinyblack"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1.7"-->
+                    <!--android:text="@string/click_to_choose_pain_position"-->
+                    <!--android:textColor="@color/tinyblack"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textStyle="bold" />-->
 
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:weightSum="2">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="5dp"-->
+                <!--android:weightSum="2">-->
 
                 <ImageView
                     android:layout_width="0dp"
@@ -305,17 +307,16 @@
                     android:tint="@color/tinyblack" />
 
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
-                    android:text="@string/click_to_remove_pain_position"
-                    android:textColor="@color/tinyblack"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1.7"-->
+                    <!--android:text="@string/click_to_remove_pain_position"-->
+                    <!--android:textColor="@color/tinyblack"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textStyle="bold" />-->
 
 
-            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"

@@ -133,4 +133,7 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
         });
     }
 
+    public void goBack(View view) {
+        onBackPressed();
+    }
 }

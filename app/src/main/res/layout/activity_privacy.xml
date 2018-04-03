@@ -80,6 +80,62 @@
             android:orientation="vertical"
             android:layout_margin="16dp"
             >
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:weightSum="1"-->
+                <!--android:background="@drawable/login_border_view"-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--&gt;-->
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight=".8"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="مميزات الخدمة"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="18sp"-->
+                    <!--android:textAlignment="center"-->
+                    <!--/>-->
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_weight=".2"-->
+                    <!--android:src="@drawable/service_benifites_icon"-->
+                    <!--/>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:weightSum="1"-->
+                <!--android:background="@drawable/login_border_view"-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight=".8"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="طريقة الاستخدام"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="18sp"-->
+                    <!--android:textAlignment="center"-->
+                    <!--/>-->
+                <!--<ImageView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_weight=".2"-->
+                    <!--android:src="@drawable/how_to_use_icon"-->
+                    <!--/>-->
+            <!--</LinearLayout>-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,65 +144,7 @@
                 android:background="@drawable/login_border_view"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
-                >
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight=".2"
-                    android:src="@drawable/service_benifites_icon"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="@string/service_features"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingEnd="8dp"
-                   android:layout_gravity="center_vertical"
-                    android:gravity="center_horizontal"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/login_border_view"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
-                >
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight=".2"
-                    android:src="@drawable/how_to_use_icon"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="@string/way_to_use"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingEnd="8dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_horizontal"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/login_border_view"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
+                android:onClick="usage_click"
                 >
 
                 <ImageView
@@ -177,6 +175,7 @@
                 android:background="@drawable/login_border_view"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
+                android:onClick="privacy_click"
                 >
 
                 <ImageView

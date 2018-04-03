@@ -80,6 +80,7 @@ import retrofit2.Response;
 
 import static com.asi.m3alig.Utility.Constants.EGYPT_PHONE_CODE;
 import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_210;
 import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.PATIENT_TYPE;
 import static com.asi.m3alig.Utility.Constants.getSecret;
@@ -105,6 +106,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     CallbackManager FBCallbackManager;
     boolean loggin=false; //means logging or register
     boolean checked=false,enter=false;
+    String isDialogShown="";
     GoogleApiClient mGoogleApiClient;
     final int RC_SIGN_IN=1000;
     CountryCodePicker countryCodePickerLogin,countryCodePickerRegister;
@@ -232,6 +234,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
         social_init();
         token=FirebaseInstanceId.getInstance().getToken();
+        if(token.equals("")||token==null)
+            token="TOKEN";
         Log.e("Firebase_Token",token+"   ");
     }
     public void social_init(){
@@ -483,17 +487,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 dialog.setContentView(R.layout.dialog_verification_login);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 initDialog();
+                isDialogShown="loginDoc";
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(otpView.getOTP().length()<4)
                             Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
-                        else loginDoctor(otpView.getOTP());
+                        else
+                        {
+                            if(code_login.equals("20")&&phoneNumber.charAt(0)!='0')
+                                phoneNumber='0'+phoneNumber;
+                            loginDoctor(otpView.getOTP());
+                        }
                     }
                 });
                 modify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        isDialogShown="";
                         dialog.dismiss();
                     }
                 });
@@ -515,17 +526,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 dialog.setContentView(R.layout.dialog_verification_login);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 initDialog();
+                isDialogShown="loginPat";
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (otpView.getOTP().length() < 4)
                             Toast.makeText(LoginActivity.this, getString(R.string.enter_ver_code), Toast.LENGTH_SHORT).show();
-                        else loginPatient(otpView.getOTP());
+                        else {
+                            String p=phone_number_login.getText().toString();
+                            if(code_login.equals("20")&&p.charAt(0)!='0')
+                                p='0'+p;
+                            loginPatient(otpView.getOTP(),p);
+                        }
                     }
                 });
                 modify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        isDialogShown="";
                         dialog.dismiss();
                     }
                 });
@@ -551,17 +569,23 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 dialog.setContentView(R.layout.dialog_verification_login);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 initDialog();
+                isDialogShown="regDoc";
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(otpView.getOTP().length()<4)
                             Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
-                        else registerDoctor(otpView.getOTP());
+                        else{
+                            if(code_register.equals("20")&&phoneNumber.charAt(0)!='0')
+                                phoneNumber='0'+phoneNumber;
+                            registerDoctor(otpView.getOTP());
+                        }
                     }
                 });
                 modify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        isDialogShown="";
                         dialog.dismiss();
                     }
                 });
@@ -584,17 +608,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 dialog.setContentView(R.layout.dialog_verification_login);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 initDialog();
+                isDialogShown="regPat";
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(otpView.getOTP().length()<4)
                             Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
-                        else registerPatient(otpView.getOTP());
+                        else {
+                            String p=phone_number_register.getText().toString();
+                            if(code_register.equals("20")&&p.charAt(0)!='0')
+                                p='0'+p;
+                            registerPatient(otpView.getOTP(),p);
+                        }
                     }
                 });
                 modify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        isDialogShown="";
                         dialog.dismiss();
                     }
                 });
@@ -619,6 +650,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         send_L=(LinearLayout)dialog.findViewById(R.id.send_layout);
         seconds_L=(LinearLayout)dialog.findViewById(R.id.seconds_layout);
         start_timer(30000,seconds,seconds_L,send_L);
+        dialog.setCancelable(false);
     }
     public void start_timer(final long cnt, final TextView seconds,final LinearLayout sec, final LinearLayout send){
         seconds_L.setVisibility(View.VISIBLE);
@@ -635,13 +667,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         }.start();
     }
-    public void registerPatient(String code){
+    public void registerPatient(String code,String phone){
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage(getString(R.string.please_wait));
         progressDialog.setCancelable(false);
         progressDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<LoginResponse> call=apiService.registerPatient(name_patient_register.getText().toString(), phone_number_register.getText().toString(),code_register,
+        Call<LoginResponse> call=apiService.registerPatient(name_patient_register.getText().toString(), phone,code_register,
                code,token);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -664,6 +696,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         startActivity(intent);
                         finish();
                     }
+                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210))
+                        Toast.makeText(LoginActivity.this,getString(R.string.wrong_code),Toast.LENGTH_SHORT).show();
                     else  {
                         try{
                             Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -727,7 +761,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
-                    }else {
+                    }
+                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210))
+                        Toast.makeText(LoginActivity.this,getString(R.string.wrong_code),Toast.LENGTH_SHORT).show();else {
                         //here if code not successful
                         try{
                             Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -797,16 +833,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
     }
 
-    public void loginPatient(String code){
+    public void loginPatient(String code,String phone){
         final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage(getString(R.string.please_wait));
         progressDialog.setCancelable(false);
         progressDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Log.e("Phone,Code",phone_number_login.getText().toString()+" "+code);
+        Log.e("Phone,Code",phone+" "+code);
 
 
-        Call<LoginResponse> call=apiService.verifyPatient(code_login,phone_number_login.getText().toString(), code);
+        Call<LoginResponse> call=apiService.verifyPatient(code_login,phone, code);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
@@ -833,6 +869,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         startActivity(intent);
                         finish();
                     }
+                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210))
+                        Toast.makeText(LoginActivity.this,getString(R.string.wrong_code),Toast.LENGTH_SHORT).show();
                     else  {
                         try{
                             Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -899,7 +937,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
-                    }else {
+                    }
+                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210))
+                        Toast.makeText(LoginActivity.this,getString(R.string.wrong_code),Toast.LENGTH_SHORT).show();
+                    else {
                         Log.i("schedule", "210");
                         //here if code not successful
                         try{
@@ -1509,5 +1550,141 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public boolean isLoggedIn() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
+    }
+
+    @Override
+    public void onBackPressed() {
+        isDialogShown="";
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        if(!isDialogShown.equals("")) {
+            dialog = new Dialog(LoginActivity.this);
+            dialog.setContentView(R.layout.dialog_verification_login);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            initDialog();
+            if (isDialogShown.equals("regDoc")) {
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (otpView.getOTP().length() < 4)
+                            Toast.makeText(LoginActivity.this, getString(R.string.enter_ver_code), Toast.LENGTH_SHORT).show();
+                        else {
+                            if(code_register.equals("20")&&phoneNumber.charAt(0)!='0')
+                                phoneNumber='0'+phoneNumber;
+                            registerDoctor(otpView.getOTP());
+                        }
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isDialogShown = "";
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_register.getText().toString(), code_register);
+                    }
+                });
+                dialog.show();
+            }
+            else if (isDialogShown.equals("regPat"))
+            {
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(otpView.getOTP().length()<4)
+                            Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
+                        else {
+                            String p=phone_number_register.getText().toString();
+                            if(code_register.equals("20")&&p.charAt(0)!='0')
+                                p='0'+p;
+                            registerPatient(otpView.getOTP(),p);
+                        }
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isDialogShown="";
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_register.getText().toString(),code_register);
+                    }
+                });
+                dialog.show();
+            }
+            else if(isDialogShown.equals("loginDoc"))
+            {
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(otpView.getOTP().length()<4)
+                            Toast.makeText(LoginActivity.this,getString(R.string.enter_ver_code),Toast.LENGTH_SHORT).show();
+                        else {
+                            if(code_login.equals("20")&&phoneNumber.charAt(0)!='0')
+                                phoneNumber='0'+phoneNumber;
+                            loginDoctor(otpView.getOTP());
+                        }
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isDialogShown="";
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_login.getText().toString(),code_login);
+                        start_timer(30000,seconds,seconds_L,send_L);
+                    }
+                });
+                dialog.show();
+            }
+            else if(isDialogShown.equals("loginPat"))
+            {
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (otpView.getOTP().length() < 4)
+                            Toast.makeText(LoginActivity.this, getString(R.string.enter_ver_code), Toast.LENGTH_SHORT).show();
+                        else {
+                            String p=phone_number_login.getText().toString();
+                            if(code_login.equals("20")&&p.charAt(0)!='0')
+                                p='0'+p;
+                            loginPatient(otpView.getOTP(),p);
+                        }
+                    }
+                });
+                modify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isDialogShown="";
+                        dialog.dismiss();
+                    }
+                });
+                send_sms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_sms(phone_number_login.getText().toString(), code_login);
+                        start_timer(30000,seconds,seconds_L,send_L);
+                    }
+                });
+                dialog.show();
+            }
+        }
+        super.onResume();
     }
 }

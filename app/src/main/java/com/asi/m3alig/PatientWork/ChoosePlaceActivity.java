@@ -55,6 +55,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
     Spinner spinner;
@@ -77,7 +79,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
     EditText floor,street,city;
     CardView cardView;
     LinearLayout linearLayout;
-    ImageView mapButton,addressButton;
+    FancyButton mapButton,addressButton;
+
     VisitOrderPatient order;
     final static int locationRequestCode=1000;
 
@@ -100,10 +103,9 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
         street=(EditText)findViewById(R.id.street_name);
 //        city=(EditText)findViewById(R.id.city);
         linearLayout = (LinearLayout) findViewById(R.id.map_layout);
-        mapButton= (ImageView) findViewById(R.id.map_button);
-        addressButton= (ImageView) findViewById(R.id.address_button);
-        mapButton.setImageResource(R.drawable.map_not_clicked_icon);
-        addressButton.setImageResource(R.drawable.write_address_clicked_icon);
+        mapButton= (FancyButton) findViewById(R.id.map_button);
+        addressButton= (FancyButton) findViewById(R.id.address_button);
+
         cardView.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.GONE);
         setupMap(0, 0);
@@ -113,8 +115,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             public void onClick(View v) {
                cardView.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
-                mapButton.setImageResource(R.drawable.map_not_clicked_icon);
-                addressButton.setImageResource(R.drawable.write_address_clicked_icon);
+                mapButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
+                addressButton.setBackgroundColor(getColor(R.color.green_highlighted));
             }
 
 
@@ -123,8 +125,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             @Override
             public void onClick(View v) {
                 cardView.setVisibility(View.GONE);
-                mapButton.setImageResource(R.drawable.map_clicked_icon);
-                addressButton.setImageResource(R.drawable.write_address_not_clicked_icon);
+                addressButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
+                mapButton.setBackgroundColor(getColor(R.color.green_highlighted));
                 linearLayout.setVisibility(View.VISIBLE);
             }
         });

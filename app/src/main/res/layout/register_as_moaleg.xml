@@ -11,37 +11,38 @@
     android:id="@+id/register_card_view"
     android:visibility="gone"
     tools:context=".LoginActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="5dp"
-            >
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:background="@drawable/login_border_view"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/login_border_view"
                 android:onClick="hide_register"
-                >
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="2">
+
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1.7"
                     android:layout_height="wrap_content"
-                    android:text="@string/registernewaccount"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#B813A8"
+                    android:layout_weight="1.7"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    />
+                    android:text="@string/registernewaccount"
+                    android:textColor="#B813A8"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="0dp"
@@ -52,28 +53,30 @@
                     />
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/offwhite"
-                android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/offwhite"
 
                 />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/register_box_for_labels"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
-                >
+                android:background="@drawable/register_box_for_labels"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/profile_doc_icon"
                     android:layout_weight=".3"
+
                     android:visibility="gone"
                     />
                 <LinearLayout
@@ -82,35 +85,37 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     >
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/enter_your_full_name"
                         android:layout_marginTop="5dp"
+                        android:text="@string/enter_your_full_name"
 
                         />
+
                     <EditText
+                        android:id="@+id/et_doctor_name_register"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/et_doctor_name_register"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/register_box_for_labels"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
-                >
+                android:background="@drawable/register_box_for_labels"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/national_id_icon"
-                    android:layout_weight=".3"
                     android:layout_gravity="center_vertical"
+
                     android:visibility="gone"
                     />
                 <LinearLayout
@@ -119,48 +124,50 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     >
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/enter_your_id"
-                        android:layout_marginTop="5dp"
 
                         />
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
                         android:id="@+id/et_doctor_id_register"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/enter_end_date_of_id"
-                        android:layout_marginTop="5dp"
 
                         />
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
                         android:id="@+id/et_doctor_idEXP_register"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/register_box_for_labels"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
-                >
+                android:background="@drawable/register_box_for_labels"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/date_of_grad_icon"
                     android:layout_weight=".3"
                     android:visibility="gone"
                     />
@@ -170,36 +177,38 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     >
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/enter_your_date_of_grad"
-                        android:layout_marginTop="5dp"
 
                         />
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
                         android:id="@+id/et_doctor_graduate_register"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/register_box_for_labels"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
-                >
+                android:background="@drawable/register_box_for_labels"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/rokhsa_icon"
                     android:layout_weight=".3"
+
                     android:visibility="gone"
                     />
                 <LinearLayout
@@ -208,34 +217,35 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     >
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/enter_rokhsa_number"
                         android:layout_marginTop="5dp"
-                        />
+                        android:text="@string/enter_rokhsa_number" />
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
                         android:id="@+id/et_doctor_licence_register"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/register_box_for_labels"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
-                >
+                android:background="@drawable/register_box_for_labels"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/cv_icon"
                     android:layout_weight=".3"
+
                     android:visibility="gone"
                     />
                 <LinearLayout
@@ -244,59 +254,64 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     >
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/enter_moahel"
                         android:layout_marginTop="5dp"
-                        />
+                        android:text="@string/enter_moahel" />
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/et_doctor_job_register"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/register_box_for_labels"
                 android:orientation="vertical"
-                android:padding="10dp"
-                android:background="@drawable/register_box_for_labels">
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:text="@string/where_do_you_wanna_work"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="8dp"
-                    />
+
+                    android:layout_marginBottom="8dp" />
 
                 <Spinner
                     android:id="@+id/sp_doctorWorkArea"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:gravity="start"
                     />
+
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/enter_your_phone_num"
                 android:layout_marginTop="5dp"
+                android:text="@string/enter_your_phone_num"
 
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
                 android:layout_margin="5dp"
-                >
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+
 
 
                 <ImageView
@@ -307,6 +322,7 @@
                     android:src="@drawable/phone_check_icon_not_active"
                     android:id="@+id/iv_send_verify_doctor_register"
                     android:visibility="gone"/>
+
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp_register"
                     android:layout_width="0dp"
@@ -314,8 +330,10 @@
                     android:layout_weight="0.7"
                     android:gravity="center"
                     app:countryPreference="SA,EG"
-                    app:defaultNameCode="SA"/>
+                    app:defaultNameCode="SA" />
+
                 <EditText
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
@@ -339,42 +357,48 @@
                 android:visibility="gone">
             </com.mukesh.OtpView>
 
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/login_icon_not_active"
-                android:onClick="RegisterNow"
                 android:layout_marginBottom="16dp"
+
                 android:layout_marginTop="16dp"
                 />
+
+                android:onClick="RegisterNow"
+                android:src="@drawable/login_icon_not_active" />
+
 
             <ImageView
                 android:id="@+id/fb_register_iv"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:src="@drawable/login_with_fb_icon_not_active"
-                android:visibility="gone"/>
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@+id/gmail_register_iv"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:src="@drawable/login_with_g_notavtive"
-                android:visibility="gone"/>
+                android:visibility="gone" />
+
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/btn_fb_register"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
-                android:visibility="gone"
-                />
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/btn_google_register"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
-                android:visibility="gone"/>
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
         </LinearLayout>
 
     </ScrollView>

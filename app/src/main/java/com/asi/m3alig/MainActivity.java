@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         PreferenceUtilities.setLocale(MainActivity.this, PreferenceUtilities.getLanguage(MainActivity.this));
         if (getType(MainActivity.this).equals(Constants.M3ALG_TYPE)) {
             setContentView(R.layout.activity_mian_maleg);
+
             mNavItems.add(new NavItem(getString(R.string.main_page), R.drawable.homeicon));
             mNavItems.add(new NavItem(getString(R.string.treatment_schedule_header), R.drawable.healthy_summery_icon));
             //mNavItems.add(new NavItem(getString(R.string.message_center_header), R.drawable.message_icon));
@@ -122,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             mNavItems.add(new NavItem(getString(R.string.privacy_how_to_use), R.drawable.privacy_icon));
             mNavItems.add(new NavItem(getString(R.string.help_center), R.drawable.help_center_icon));
             mNavItems.add(new NavItem(getString(R.string.know_about_us), R.drawable.discover_us_icon));
+
 
             bt_availableOrders = (FancyButton) findViewById(R.id.bt_availableOrders);
             bt_availableOrders.setVisibility(View.GONE);
@@ -195,37 +197,36 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             currentStatePatient();
+
             mNavItems.add(new NavItem(getString(R.string.main_page), R.drawable.homeicon));
-            mNavItems.add(new NavItem(getString(R.string.treatment_guidelines_header), R.drawable.advice_icon));
+            //mNavItems.add(new NavItem(getString(R.string.treatment_guidelines_header), R.drawable.advice_icon));
             mNavItems.add(new NavItem(getString(R.string.my_helth_summry), R.drawable.healthy_summery_icon));
 
 
-            mNavItems.add(new NavItem(getString(R.string.message_center_header), R.drawable.message_icon));
+            //mNavItems.add(new NavItem(getString(R.string.message_center_header), R.drawable.message_icon));
             mNavItems.add(new NavItem(getString(R.string.treatment_schedule_header), R.drawable.table_icon));
-            mNavItems.add(new NavItem(getString(R.string.contact_doctor_header), R.drawable.contact_icon));
+            //mNavItems.add(new NavItem(getString(R.string.contact_doctor_header), R.drawable.contact_icon));
 
 
-            mNavItems.add(new NavItem(getString(R.string.offers_and_discounts), R.drawable.offers));
+            //mNavItems.add(new NavItem(getString(R.string.offers_and_discounts), R.drawable.offers));
             mNavItems.add(new NavItem(getString(R.string.account_settings), R.drawable.account_settings_icon));
             mNavItems.add(new NavItem(getString(R.string.privacy_how_to_use), R.drawable.privacy_icon));
 
 
             mNavItems.add(new NavItem(getString(R.string.help_center), R.drawable.help_center_icon));
-            mNavItems.add(new NavItem(getString(R.string.know_about_us), R.drawable.discover_us_icon));
+            //mNavItems.add(new NavItem(getString(R.string.know_about_us), R.drawable.discover_us_icon));
             //mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
-        }
 
+        }
         if (!getType(MainActivity.this).equals(Constants.M3ALG_TYPE)) {
-            messageIcon = (ImageView)findViewById(R.id.messeage_icon_top);
+//            messageIcon = (ImageView)findViewById(R.id.messeage_icon_top);
             tretmentSessionTableButton = (TextView) findViewById(R.id.tretment_session_table_button);
-            notificationLayout = (LinearLayout)findViewById(R.id.notification_linear);
+//            notificationLayout = (LinearLayout)findViewById(R.id.notification_linear);
             mainPatientLayout = (LinearLayout)findViewById(R.id.main_patioent_layout);
             youtubeLinkLayout = (LinearLayout)findViewById(R.id.youtube_link);
-            notificationIcon = (ImageView)findViewById(R.id.notification_image);
+//            notificationIcon = (ImageView)findViewById(R.id.notification_image);
             notFlag = 0;
-            notificationLayout.setVisibility(View.GONE);
-
-
+//            notificationLayout.setVisibility(View.GONE);
             youtubeLinkLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -240,51 +241,46 @@ public class MainActivity extends AppCompatActivity {
                         notificationLayout.setVisibility(View.GONE);
                         notFlag = 0;
                         mainPatientLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
-
                     }
                 }
             });
-            notificationIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                 if(notFlag == 0){
-                     notificationLayout.setVisibility(View.VISIBLE);
-                     notFlag = 1;
-                     mainPatientLayout.setBackgroundColor(getResources().getColor(R.color.tiny_appcolor));
-                 }else {
-                     notificationLayout.setVisibility(View.GONE);
-                     notFlag = 0;
-                     mainPatientLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
-                 }
-
-                }
-            });
-
-            messageIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, MesseageCenterActivity.class));
-
-                }
-            });
+//            notificationIcon.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                 if(notFlag == 0){
+//                     notificationLayout.setVisibility(View.VISIBLE);
+//                     notFlag = 1;
+//                     mainPatientLayout.setBackgroundColor(getResources().getColor(R.color.tiny_appcolor));
+//                 }else {
+//                     notificationLayout.setVisibility(View.GONE);
+//                     notFlag = 0;
+//                     mainPatientLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
+//                 }
+//
+//                }
+//            });
+//
+//            messageIcon.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(MainActivity.this, MesseageCenterActivity.class));
+//
+//                }
+//            });
             tretmentSessionTableButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(MainActivity.this, TreatmentSessionsScheduleActivity.class));
-
                 }
             });
-
         }
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-
         // Populate the Navigtion Drawer with options
         mDrawerPane = (LinearLayout) findViewById(R.id.drawerPane);
         mDrawerList = (ListView) findViewById(R.id.navList);
         DrawerListAdapter adapter = new DrawerListAdapter(this, mNavItems);
         mDrawerList.setAdapter(adapter);
-
         // Drawer Item click listeners
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -292,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
                 selectItemFromDrawer(position);
             }
         });
-
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -359,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MesseageCenterActivity.class));
             } else if (position == 3) {
                 startActivity(new Intent(MainActivity.this, OfferHelpActivity.class));
-            } */else if (position == 2) {
+            } */ else if (position == 2) {
                 startActivity(new Intent(MainActivity.this, AccountSettingsActivity.class));
             } else if (position == 3) {
                 inviteFriendViewDialog alert = new inviteFriendViewDialog();
@@ -368,39 +363,59 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, PrivacyActivity.class));
             } else if (position == 5) {
                 startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
-            } else if (position == 6) {
             }
+// else if (position == 6) {
+//            }
+            /*else if (position == 8) {
+                SessionManager session = new SessionManager(MainActivity.this);
+                session.setLogin(false);
+                Intent intent = new Intent(MainActivity.this, BeforLoginActivity.class);
+                new SQLiteHandler(getApplicationContext()).deleteUsers();
+                startActivity(intent);
+                finish();
+            }*/
+
         } else {
             // position 2 تقديم استشارة طبية
             if (position == 0) {
                 finish();
                 startActivity(getIntent());
-            } else if (position == 1) {
-                startActivity(new Intent(MainActivity.this, TreatmentGuidelinesActivity.class));
-            } else if (position == 2) {
-                startActivity(new Intent(MainActivity.this, MyHealthSummaryActivity.class));
-            } else if (position == 3) {
-                startActivity(new Intent(MainActivity.this, MesseageCenterActivity.class));
-            } else if (position == 4) {
-                startActivity(new Intent(MainActivity.this, TreatmentSessionsScheduleActivity.class));
-
-            } else if (position == 5) {
-                startActivity(new Intent(MainActivity.this, ContactDoctorActivty.class));
-
-            } else if (position == 6) {
-
             }
-            else if (position == 7) {
+//            else if (position == 1) {
+//                startActivity(new Intent(MainActivity.this, TreatmentGuidelinesActivity.class));
+//            }
+            else if (position == 1) {
+                startActivity(new Intent(MainActivity.this, MyHealthSummaryActivity.class));
+            }
+//            else if (position == 3) {
+//                startActivity(new Intent(MainActivity.this, MesseageCenterActivity.class));
+//            }
+            else if (position == 2)
+            {
+                startActivity(new Intent(MainActivity.this, TreatmentSessionsScheduleActivity.class));
+            }
+//            else if (position == 4) {
+//                startActivity(new Intent(MainActivity.this, ContactDoctorActivty.class));
+//
+//            }
+//            else if (position == 5) {
+//
+//            }
+            else if (position ==3)
+            {
                 startActivity(new Intent(MainActivity.this, AccountSettingPatientActivity.class));
             }
-            else if (position == 8) {
+            else if (position == 4)
+            {
                 startActivity(new Intent(MainActivity.this, PrivacyActivity.class));
-            } else if (position == 9) {
-                startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
-
-            } else if (position == 10) {
+            }
+            else if (position == 5)
+            {
                 startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
             }
+//             else if (position == 10) {
+//                startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
+//            }
 //            else if (position == 11) {
 //                new SessionManager(MainActivity.this).setLogin(false);
 //                new SQLiteHandler(getApplicationContext()).deleteUsers();
@@ -408,12 +423,13 @@ public class MainActivity extends AppCompatActivity {
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                startActivity(intent);
 //            }
-        }
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mNavItems.get(position).getmTitle());
+            }
+            mDrawerList.setItemChecked(position, true);
+            setTitle(mNavItems.get(position).getmTitle());
 
-        // Close the drawer
-        mDrawerLayout.closeDrawer(mDrawerPane);
+            // Close the drawer
+            mDrawerLayout.closeDrawer(mDrawerPane);
+
     }
 
 //

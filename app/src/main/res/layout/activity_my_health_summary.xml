@@ -131,25 +131,25 @@
             android:layout_marginRight="40dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="@string/u_are_sick_with"
+
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_below="@+id/health_sum_last_desc"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/round_blue_button">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_below="@+id/health_sum_last_desc"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:background="@drawable/round_blue_button">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/view_session_summry"
-                android:textColor="@color/white" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="@string/view_session_summry"-->
+                <!--android:textColor="@color/white" />-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
     </RelativeLayout>

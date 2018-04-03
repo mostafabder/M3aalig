@@ -33,18 +33,18 @@
                 android:src="@drawable/menu_icon"
                 android:padding="5dp"
                 />
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:src="@drawable/bill_icon"
-                />
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:src="@drawable/message_icon"
-                />
+            <!--<ImageView-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:padding="5dp"-->
+                <!--android:src="@drawable/bill_icon"-->
+                <!--/>-->
+            <!--<ImageView-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:padding="5dp"-->
+                <!--android:src="@drawable/message_icon"-->
+                <!--/>-->
 
 
         </LinearLayout>
