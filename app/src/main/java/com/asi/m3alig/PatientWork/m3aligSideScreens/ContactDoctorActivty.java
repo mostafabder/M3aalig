@@ -13,10 +13,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.NormalResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,14 +31,32 @@ import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS;
 public class ContactDoctorActivty extends AppCompatActivity {
     Spinner spinner;
     EditText type_et;
-    ImageView call_iv, message_iv;
+    ImageView call_iv, message_iv, iv_enter;
+
+    private ImageView ivBackArrow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(ContactDoctorActivty.this, PreferenceUtilities.getLanguage(ContactDoctorActivty.this));
         setContentView(R.layout.activity_contact_doctor_activty);
         init();
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            call_iv.setImageResource(R.drawable.call_button);
+            message_iv.setImageResource(R.drawable.chat_button);
+            iv_enter.setImageResource(R.drawable.join_button);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            call_iv.setImageResource(R.drawable.asset_7xhdpi);
+            message_iv.setImageResource(R.drawable.asset_6xhdpi);
+            iv_enter.setImageResource(R.drawable.asset_5xhdpi);
+        }
+
     }
 
     public void init(){

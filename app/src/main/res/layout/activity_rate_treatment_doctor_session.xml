@@ -91,7 +91,7 @@
             android:layout_gravity="center"
             android:paddingRight="8dp"
             android:paddingLeft="8dp"
-            android:hint="قم بادخال سبب التقييم هنا"
+            android:hint="@string/reason_of_rate"
             android:textSize="15sp"
             android:textColor="@color/white"
             android:inputType="text"

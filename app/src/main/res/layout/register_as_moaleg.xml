@@ -31,13 +31,6 @@
                 android:onClick="hide_register"
                 >
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="20dp"
-                    android:src="@drawable/up_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1.7"
@@ -48,6 +41,14 @@
                     android:textColor="#B813A8"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="20dp"
+                    android:src="@drawable/up_arrow_icon"
+                    android:layout_gravity="center_vertical"
                     />
 
             </LinearLayout>
@@ -73,12 +74,13 @@
                     android:layout_height="70dp"
                     android:src="@drawable/profile_doc_icon"
                     android:layout_weight=".3"
+                    android:visibility="gone"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight=".7"
+                    android:layout_weight="1"
                     >
                     <TextView
                         android:layout_width="match_parent"
@@ -109,12 +111,13 @@
                     android:src="@drawable/national_id_icon"
                     android:layout_weight=".3"
                     android:layout_gravity="center_vertical"
+                    android:visibility="gone"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight=".7"
+                    android:layout_weight="1"
                     >
                     <TextView
                         android:layout_width="match_parent"
@@ -159,12 +162,13 @@
                     android:layout_height="70dp"
                     android:src="@drawable/date_of_grad_icon"
                     android:layout_weight=".3"
+                    android:visibility="gone"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight=".7"
+                    android:layout_weight="1"
                     >
                     <TextView
                         android:layout_width="match_parent"
@@ -196,12 +200,13 @@
                     android:layout_height="70dp"
                     android:src="@drawable/rokhsa_icon"
                     android:layout_weight=".3"
+                    android:visibility="gone"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight=".7"
+                    android:layout_weight="1"
                     >
                     <TextView
                         android:layout_width="match_parent"
@@ -231,12 +236,13 @@
                     android:layout_height="70dp"
                     android:src="@drawable/cv_icon"
                     android:layout_weight=".3"
+                    android:visibility="gone"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight=".7"
+                    android:layout_weight="1"
                     >
                     <TextView
                         android:layout_width="match_parent"
@@ -263,7 +269,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="اين تريد ان تعمل ؟"
+                    android:text="@string/where_do_you_wanna_work"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="8dp"
                     />
@@ -272,7 +278,7 @@
                     android:id="@+id/sp_doctorWorkArea"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textAlignment="center"
+                    android:gravity="start"
                     />
             </LinearLayout>
 
@@ -300,7 +306,7 @@
                     android:layout_weight=".3"
                     android:src="@drawable/phone_check_icon_not_active"
                     android:id="@+id/iv_send_verify_doctor_register"
-                    />
+                    android:visibility="gone"/>
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp_register"
                     android:layout_width="0dp"
@@ -310,18 +316,18 @@
                     app:countryPreference="SA,EG"
                     app:defaultNameCode="SA"/>
                 <EditText
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:inputType="phone"
-                    android:id="@+id/et_doctor_phone_register"
+                    android:id="@+id/et_phone_register"
                     />
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/enter_ver_code"
-                />
+                android:visibility="gone"/>
             <com.mukesh.OtpView
                 android:id="@+id/enter_code_doctor_register"
                 android:layout_width="wrap_content"
@@ -330,7 +336,7 @@
                 android:inputType="number"
                 android:textColor="@color/tinyblack"
                 android:layoutDirection="ltr"
-                >
+                android:visibility="gone">
             </com.mukesh.OtpView>
 
             <ImageView
@@ -339,6 +345,7 @@
                 android:src="@drawable/login_icon_not_active"
                 android:onClick="RegisterNow"
                 android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 />
 
             <ImageView

@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:onClick="goBack"
-            android:layout_weight=".3"
+            android:layout_weight=".2"
             android:layout_height="match_parent"
             android:gravity="center"
             >
@@ -30,9 +30,8 @@
                 />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/back"
-                android:layout_marginTop="15dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -45,16 +44,14 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight=".7"
-            android:gravity="right"
+            android:layout_weight=".8"
+            android:gravity="end"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-
+            android:paddingEnd="8dp"
             >
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/privacy_how_to_use"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/white"
@@ -62,16 +59,14 @@
                 android:lines="1"
                 android:ellipsize="end"
                 android:textStyle="bold"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp" />
 
-                />
             <ImageView
                 android:id="@+id/ivMoreArrow"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/privacy_icon"
+                android:layout_gravity="center_vertical"
                 />
 
         </LinearLayout>
@@ -95,22 +90,25 @@
                 android:layout_marginTop="10dp"
                 >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="مميزات الخدمة"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".2"
                     android:src="@drawable/service_benifites_icon"
                     />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service_features"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingEnd="8dp"
+                   android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -122,22 +120,24 @@
                 android:layout_marginTop="10dp"
                 >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="طريقة الاستخدام"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".2"
                     android:src="@drawable/how_to_use_icon"
                     />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/way_to_use"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -149,22 +149,25 @@
                 android:layout_marginTop="10dp"
                 >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="شروط الأستخدام"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".2"
                     android:src="@drawable/condition_of_use_icon"
                     />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/terms_of_use"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -176,22 +179,26 @@
                 android:layout_marginTop="10dp"
                 >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="سياسة الخصوصية"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".2"
                     android:src="@drawable/privacy_two_icon"
                     />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    />
+
             </LinearLayout>
 
         </LinearLayout>

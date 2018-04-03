@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:onClick="goBack"
                 android:layout_height="match_parent"
-                android:layout_weight=".3"
+                android:layout_weight=".2"
                 android:gravity="center">
 
                 <ImageView
@@ -34,10 +34,9 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
                     android:text="@string/back"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -46,28 +45,27 @@
                     />
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".15"
-                android:padding="8dp" />
+            <!--<ImageView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight=".15"-->
+                <!--android:padding="8dp" />-->
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:layout_weight=".55"
-                android:gravity="center_vertical"
-
+                android:layout_weight=".8"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="8dp"
                 >
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
                     android:text="@string/treatment_schedule_header"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -102,12 +100,23 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/patient_status"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_weight="0.5"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="end">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -115,17 +124,6 @@
                         android:src="@drawable/health_sum_top" />
 
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/patient_status"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
 
             </LinearLayout>
 
@@ -136,7 +134,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text="يتابع مع معالج الطبيعي"
+                android:text="@string/continue_with_doctor_name"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -306,12 +304,23 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/next_treatment_sessions_table"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_weight="0.5"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="end">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -319,17 +328,6 @@
                         android:src="@drawable/old_session" />
 
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/next_treatment_sessions_table"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
 
             </LinearLayout>
 

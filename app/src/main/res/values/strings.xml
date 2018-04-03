@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">M3alig</string>
+    <string name="app_name">M3alij</string>
     <string name="haveaccount">هل لديك حساب ؟</string>
     <string name="login">تسجيل الدخول</string>
     <string name="havenoaccount">ليس لديك حساب ...</string>
@@ -150,7 +150,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="offer_help">تقديم استشارة طبية</string>
-    <string name="privacy_how_to_use">سياسة الخصوصية وشروط الاستخدام</string>
+    <string name="privacy_how_to_use">سياسة الخصوصية و شروط الاستخدام</string>
     <string name="edit_info">تعديل البيانات</string>
     <string name="visa">بطاقات الدفع</string>
     <string name="visa_num">رقم البطاقة</string>
@@ -358,5 +358,79 @@
     <string name="optional">( أختياري )</string>
     <string name="update_info">تعديل البيانات</string>
     <string name="wrong_number">رقم الهاتف غير صحيح!</string>
+
+    <string name="language">ع</string>
+    <string name="enter_work_area">ادخل مكان العمل</string>
+    <string name="change_number">تعديل الرقم</string>
+    <string name="confirm">تأكيد</string>
+    <string name="will_resend_verify_code_after">اعادة ارسال رمز التفعيل بعد</string>
+    <string name="code_didnt_arrived">لم يصلك رمز التفعيل؟</string>
+    <string name="resend_verify_code">اعادة ارسال رمز التفعيل</string>
+    <string name="where_do_you_wanna_work">اين تريد ان تعمل ؟</string>
+    <string name="main_page">الصفحة الرئيسية</string>
+    <string name="account_settings">إعدادات الحساب</string>
+    <string name="help_center">مركز المساعده والدعم</string>
+    <string name="know_about_us">تعرف علينا</string>
+    <string name="offers_and_discounts">العروض والخصومات</string>
+    <string name="start_visit">ابدأ الجلسة</string>
+    <string name="in_waiting_to_active_account">فى انتظار الموافقه ع عضويتك كمعالج</string>
+    <string name="no_visits_go_to_available">ليس لديك جلسات .. اذهب الى الطلبات المتاحة</string>
+    <string name="finish_visit">انهاء الجلسة</string>
+    <string name="the_available">الطلبات المتاحة</string>
+    <string name="rate_patient">تقييم المريض</string>
+    <string name="the_visit_end">الجلسة انتهت \n  يرجى تقييم المريض و اعطاء التقرير اللازم</string>
+    <string name="no_orders">لا يوجد طلبات متاحة الان</string>
+    <string name="no_visits">لا يوجد جلسات تالية</string>
+    <string name="reason_of_rate">قم بادخال سبب التقييم هنا</string>
+    <string name="please_rate_patient">من فضلك قم بتقييم المريض</string>
+    <string name="enter_reason_of_rate">ادخل سبب هذا التقييم لانه اقل من ثلاثة نجوم</string>
+    <string name="rating_done">تم تقييم المريض بنجاح</string>
+    <string name="service_features">مميزات الخدمة</string>
+    <string name="way_to_use">طريقة الاستخدام</string>
+    <string name="terms_of_use">شروط الأستخدام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="send_complaints">ارسل شكواك او اقتراحك من خلال عن طريق الوسائل التالية ...</string>
+    <string name="help_and_support">المساعدة و الدعم</string>
+    <string name="edit_data">تعديل البيانات</string>
+    <string name="change_phone_number">تغيير رقم الهاتف</string>
+    <string name="change_name">تغيير الاسم</string>
+    <string name="change_job_id">تغيير رقم رخصة مزاولة المهنة</string>
+    <string name="change_job">تغيير المؤهل الصحي (المسمى الصحي)</string>
+    <string name="change_work_area">تغيير منطقة العمل</string>
+    <string name="work_area">منطقة العمل</string>
+    <string name="save_changes">حفظ التعديلات</string>
+    <string name="change_language">تغيير اللغة</string>
+
+    <string name="dont_forget_u_have">لا تنسي لديك جلسة علاج مع معالج العلاج الطبيعي خلال 1 يوم</string>
+    <string name="u_have_in_at">لديك جلسه علاج فى يوم 15/2/2018وفى ساعه:18:57:47</string>
+    <string name="press_to_cancel">اضفط لالغاء الجلسة</string>
+    <string name="u_are_sick_with">انت مريض بالتهاب المفاصل و تيبس العضلات يلزمك الالتزام بالجلسات العلاجية و انتظام وضع الدهان</string>
+    <string name="visit">جلسة علاج</string>
+    <string name="doctor_name">اسم المعالج</string>
+    <string name="wasfa">الوصفة الطبية</string>
+    <string name="plan_for_secure">الخطة العلاجية</string>
+    <string name="wasfa_secure">الوصفة العلاجية</string>
+    <string name="customer_service">خدمة العملاء</string>
+    <string name="continue_with_doctor_name">يتابع مع معالج الطبيعي</string>
+    <string name="changing_hour">تغيير الساعة</string>
+    <string name="changind_day">تغيير اليوم</string>
+    <string name="best_date_for_u">قم بتحديد أفضل موعد يناسبك</string>
+    <string name="comunicate_with_doctor">وسيتم التواصل مع المعالج لتحديد موعد جديد</string>
+    <string name="visit_half">جلسة علاج نصف اسبوعية</string>
+    <string name="body_right">يمين الجسم</string>
+    <string name="body_left">يسار الجسم</string>
+    <string name="cant_find_location">(تعذر الحصول على الموقع. تأكد من تمكين الموقع على الجهاز)</string>
+    <string name="make_sure_of_location">تاكد من تمكين الموقع علي جهازك</string>
+    <string name="fast_order">طلب مستعجل</string>
+    <string name="pocking_order">حجز موعد</string>
+    <string name="will_comunicate_with_doctor">سيتم التواصل معك من قبل ممثلي الخدمة خلال الدقائق القادمة لترتيب زيارة المعالج</string>
+    <string name="time_to_arrive">متوسط زمن وصول المعالج هو ساعة بعد دفع ثمن الجلسة علما ان الطلب المستعجل يكون متوفر فقط من الساعة 9 صباحا و الي الساعة 9 مساء عدا يوم الجمعة من الساعة 3 مساء و الي الساعة 9 مساء</string>
+    <string name="press_to_finish_and_rate">اضفط للانهاء و التقييم</string>
+    <string name="press_to_cancel_order">اضفط لالغاء الطلب</string>
+    <string name="date_format">DD/MM/YYYY</string>
+    <string name="with_our_wishes">مع تمنياتنا بالشفاء العاجل</string>
+    <string name="enter_to_finish_and_rate">إضغط للإنهاء والتقييم</string>
+    <string name="visit_start_sence">بدأت جلسة العلاج من</string>
+    <string name="ended">إنتهت جلسة التشخيص</string>
 
 </resources>

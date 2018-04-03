@@ -42,91 +42,120 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppThemeWithNoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.OrderM3algNowActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.WhenPainStartActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.ChoosePlaceActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.ScheduleActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.NotesActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".BeforLoginActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".M3algFilesWork.AvailableTreatmentRequestsActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
-        <activity android:name=".M3algFilesWork.OfferHelpActivity" />
-        <activity android:name=".M3algFilesWork.PrivacyActivity" />
-        <activity android:name=".M3algFilesWork.HelpCenterActivity" />
-        <activity android:name=".M3algFilesWork.AccountSettingsActivity" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".M3algFilesWork.OfferHelpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".M3algFilesWork.PrivacyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".M3algFilesWork.HelpCenterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".M3algFilesWork.AccountSettingsActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.m3aligSideScreens.MyHealthSummaryActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.m3aligSideScreens.MesseageCenterActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.m3aligSideScreens.ContactDoctorActivty"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.m3aligSideScreens.TreatmentGuidelinesActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.m3aligSideScreens.TreatmentSessionsScheduleActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".M3algFilesWork.TreatmentSessionReportActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".M3algFilesWork.RateTreatmentDoctorSessionActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.RateTreatmentSessionActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".M3algFilesWork.ScheduleAppointmentsActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".M3algFilesWork.TreatmentDoctorSessionMain"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".M3algFilesWork.FinishDoctorSessionActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.TreatmentSessionMain"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.FinishSessionActivity"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PatientWork.PatientSchedule"
-            android:theme="@style/AppThemeWithNoActionBar" />
+            android:theme="@style/AppThemeWithNoActionBar"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".M3algFilesWork.DoctorTreatmentSessionsScheduleActivity" />
+        <activity android:name=".M3algFilesWork.DoctorTreatmentSessionsScheduleActivity"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".Utility.Notification.MyFirebaseMessagingService">
             <intent-filter>
@@ -147,7 +176,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".PatientWork.m3aligSideScreens.AccountSettingPatientActivity"></activity>
+        <activity android:name=".PatientWork.m3aligSideScreens.AccountSettingPatientActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

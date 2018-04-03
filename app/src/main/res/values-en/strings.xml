@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">M3alij</string>
+    <string name="haveaccount">"do you have an account ? "</string>
+    <string name="login">"log in "</string>
+    <string name="havenoaccount">"You do not have an account ... "</string>
+    <string name="registernewaccount">"Register a new account "</string>
+    <string name="usingservice">"Your use of the application means your consent "</string>
+    <string name="youaccept">"Privacy Policy and Terms of Use "</string>
+    <string name="drawer_open">"opened "</string>
+    <string name="drawer_close">closed</string>
+    <string name="knowaboutapp">"Learn about the application "</string>
+    <string name="tableof3lag">"Schedule of treatment sessions "</string>
+    <string name="invitefriend">"Invite a friend "</string>
+    <string name="invite_txt">"Invite your friends and get free points that can be replaced by sessions for each friend who downloads the program "</string>
+    <string name="clicktoshareOn">"Click to share the link on "</string>
+    <string name="back">"Back "</string>
+    <string name="treatment_guidelines_header">"Instructions for treatment and exercises "</string>
+    <string name="treatment_schedule_header">"Schedule of treatment sessions "</string>
+    <string name="cont">Continue</string>
+    <string name="my_helth_summry">"Summary of my health "</string>
+    <string name="contact_doctor_header">"Communicate with a specialist "</string>
+    <string name="message_center_header">"Message Center "</string>
+    <string name="general_info_about_case">"General information about the medical case "</string>
+    <string name="for_who">"To whom the session is requested "</string>
+    <string name="for_me">"Ask for me "</string>
+    <string name="for_one_of_my_family">"Ask for a family member "</string>
+    <string name="for_other">"Ask for someone else "</string>
+    <string name="gender">Gender</string>
+    <string name="male">"Male "</string>
+    <string name="female">"female "</string>
+    <string name="Age">Age</string>
+    <string name="rate_patioent">"Evaluate the patient "</string>
+    <string name="rate_doctor">"Evaluate the session "</string>
+    <string name="rate_footer">"Reviews below 3 stars You'll need to explain why "</string>
+    <string name="session_finished">"I finished treatment "</string>
+    <string name="do_session_report">"Prepare your visit report "</string>
+    <string name="yes">"Yeah "</string>
+    <string name="start_session">"Press to start treatment session "</string>
+    <string name="message_admin">"Click to send a message "</string>
+    <string name="patient_isnot_ready">"Is the patient not ready ?? "</string>
+    <string name="view_my_appoinment_table">"View my schedule .. "</string>
+    <string name="no">No</string>
+    <string name="number_of_sessions">"Number of sessions required for treatment "</string>
+    <string name="home_visit_table">"Schedule home visits "</string>
+    <string name="did_he_ned_motab3a">"Do I need to follow up? "</string>
+    <string name="mechanical_notes">"Clinical observations "</string>
+    <string name="next_treatment_sessions_table">"Schedule the following treatment sessions "</string>
+    <string name="view_last_session">"View last session summary "</string>
+    <string name="cancel_medecine">"Cancel treatment! "</string>
+    <string name="cancel_medecine_message">"(All subsequent sessions must be canceled) "</string>
+    <string name="achieved_goals">"Goals achieved "</string>
+    <string name="closed_goals">"Near term goal "</string>
+    <string name="Long_term_goals">"Long-term goal "</string>
+    <string name="patient_status">"Current patient condition "</string>
+    <string name="medecine_date_item1">"- Daily at 12 noon "</string>
+    <string name="medecine_date_item2">"- Daily at 8 pm "</string>
+    <string name="medecine_date_item3">"- Daily at 4 am "</string>
+    <string name="medecine_name_item">"Cream Move "</string>
+    <string name="medecine_count_item">"Topical paint "</string>
+    <string name="medecine_must_be_used_footer">"The application sends alerts to your phone 15 minutes before treatment "</string>
+    <string name="medecine_must_be_used">"Medications should be used "</string>
+    <string name="join_message">"You can subscribe to the service for a nominal fee "</string>
+    <string name="required_doctor">"What is the required specialization? "</string>
+    <string name="call_price">"Cost of service is 1 riyal / min "</string>
+    <string name="join_price">"Subscription value is SR 100 / month "</string>
+    <string name="message_reply_templete">"Thanks for your attention ... Waiting for the wizard to change "</string>
+    <string name="message_templete">"Your request has been taken care of and the processor is changing with our wishes for speedy recovery "</string>
+    <string name="tt">"Thursday 18/12/2018 "</string>
+    <string name="health_summry_top">"The prescription according to the last report of the last therapist visited you "</string>
+    <string name="old_session_summry">"Summary of previous sessions "</string>
+    <string name="view_session_summry">"View session summary "</string>
+    <string name="number_picker_formatter">"% 02d "</string>
+    <string name="Social_status">"Social status "</string>
+    <string name="married">"Married "</string>
+    <string name="single">"Unmarried "</string>
+    <string name="move_status">"Level of movement "</string>
+    <string name="walk">"Walk "</string>
+    <string name="set">Sitting</string>
+    <string name="can_not_move">"Can not move "</string>
+    <string name="healthy_problem">"Health problems "</string>
+    <string name="no_thing">"No / I do not remember "</string>
+    <string name="sugar">"Diabetic "</string>
+    <string name="blood">"Strikes in blood pressure "</string>
+    <string name="heart">"Heart patient "</string>
+    <string name="other">"Another disease ... "</string>
+    <string name="when_pain_start">"When did the pain begin? "</string>
+    <string name="what_is_your_complaint">"What do you complain about? "</string>
+    <string name="pain_postion">"Select pain position (multiple choice allowed) "</string>
+    <string name="click_to_choose_pain_position">"Click to locate the pain "</string>
+    <string name="click_to_remove_pain_position">"Press again to remove the tag "</string>
+    <string name="where_you_will_recive_treatment">"Where will you receive the treatment? "</string>
+    <string name="flat_num">"Floor, apartment number "</string>
+    <string name="house_num">"House number, street name "</string>
+    <string name="area">Region</string>
+    <string name="schedule_appointments">"Schedule appointments .. "</string>
+    <string name="schedule_appointments_txt_one">"The appointment will be added to your special schedule. Please adhere to the schedule and time. "</string>
+    <string name="gov_and_city">"Governorate / city "</string>
+    <string name="schedule">"Schedule appointments ... "</string>
+    <string name="treatment_session_report">"Treatment session report "</string>
+    <string name="schedule_txt_one">"You will be visited by a therapist to diagnose your condition and then prepare a report to determine the appropriate specialist to follow up on your condition "</string>
+    <string name="schedule_txt_two">"Please note that working hours for men start from 9 am to 9 pm and for women starting from 9 am to 6 pm "</string>
+    <string name="choose_date">"Choose the right day for the exploratory visit "</string>
+    <string name="done">ending</string>
+    <string name="save">"save "</string>
+    <string name="service_coast_text">"The price of the service is calculated as follows: "</string>
+    <string name="visitation_time">"The duration of the diagnostic visit is one hour maximum. "</string>
+    <string name="visit_money">"The diagnostic visit price is SR 300 "</string>
+    <string name="note_one">"If the session requires more than one hour, another date will be set "</string>
+    <string name="note_two">"The administration of the application is pleased to provide the highest degree of medical care and requires the following to be sure "</string>
+    <string name="note_three">"Any previous analyzes or medications used during a short period of time must be prepared to request the service to be presented to the processor "</string>
+    <string name="note_four">"The presence of the guardian of the patient's order (if a child) "</string>
+    <string name="note_five">"An adult male should be present (if the patient is female) "</string>
+    <string name="note_six">"The visit is canceled immediately if any of the above things are answered "</string>
+    <string name="note_seven">"You are banned from the application if you treat the processor improperly "</string>
+    <string name="note_eight">"Please note that the location of the processor is continuously determined during the visit period and to ensure the quality of the service "</string>
+    <string name="enter_your_phone_num">"Enter a phone number "</string>
+    <string name="enter_ver_code">"Enter activation code "</string>
+    <string name="enter_your_full_name">"Enter the name quadrant "</string>
+    <string name="are_you_mo3alg">"Are you a medical therapist? "</string>
+    <string name="login_as_m3alg">"Log in as a doctor "</string>
+    <string name="enter_your_id">"Enter your ID card number "</string>
+    <string name="enter_end_date_of_id">"Enter the end date of the ID card "</string>
+    <string name="enter_your_date_of_grad">"Graduation Date "</string>
+    <string name="enter_rokhsa_number">"Enter the license number for practicing the profession "</string>
+    <string name="enter_moahel">"Health Qualification "</string>
+    <string name="best_time_for_work">"Determine the appropriate working hours "</string>
+    <string name="visit_table">"Schedule visits and appointments "</string>
+    <string name="comuinty">"Community of healers "</string>
+    <string name="courses">"training courses "</string>
+    <string name="Available_treatment_requests">"Available treatment requests .... "</string>
+    <string name="hello_blank_fragment">"Hello blank fragment "</string>
+    <string name="offer_help">"Provide medical advice "</string>
+    <string name="privacy_how_to_use">"Privacy Policy and Terms of Use "</string>
+    <string name="edit_info">"Modify the data  "</string>
+    <string name="visa">"Payment cards "</string>
+    <string name="visa_num">"card number "</string>
+    <string name="visa_card_owner">"Name of Cardholder "</string>
+    <string name="sending_address">"Senders address "</string>
+    <string name="enter_floor">"Enter the floor number "</string>
+    <string name="enter_steer">"Enter the street name "</string>
+    <string name="enter_region">"Enter the name of the region "</string>
+    <string name="enter_city">"Enter the city "</string>
+    <string name="please_wait">"Please Wait.. "</string>
+    <string name="something_error">"Something went wrong "</string>
+    <string name="contact_services">"Contact customer service "</string>
+    <string name="check_connection">"Check your Internet connection "</string>
+    <string name="succes_added">"done successfully "</string>
+    <string name="enter_national_id">"Enter the national number "</string>
+    <string name="veri_code_sent">"Activation code has been sent "</string>
+    <string name="enter_fullanme">"Enter your full name "</string>
+    <string name="enter_phone">"Enter your phone number "</string>
+    <string name="facebook_app_id">"1980513182202882 "</string>
+    <string name="default_notification_channel_name">"News "</string>
+    <string name="choose_health">"Choose your health status "</string>
+    <string name="optional">"( optional ) "</string>
+    <string name="update_info">"Modify the data "</string>
+    <string name="wrong_number">"Phone number is incorrect! "</string>
+    <string name="subjictev">SUBJECTIVE</string>
+    <string name="objective">OBJECTIVE</string>
+    <string name="assessment">ASSESSMENT</string>
+    <string name="plan">PLAN</string>
+
+    <string-array name = "items">
+                 <item> Nutritionist </item>
+                 <item> Pediatrician </item>
+                 <item> Gynecologist </item>
+                 <item> Chest Specialist </item>
+                 <item> Neurologist </item>
+    </string-array>
+
+    <string-array name = "diseases">
+                 <item> No / I do not remember </item>
+                 <item> Diabetic </item>
+                 <item> Blood pressure strikes </item>
+                 <item> Heart Patient </item>
+                 <item> Another disease ... </item>
+    </string-array>
+
+    <string-array name="work_areas">
+        <item>Work area</item>
+        <item >شمال الرياض</item>
+        <item > شرق الرياض</item>
+        <item > غرب الرياض</item>
+        <item > جنوب الرياض</item>
+        <item >  وسط الرياض</item>
+        <item >شمال مكه</item>
+        <item > شرق مكه</item>
+        <item > غرب مكه</item>
+        <item > جنوب مكه</item>
+        <item > وسط مكه</item>
+        <item >شمال مدينه المنوره</item>
+        <item > شرق مدينه المنوره</item>
+        <item > غرب مدينه المنوره</item>
+        <item >جنوب مدينه المنوره</item>
+        <item > وسط مدينه المنوره</item>
+        <item >شمال بريدة</item>
+        <item > شرق بريدة</item>
+        <item > غرب بريدة</item>
+        <item > جنوب بريدة</item>
+        <item > وسط بريدة</item>
+        <item >شمال تبوك</item>
+        <item > شرق تبوك</item>
+        <item > غرب تبوك</item>
+        <item > جنوب تبوك</item>
+        <item > وسط تبوك</item>
+        <item >شمال الدمام</item>
+        <item > شرق الدمام</item>
+        <item > غرب الدمام</item>
+        <item > جنوب الدمام</item>
+        <item > وسط الدمام</item>
+        <item >شمال الاحساء</item>
+        <item > شرق الاحساء</item>
+        <item > غرب الاحساء</item>
+        <item > جنوب الاحساء</item>
+        <item > وسط الاحساء</item>
+        <item >شمال الطائف</item>
+        <item > شرق الطائف</item>
+        <item > غرب الطائف</item>
+        <item > جنوب الطائف</item>
+        <item > وسط الطائف</item>
+        <item >شمال نجران</item>
+        <item > شرق نجران</item>
+        <item > غرب نجران</item>
+        <item > جنوب نجران</item>
+        <item > وسط نجران</item>
+        <item >شمال حفر الباطن</item>
+        <item > شرق حفر الباطن</item>
+        <item > غرب حفر الباطن</item>
+        <item > جنوب حفر الباطن</item>
+        <item > وسط حفر الباطن</item>
+        <item >شمال الجبيل</item>
+        <item > شرق الجبيل</item>
+        <item > غرب  الجبيل</item>
+        <item > جنوب  الجبيل</item>
+        <item > وسط الجبيل</item>
+        <item >شمال ضباء</item>
+        <item > شرق ضباء</item>
+        <item > غرب  ضباء</item>
+        <item > جنوب  ضباء</item>
+        <item > وسط ضباء</item>
+        <item >شمال الخرج</item>
+        <item > شرق الخرج</item>
+        <item > غرب  الخرج</item>
+        <item > جنوب  الخرج</item>
+        <item > وسط الخرج</item>
+        <item >شمال الثقبة</item>
+        <item > شرق الثقبة</item>
+        <item > غرب  الثقبة</item>
+        <item > جنوب  الثقبة</item>
+        <item > وسط الثقبة</item>
+        <item >شمال نجران</item>
+        <item > شرق نجران</item>
+        <item > غرب نجران</item>
+        <item > جنوب نجران</item>
+        <item > وسط نجران</item>
+        <item >شمال خميس مشيط</item>
+        <item > شرق خميس مشيط</item>
+        <item > غرب خميس مشيط</item>
+        <item > جنوب خميس مشيط</item>
+        <item > وسط خميس مشيط</item>
+    </string-array>
+
+    <string name="language">EN</string>
+    <string name = "enter_work_area"> Enter Work area </string>
+    <string name = "change_number"> Modify the number </string>
+    <string name = "confirm"> Confirm </string>
+    <string name = "will_resend_verify_code_after"> Re-send the activation code after</string>
+    <string name = "code_didnt_arrived"> Did not receive the activation code? </string>
+    <string name = "resend_verify_code"> Resend activation code </string>
+    <string name = "where_do_you_wanna_work"> Where do you want to work? </string>
+    <string name = "main_page"> Home </string>
+    <string name = "account_settings"> Account Settings </string>
+    <string name = "help_center"> Help and Support Center </string>
+    <string name = "know_about_us"> know about us </string>
+    <string name = "offers_and_discounts"> offers and discounts </string>
+    <string name = "start_visit"> Start Session </string>
+    <string name = "in_waiting_to_active_account"> Waiting for your approval as a doctor </string>
+    <string name = "no_visits_go_to_available"> You do not have sessions.. \nGo to available orders </string>
+    <string name = "finish_visit"> End Session </string>
+    <string name = "the_available"> Available Orders </string>
+    <string name = "rate_patient"> Patient Assessment </string>
+    <string name = "the_visit_end"> Session is over \nPlease evaluate the patient and give the necessary report </string>
+    <string name = "no_orders"> No requests are available now </string>
+    <string name = "no_visits"> No sessions </string>
+    <string name = "reason_of_rate"> Enter the reason for the rating here </string>
+    <string name = "please_rate_patient"> Please evaluate the patient </string>
+    <string name = "enter_reason_of_rate"> Enter the reason for this rating because it is less than three stars </string>
+    <string name = "rating_done"> Patient was successfully evaluated </string>
+    <string name = "service_features"> Service Features </string>
+    <string name = "way_to_use"> Usage method </string>
+    <string name = "terms_of_use"> Terms of Use </string>
+    <string name = "privacy_policy"> Privacy Policy </string>
+    <string name = "send_complaints"> Submit your complaint or suggestion through the following methods ... </string>
+    <string name = "help_and_support"> Help and Support </string>
+    <string name = "edit_data"> Modify data </string>
+    <string name = "change_phone_number"> Change phone number </string>
+    <string name = "change_name"> Change Name </string>
+    <string name = "change_job_id"> Change the license number for practicing the profession </string>
+    <string name = "change_job"> Change Health Qualification (Health Name) </string>
+    <string name = "change_work_area"> Change the work area </string>
+    <string name = "work_area"> work area </string>
+    <string name = "save_changes"> Save changes </string>
+    <string name="change_language">Change Language</string>
+
+</resources>

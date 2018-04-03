@@ -36,10 +36,9 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
                 android:text="@string/back"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -48,28 +47,26 @@
                 />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".2"
-            android:padding="8dp" />
+        <!--<ImageView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight=".2"-->
+            <!--/>-->
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".5"
-            android:gravity="center_vertical"
-            android:layout_gravity="right"
-
+            android:layout_weight=".7"
+            android:gravity="center_vertical|end"
+            android:layout_gravity="end"
+            android:paddingEnd="32dp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
                 android:text="@string/my_helth_summry"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -81,7 +78,6 @@
                 android:id="@+id/ivMoreArrow"
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
                 android:src="@drawable/my_health_summry" />
 
         </LinearLayout>
@@ -112,7 +108,8 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.005"
-                android:src="@drawable/health_sum_top" />
+                android:src="@drawable/health_sum_top"
+                android:layout_marginEnd="2dp"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -134,7 +131,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="انت مريض بالتهاب المفاصل و تيبس العضلات يلزمك الالتزام بالجلسات العلاجية و انتظام وضع الدهان"
+            android:text="@string/u_are_sick_with"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

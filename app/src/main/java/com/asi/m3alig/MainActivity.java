@@ -29,7 +29,6 @@ import com.asi.m3alig.M3algFilesWork.AccountSettingsActivity;
 import com.asi.m3alig.M3algFilesWork.AvailableTreatmentRequestsActivity;
 import com.asi.m3alig.M3algFilesWork.DoctorTreatmentSessionsScheduleActivity;
 import com.asi.m3alig.M3algFilesWork.HelpCenterActivity;
-import com.asi.m3alig.M3algFilesWork.OfferHelpActivity;
 import com.asi.m3alig.M3algFilesWork.PrivacyActivity;
 
 import com.asi.m3alig.M3algFilesWork.RateTreatmentDoctorSessionActivity;
@@ -50,6 +49,7 @@ import com.asi.m3alig.PatientWork.m3aligSideScreens.TreatmentGuidelinesActivity;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.TreatmentSessionsScheduleActivity;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 import com.asi.m3alig.Responses.StartingVisit;
@@ -61,8 +61,7 @@ import com.asi.m3alig.Responses.NormalResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
 import com.asi.m3alig.Utility.Constants;
-import com.asi.m3alig.Utility.SQLiteHandler;
-import com.asi.m3alig.Utility.SessionManager;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.inviteFriendViewDialog;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -103,24 +102,26 @@ public class MainActivity extends AppCompatActivity {
     int state=0;
     Visit currentVisit;
     final static int locationRequestCode=1000;
+
+    private ImageView iv_knowUs, iv_inviteFriend, iv_schedule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Log.e("TYPE",getType(getApplicationContext()));
+        PreferenceUtilities.setLocale(MainActivity.this, PreferenceUtilities.getLanguage(MainActivity.this));
         if (getType(MainActivity.this).equals(Constants.M3ALG_TYPE)) {
             setContentView(R.layout.activity_mian_maleg);
-            mNavItems.add(new NavItem("الصفحة الرئيسية", R.drawable.homeicon));
-            mNavItems.add(new NavItem("جدول جلسات العلاج", R.drawable.healthy_summery_icon));
-            //mNavItems.add(new NavItem("مركز الرسائل", R.drawable.message_icon));
-            //mNavItems.add(new NavItem("تقديم استشارات طبية", R.drawable.offer_help_icon));
-            mNavItems.add(new NavItem("إعدادات الحساب", R.drawable.account_settings_icon));
-            mNavItems.add(new NavItem("دعوة الأصدقاء", R.drawable.invite_friend_icon));
-            mNavItems.add(new NavItem("سياسه الخصوصيه \n وشروط الاستخدام", R.drawable.privacy_icon));
-            mNavItems.add(new NavItem("مركز المساعده والدعم", R.drawable.help_center_icon));
-            mNavItems.add(new NavItem("تعرف علينا", R.drawable.discover_us_icon));
-            //mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
+            mNavItems.add(new NavItem(getString(R.string.main_page), R.drawable.homeicon));
+            mNavItems.add(new NavItem(getString(R.string.treatment_schedule_header), R.drawable.healthy_summery_icon));
+            //mNavItems.add(new NavItem(getString(R.string.message_center_header), R.drawable.message_icon));
+            //mNavItems.add(new NavItem(getString(R.string.offer_help), R.drawable.offer_help_icon));
+            mNavItems.add(new NavItem(getString(R.string.account_settings), R.drawable.account_settings_icon));
+            mNavItems.add(new NavItem(getString(R.string.invitefriend), R.drawable.invite_friend_icon));
+            mNavItems.add(new NavItem(getString(R.string.privacy_how_to_use), R.drawable.privacy_icon));
+            mNavItems.add(new NavItem(getString(R.string.help_center), R.drawable.help_center_icon));
+            mNavItems.add(new NavItem(getString(R.string.know_about_us), R.drawable.discover_us_icon));
 
             bt_availableOrders = (FancyButton) findViewById(R.id.bt_availableOrders);
             bt_availableOrders.setVisibility(View.GONE);
@@ -134,6 +135,23 @@ public class MainActivity extends AppCompatActivity {
             options=(LinearLayout)findViewById(R.id.layout_hidden_main);
             current_state=(LinearLayout)findViewById(R.id.current_state_layout);
             orderM3alig_iv=(ImageView)findViewById(R.id.iv_order_m3alig);
+
+            iv_schedule = (ImageView) findViewById(R.id.iv_schedule);
+            iv_inviteFriend = (ImageView) findViewById(R.id.iv_inviteFriend);
+            iv_knowUs = (ImageView) findViewById(R.id.iv_knowUs);
+
+            if(Locale.getDefault().getLanguage().equals("ar")){
+                iv_knowUs.setImageResource(R.drawable.main_screen_arrow_icon);
+                iv_inviteFriend.setImageResource(R.drawable.main_screen_arrow_icon);
+                iv_schedule.setImageResource(R.drawable.main_screen_arrow_icon);
+                orderM3alig_iv.setImageResource(R.drawable.order_moaleg_icob);
+            } if(Locale.getDefault().getLanguage().equals("en")){
+                iv_knowUs.setImageResource(R.drawable.main_screen_arrow_icon_en);
+                iv_inviteFriend.setImageResource(R.drawable.main_screen_arrow_icon_en);
+                iv_schedule.setImageResource(R.drawable.main_screen_arrow_icon_en);
+                orderM3alig_iv.setImageResource(R.drawable.order_moaleg_icob);
+            }
+
             current_state_event.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -177,24 +195,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             currentStatePatient();
-            mNavItems.add(new NavItem("الصفحة الرئيسية", R.drawable.homeicon));
-            mNavItems.add(new NavItem("ارشادات العلاج والتمارين", R.drawable.advice_icon));
-            mNavItems.add(new NavItem("ملخص حالتي الصحية", R.drawable.healthy_summery_icon));
+            mNavItems.add(new NavItem(getString(R.string.main_page), R.drawable.homeicon));
+            mNavItems.add(new NavItem(getString(R.string.treatment_guidelines_header), R.drawable.advice_icon));
+            mNavItems.add(new NavItem(getString(R.string.my_helth_summry), R.drawable.healthy_summery_icon));
 
 
-            mNavItems.add(new NavItem("مركز الرسائل", R.drawable.message_icon));
-            mNavItems.add(new NavItem("جدول جلسات العلاج", R.drawable.table_icon));
-            mNavItems.add(new NavItem("التواصل مع اخصائي", R.drawable.contact_icon));
+            mNavItems.add(new NavItem(getString(R.string.message_center_header), R.drawable.message_icon));
+            mNavItems.add(new NavItem(getString(R.string.treatment_schedule_header), R.drawable.table_icon));
+            mNavItems.add(new NavItem(getString(R.string.contact_doctor_header), R.drawable.contact_icon));
 
 
-            mNavItems.add(new NavItem("العروض والخصومات", R.drawable.offers));
-            mNavItems.add(new NavItem("إعدادات الحساب", R.drawable.account_settings_icon));
-            mNavItems.add(new NavItem("سياسه الخصوصيه \n وشروط الاستخدام", R.drawable.privacy_icon));
+            mNavItems.add(new NavItem(getString(R.string.offers_and_discounts), R.drawable.offers));
+            mNavItems.add(new NavItem(getString(R.string.account_settings), R.drawable.account_settings_icon));
+            mNavItems.add(new NavItem(getString(R.string.privacy_how_to_use), R.drawable.privacy_icon));
 
 
-            mNavItems.add(new NavItem("مركز المساعده والدعم", R.drawable.help_center_icon));
-            mNavItems.add(new NavItem("تعرف علينا", R.drawable.discover_us_icon));
-//            mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
+            mNavItems.add(new NavItem(getString(R.string.help_center), R.drawable.help_center_icon));
+            mNavItems.add(new NavItem(getString(R.string.know_about_us), R.drawable.discover_us_icon));
+            //mNavItems.add(new NavItem("تسجيل الخروج", R.drawable.ic_logout));
         }
 
         if (!getType(MainActivity.this).equals(Constants.M3ALG_TYPE)) {
@@ -299,7 +317,11 @@ public class MainActivity extends AppCompatActivity {
         ivOpenMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.openDrawer(Gravity.LEFT);
+                if (Locale.getDefault().getLanguage().equals("en")) {
+                    mDrawerLayout.openDrawer(Gravity.LEFT);
+                    return;
+                }
+                mDrawerLayout.openDrawer(Gravity.RIGHT);
             }
         });
         String token = FirebaseInstanceId.getInstance().getToken();
@@ -347,14 +369,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (position == 5) {
                 startActivity(new Intent(MainActivity.this, HelpCenterActivity.class));
             } else if (position == 6) {
-            } /*else if (position == 8) {
-                SessionManager session = new SessionManager(MainActivity.this);
-                session.setLogin(false);
-                Intent intent = new Intent(MainActivity.this, BeforLoginActivity.class);
-                new SQLiteHandler(getApplicationContext()).deleteUsers();
-                startActivity(intent);
-                finish();
-            }*/
+            }
         } else {
             // position 2 تقديم استشارة طبية
             if (position == 0) {
@@ -436,7 +451,7 @@ public class MainActivity extends AppCompatActivity {
                         DoctorSingleVisit visit = response.body().getData();
                         String youHaveVisit = response.body().getMessage();
                         tv_currentState.setText(youHaveVisit);
-                        bt_availableOrders.setText("ابدأ الجلسة");
+                        bt_availableOrders.setText(getString(R.string.start_visit));
                         bt_availableOrders.setVisibility(View.VISIBLE);
                         id = visit.getId();
                         bt_availableOrders.setOnClickListener(new View.OnClickListener() {
@@ -454,7 +469,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_205)){
                         Log.i("cs", "205");
-                        String nothing = response.body().getMessage();
+                        String nothing = getString(R.string.no_visits_go_to_available);
                         tv_currentState.setText(nothing);
                         bt_availableOrders.setVisibility(View.VISIBLE);
                         bt_availableOrders.setOnClickListener(new View.OnClickListener() {
@@ -470,7 +485,7 @@ public class MainActivity extends AppCompatActivity {
                         DoctorSingleVisit visit = response.body().getData();
                         id = visit.getId();
                         bt_availableOrders.setVisibility(View.VISIBLE);
-                        bt_availableOrders.setText("انهاء الجلسة");
+                        bt_availableOrders.setText(getString(R.string.finish_visit));
                         bt_availableOrders.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -479,12 +494,12 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_215)){
                         Log.i("cs", "215");
-                        String visitEnd = "الجلسة انتهت \n يرجى تقييم المريض و اعطاء التقرير اللازم";
+                        String visitEnd = getString(R.string.the_visit_end);
                         DoctorSingleVisit visit = response.body().getData();
                         id = visit.getId();
                         pateint_id = visit.getPatient().getId();
                         bt_availableOrders.setVisibility(View.VISIBLE);
-                        bt_availableOrders.setText("تقييم المريض");
+                        bt_availableOrders.setText(getString(R.string.rate_patient));
                         bt_availableOrders.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -498,7 +513,7 @@ public class MainActivity extends AppCompatActivity {
                         tv_currentState.setText(visitEnd);
                     }else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_400)) {
                     Log.i("cs", "400");
-                    String notActive = response.body().getMessage();
+                    String notActive = getString(R.string.in_waiting_to_active_account);
                     tv_currentState.setText(notActive);
                     }else {
                         Log.i("cs", "403");
@@ -662,15 +677,17 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            return true;
-        }
-
-
         // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override
@@ -720,7 +737,7 @@ public class MainActivity extends AppCompatActivity {
                             current_state.setVisibility(View.VISIBLE);
                             options.setVisibility(View.VISIBLE);
                             current_state_msg.setText(response.body().getMessage());
-                            current_state_event.setText("اضفط لالغاء الجلسة");
+                            current_state_event.setText(R.string.press_to_cancel);
                             state=2;
                             currentVisit=response.body().getData();
                         }
@@ -737,7 +754,7 @@ public class MainActivity extends AppCompatActivity {
                             current_state.setVisibility(View.VISIBLE);
                             options.setVisibility(View.GONE);
                             current_state_msg.setText(response.body().getMessage());
-                            current_state_event.setText("اضفط للانهاء و التقييم");
+                            current_state_event.setText(R.string.press_to_finish_and_rate);
                             state=3;
                             currentVisit=response.body().getData();
                         }
@@ -747,7 +764,7 @@ public class MainActivity extends AppCompatActivity {
                             current_state.setVisibility(View.VISIBLE);
                             options.setVisibility(View.VISIBLE);
                             current_state_msg.setText(response.body().getMessage());
-                            current_state_event.setText("اضفط لالغاء الطلب");
+                            current_state_event.setText(R.string.press_to_cancel_order);
                             state=1;
                             currentVisit=response.body().getData();
                         }

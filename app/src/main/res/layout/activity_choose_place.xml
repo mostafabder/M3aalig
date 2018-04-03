@@ -37,9 +37,8 @@
                     />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/back"
-                    android:layout_marginTop="15dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -66,7 +65,7 @@
                 >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/cont"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"
@@ -74,7 +73,6 @@
                     android:textStyle="bold"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
 
                     />
                 <ImageView
@@ -128,16 +126,16 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:id="@+id/address_button"
                     android:layout_height="40dp"
-                    android:id="@+id/map_button"
-                    android:src="@drawable/map_not_clicked_icon"
+                    android:src="@drawable/write_address_clicked_icon"
                     />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:id="@+id/address_button"
                     android:layout_height="40dp"
-                    android:src="@drawable/write_address_clicked_icon"
+                    android:id="@+id/map_button"
+                    android:src="@drawable/map_not_clicked_icon"
                     />
             </LinearLayout>
 
@@ -161,13 +159,11 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:text="@string/flat_num"
                             android:textSize="16sp"
                             android:textStyle="bold" />
