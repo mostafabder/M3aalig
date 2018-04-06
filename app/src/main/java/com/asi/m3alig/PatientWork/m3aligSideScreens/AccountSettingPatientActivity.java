@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asi.m3alig.BeforLoginActivity;
+import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.ProfileUpdateResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
@@ -35,6 +36,8 @@ import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 import static com.asi.m3alig.Utility.Constants.getType;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ARABIC_LANGUAGE;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ENGLISH_LANGUAGE;
 
 public class AccountSettingPatientActivity extends AppCompatActivity {
 
@@ -96,9 +99,18 @@ public class AccountSettingPatientActivity extends AppCompatActivity {
         });
         get_patient_data();
     }
+
     public void goBack(View view) {
         onBackPressed();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void update_patient(){
         params=new HashMap<>();
         if(!name_et.getText().toString().trim().equals(""))
@@ -189,5 +201,19 @@ public class AccountSettingPatientActivity extends AppCompatActivity {
                 Log.e("ERROR",t.getMessage()+"   ");
             }
         });
+    }
+
+    public void changeLanguage(View view){
+        String language = PreferenceUtilities.getLanguage(this);
+        if(language.equals(ARABIC_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ENGLISH_LANGUAGE);
+            //recreate();
+            startActivity(getIntent());
+        }
+        if(language.equals(ENGLISH_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ARABIC_LANGUAGE);
+            //recreate();
+            startActivity(getIntent());
+        }
     }
 }

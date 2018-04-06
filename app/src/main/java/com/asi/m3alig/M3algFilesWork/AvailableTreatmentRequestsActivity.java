@@ -33,7 +33,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
+import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,7 +52,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
     private Marker sourceMarker;
     FrameLayout frameLayout;
     LinearLayout linearLayout;
-    ImageView mapButton,addressButton;
+    FancyButton mapButton,addressButton;
 
 
     /*ExpandableListAdapter listAdapter;
@@ -65,6 +67,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private LinearLayout ll_emptyOrdersText;
 
+    private ImageView ivBackArrow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +81,9 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMapDoctor);
         frameLayout = (FrameLayout) findViewById(R.id.frame_doctor);
         linearLayout = (LinearLayout) findViewById(R.id.map_layout_doctor);
-        mapButton= (ImageView) findViewById(R.id.map_button_doctor);
-        addressButton= (ImageView) findViewById(R.id.write_address_button);
+        mapButton= (FancyButton) findViewById(R.id.map_button_doctor);
+        addressButton= (FancyButton) findViewById(R.id.write_address_button);
 
-        mapButton.setImageResource(R.drawable.map_not_clicked_icon);
-        addressButton.setImageResource(R.drawable.write_address_clicked_icon);
         frameLayout.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.GONE);
         setupMap(0, 0);
@@ -94,8 +96,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                 }
                 frameLayout.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
-                mapButton.setImageResource(R.drawable.map_not_clicked_icon);
-                addressButton.setImageResource(R.drawable.write_address_clicked_icon);
+                mapButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
+                addressButton.setBackgroundColor(getColor(R.color.green_highlighted));
             }
 
 
@@ -105,8 +107,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ll_emptyOrdersText.setVisibility(View.GONE);
                 frameLayout.setVisibility(View.GONE);
-                mapButton.setImageResource(R.drawable.map_clicked_icon);
-                addressButton.setImageResource(R.drawable.write_address_not_clicked_icon);
+                mapButton.setBackgroundColor(getColor(R.color.green_highlighted));
+                addressButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
                 linearLayout.setVisibility(View.VISIBLE);
             }
         });
@@ -120,6 +122,13 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         mDoctorOrdersRV.setLayoutManager(layoutManager);
 
         ll_emptyOrdersText = (LinearLayout) findViewById(R.id.ll_emptyOrdersText);
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+        }
 
         // preparing list data
         prepareListData();
@@ -208,16 +217,16 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                         //set up arrayList
                         ArrayList<Orders> orders = (ArrayList<Orders>) response.body().getData();
                         for(int i=0; i<orders.size(); i++) {
-                            String orderId = "طلب رقم " + orders.get(i).getId();
+                            String orderId = getString(R.string.oder_number) + orders.get(i).getId();
                             String orderDate = orders.get(i).getDate();
                             String orderTime = orders.get(i).getTime();
-                            String whenPainStart = "بدأ الالم منذ.. / "  + orders.get(i).getWhenPainStart();
-                            String painPlace = "مكان الالم / " + orders.get(i).getPain_position();
-                            String painPosition = "نوع الام / " + orders.get(i).getPainDeep();
-                            String farFromYou = "المريض يبعد عنك بمقدار..";
-                            String address = "العنوان / "+ orders.get(i).getLocation_region();
+                            String whenPainStart = getString(R.string.pain_start_sence)  + orders.get(i).getWhenPainStart();
+                            String painPlace = getString(R.string.pain_place) + orders.get(i).getPain_position();
+                            String city = getString(R.string.city) + orders.get(i).getLocation_city();
+                            String street = getString(R.string.street)+ orders.get(i).getLocation_street_name();
+                            String address = getString(R.string.the_address)+ orders.get(i).getLocation_region();
                             Log.e("PainPos",painPlace);
-                            OrderDetails orderDetails = new OrderDetails(whenPainStart, farFromYou, painPosition, painPlace, address,orders.get(i).getId());
+                            OrderDetails orderDetails = new OrderDetails(whenPainStart, street, city, painPlace, address,orders.get(i).getId());
                             SingleOrder singleOrder = new SingleOrder(orderId, orderDate, orderTime, orderDetails);
                             mOrders.add(singleOrder);
                             mOrderDetails.add(orderDetails);

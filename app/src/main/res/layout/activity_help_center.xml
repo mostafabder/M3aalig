@@ -130,7 +130,12 @@
             android:onClick="gmail_click"
             >
 
-
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight=".2"
+                android:src="@drawable/google_icon"
+                />
 
             <TextView
                 android:layout_width="0dp"

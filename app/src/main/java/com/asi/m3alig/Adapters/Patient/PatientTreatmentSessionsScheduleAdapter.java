@@ -147,8 +147,10 @@ public class PatientTreatmentSessionsScheduleAdapter extends RecyclerView.Adapte
    private void init(MyViewHolder holder, Visit visit)
     {
         holder.typeTextView.setText(visit.getReason());
+
         if(visit.getDoctor()!=null)
-        holder.nameTextView.setText(visit.getDoctor().getName());
+            holder.nameTextView.setText(visit.getDoctor().getName());
+
         holder.dateTextView.setText(visit.getDate());
         holder.timeTextView.setText(visit.getTime());
         holder.Date=visit.getDate();

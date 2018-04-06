@@ -164,7 +164,9 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             else Toast.makeText(ChoosePlaceActivity.this,validate(),Toast.LENGTH_SHORT).show();
         }
         else{
-            Log.i("Location", mLastLocation.toString());
+            if(mLastLocation != null) {
+                Log.i("Location", mLastLocation.toString());
+            }
             Toast.makeText(ChoosePlaceActivity.this, R.string.cant_find_location,Toast.LENGTH_SHORT).show();
         }
 

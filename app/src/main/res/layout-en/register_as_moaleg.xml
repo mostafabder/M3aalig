@@ -139,12 +139,20 @@
                         android:layout_marginTop="5dp"
 
                         />
-                    <EditText
+                    <TextView
+                        android:id="@+id/et_doctor_idEXP_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:id="@+id/et_doctor_idEXP_register"
-                        />
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/date"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:onClick="getDate"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -177,12 +185,20 @@
                         android:layout_marginTop="5dp"
 
                         />
-                    <EditText
+                    <TextView
+                        android:id="@+id/et_doctor_graduate_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:id="@+id/et_doctor_graduate_register"
-                        />
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/date"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:onClick="getDate"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -298,20 +314,11 @@
                 android:layout_margin="5dp"
                 >
 
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight=".3"
-                    android:src="@drawable/phone_check_icon_not_active"
-                    android:id="@+id/iv_send_verify_doctor_register"
-                    android:visibility="gone"/>
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp_register"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.7"
+                    android:layout_weight="1.0"
                     android:gravity="center"
                     app:countryPreference="SA,EG"
                     app:defaultNameCode="SA"/>
@@ -342,7 +349,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/asset_132xhdpi"
+                android:src="@drawable/asset_135xhdpi"
                 android:onClick="RegisterNow"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"

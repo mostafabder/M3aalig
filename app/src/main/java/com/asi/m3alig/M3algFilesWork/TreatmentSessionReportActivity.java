@@ -156,17 +156,17 @@ public class TreatmentSessionReportActivity extends AppCompatActivity {
         other = et_other.getText().toString().trim();*/
 
         if(subjective.equals(""))
-            return "من فضلك اكمل البيانات SUBJECTIVE";
+            return getString(R.string.subjective_complete);
         else if(objective.equals(""))
-            return "من فضلك اكمل البيانات OBJECTIVE";
+            return getString(R.string.objective_complete);
         else if(assessment.equals(""))
-            return "من فضلك اكمل البيانات ASSESSMENT";
+            return getString(R.string.assessment_complete);
         else if(plan.equals(""))
-            return "من فضلك اكمل البيانات PLAN";
+            return getString(R.string.plan_complete);
         else if(need_follow.equals("yes") && number_session.equals(""))
-            return "من فضلك اكمل البيانات عدد الزيارات";
+            return getString(R.string.visits_complete);
         else if(need_follow.equals("yes") && Integer.parseInt(number_session) <= 0)
-            return "عدد الزيارات خطأ";
+            return getString(R.string.visits_wrong_complete);
         /*else if(long_obj.equals(""))
             return "من فضلك اكمل البيانات الهدف البعيد";
         else if(short_obj.equals(""))

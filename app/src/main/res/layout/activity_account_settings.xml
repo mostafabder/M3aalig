@@ -11,24 +11,26 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="32dp"
-        android:drawablePadding="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:drawableEnd="@drawable/account_settings_icon"
+        android:drawablePadding="8dp"
+        android:gravity="end"
+        android:paddingEnd="8dp"
         android:text="@string/account_settings"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:onClick="goBack"
@@ -36,8 +38,8 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/ivBackArrow" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -238,7 +240,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/white"
-                android:gravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -327,6 +328,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="23dp" />
+
+    <ImageView
+        android:id="@+id/ivBackArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:onClick="goBack"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_back"
+        fancy:srcCompat="@drawable/main_screen_arrow_icon" />
 
 </android.support.constraint.ConstraintLayout>
 

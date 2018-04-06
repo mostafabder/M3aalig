@@ -119,7 +119,8 @@
                 android:id="@+id/fb_login_iv"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:src="@drawable/asset_131xhdpi"/>
+                android:src="@drawable/asset_131xhdpi"
+                android:visibility="gone"/>
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/btn_fb_login"
                 android:layout_width="wrap_content"
@@ -139,7 +140,8 @@
                 android:id="@+id/gmail_login_iv"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:src="@drawable/asset_130xhdpi"/>
+                android:src="@drawable/asset_130xhdpi"
+                android:visibility="gone"/>
 
         </LinearLayout>
     </ScrollView>

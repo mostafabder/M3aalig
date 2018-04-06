@@ -114,13 +114,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:src="@drawable/login_with_fb_icon_not_active"
-                />
+                android:visibility="gone"/>
             <ImageView
                 android:id="@+id/gmail_register_iv"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:src="@drawable/login_with_g_notavtive"
-                />
+                android:visibility="gone"/>
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/btn_fb_register"
                 android:layout_width="wrap_content"

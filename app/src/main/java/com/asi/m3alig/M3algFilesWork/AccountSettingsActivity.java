@@ -2,6 +2,8 @@ package com.asi.m3alig.M3algFilesWork;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -17,6 +19,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import android.widget.EditText;
@@ -60,6 +64,7 @@ import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -89,6 +94,8 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
     private String area = "";
     Boolean start;
+
+    private ImageView ivBackArrow, imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +150,16 @@ public class AccountSettingsActivity extends AppCompatActivity {
         et_editName.addTextChangedListener(setTextWatcher());
         et_editLicenseNumber.addTextChangedListener(setTextWatcher());
         et_editHealthName.addTextChangedListener(setTextWatcher());
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            imageButton.setImageResource(R.drawable.log_out);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            imageButton.setImageResource(R.drawable.asset_3xhdpi);
+        }
 
     }
 
@@ -262,6 +279,11 @@ public class AccountSettingsActivity extends AppCompatActivity {
     }
 
     public void goBack(View view) {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -271,11 +293,13 @@ public class AccountSettingsActivity extends AppCompatActivity {
         String language = PreferenceUtilities.getLanguage(this);
         if(language.equals(ARABIC_LANGUAGE)){
             PreferenceUtilities.setLocale(this, ENGLISH_LANGUAGE);
-            recreate();
+            //recreate();
+            startActivity(getIntent());
         }
         if(language.equals(ENGLISH_LANGUAGE)){
             PreferenceUtilities.setLocale(this, ARABIC_LANGUAGE);
-            recreate();
+            //recreate();
+            startActivity(getIntent());
         }
     }
 }

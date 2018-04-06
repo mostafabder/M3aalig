@@ -1,5 +1,6 @@
 package com.asi.m3alig;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 
@@ -24,6 +26,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,6 +75,7 @@ import com.mukesh.OtpView;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
@@ -80,6 +84,7 @@ import retrofit2.Response;
 
 import static com.asi.m3alig.Utility.Constants.EGYPT_PHONE_CODE;
 import static com.asi.m3alig.Utility.Constants.FLAGE_CODE_SUCCSESS;
+import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_205;
 import static com.asi.m3alig.Utility.Constants.FLAG_CODE_SUCCESS_210;
 import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.PATIENT_TYPE;
@@ -114,7 +119,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     //Strings to store register fields
     private String name, idNumber, idNumberExpired, graduatedDate, licenceNumber, theJob, phoneNumber;
     //editText for doctor register fields
-    private EditText et_doctor_name, et_doctor_id, et_doctor_idEXP, et_doctor_graduate, et_doctor_licence, et_doctor_job;
+    private EditText et_doctor_name, et_doctor_id, et_doctor_licence, et_doctor_job;
+    private TextView et_doctor_idEXP, et_doctor_graduate;
     //help strings for doctorValidation method
     private static final String LOGIN_VALIDATION = "login-validation";
     private static final String REGISTER_VALIDATION = "register-validation";
@@ -144,8 +150,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             mAuth = FirebaseAuth.getInstance();
             et_doctor_name = (EditText) findViewById(R.id.et_doctor_name_register);
             et_doctor_id = (EditText) findViewById(R.id.et_doctor_id_register);
-            et_doctor_idEXP = (EditText) findViewById(R.id.et_doctor_idEXP_register);
-            et_doctor_graduate = (EditText) findViewById(R.id.et_doctor_graduate_register);
+            et_doctor_idEXP = (TextView) findViewById(R.id.et_doctor_idEXP_register);
+            et_doctor_graduate = (TextView) findViewById(R.id.et_doctor_graduate_register);
             et_doctor_licence = (EditText) findViewById(R.id.et_doctor_licence_register);
             et_doctor_job = (EditText) findViewById(R.id.et_doctor_job_register);
 
@@ -234,8 +240,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
         social_init();
         token=FirebaseInstanceId.getInstance().getToken();
-        if(token.equals("")||token==null)
-            token="TOKEN";
+        if(token==null) {
+            token = "TOKEN";
+        }
         Log.e("Firebase_Token",token+"   ");
     }
     public void social_init(){
@@ -698,6 +705,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     }
                     else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210))
                         Toast.makeText(LoginActivity.this,getString(R.string.wrong_code),Toast.LENGTH_SHORT).show();
+                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_205))
+                        Toast.makeText(LoginActivity.this,getString(R.string.this_user_already_register),Toast.LENGTH_SHORT).show();
                     else  {
                         try{
                             Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -762,11 +771,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         startActivity(intent);
                         finish();
                     }
-                    else if(response.body().getCode().equals(FLAG_CODE_SUCCESS_210))
-                        Toast.makeText(LoginActivity.this,getString(R.string.wrong_code),Toast.LENGTH_SHORT).show();else {
+                    else if (response.body().getCode().equals(FLAG_CODE_SUCCESS_210)){
+                        Toast.makeText(LoginActivity.this, getString(R.string.wrong_code), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.i("CODE", response.code()+"");
                         //here if code not successful
                         try{
-                            Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                            if (Locale.getDefault().getLanguage().equals("en")) {
+                                Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                            }else if(Locale.getDefault().getLanguage().equals("ar")){
+                                Toast.makeText(LoginActivity.this,getString(R.string.this_user_already_register),Toast.LENGTH_SHORT).show();
+                            }
                         }
                         catch (Exception e){
                             Toast.makeText(LoginActivity.this,getString(R.string.something_error),Toast.LENGTH_SHORT).show();
@@ -993,9 +1008,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 return getString(R.string.enter_fullanme);
             else if (idNumber.equals(""))
                 return getString(R.string.enter_national_id);
-            else if (idNumberExpired.equals(""))
+            else if (idNumberExpired.equals(getString(R.string.date)))
                 return getString(R.string.enter_end_date_of_id);
-            else if (graduatedDate.equals(""))
+            else if (graduatedDate.equals(getString(R.string.date)))
                 return getString(R.string.enter_your_date_of_grad);
             else if (licenceNumber.equals(""))
                 return getString(R.string.enter_rokhsa_number);
@@ -1687,4 +1702,33 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
         super.onResume();
     }
+
+    public void getDate(View view) {
+
+        Calendar c = Calendar.getInstance();
+        final TextView theText = (TextView) findViewById(view.getId());
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        theText.setText(getString(R.string.day)+"  "+dayOfMonth + " / " + getString(R.string.month)+"  "+ (monthOfYear + 1) + " / " + getString(R.string.year)+"  "+ year);
+                    }
+                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.show();
+    }
+
+    public void terms(View view) {
+        String url = null;
+        if (getIntent().getStringExtra(Constants.USER_KEY).equals(Constants.M3ALG_TYPE)){
+            url = "https://www.m3alij.com/test-arabic/doctor/terms";
+        }else {
+            url = "https://www.m3alij.com/test-arabic/patient/terms";
+        }
+        Intent web_intent=new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(web_intent);
+    }
+
 }

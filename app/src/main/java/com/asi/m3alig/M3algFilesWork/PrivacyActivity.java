@@ -38,6 +38,7 @@ public class PrivacyActivity extends AppCompatActivity {
     public void goBack(View view) {
         onBackPressed();
     }
+
     public void privacy_click(View view) {
         Intent web_intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.m3alij.com/test-arabic/patient/terms"));
         startActivity(web_intent);

@@ -177,6 +177,8 @@
                 android:weightSum="2">
 
                 <mehdi.sakout.fancybuttons.FancyButton
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -187,11 +189,11 @@
                     android:paddingTop="10dp"
                     fancy:fb_borderColor="#FFFFFF"
                     fancy:fb_borderWidth="1dp"
-                    fancy:fb_defaultColor="@color/yellow"
+                    fancy:fb_defaultColor="@color/green_highlighted"
                     fancy:fb_focusColor="#9bd823"
                     fancy:fb_iconPosition="left"
                     fancy:fb_radius="30dp"
-                    fancy:fb_text="من الامام"
+                    fancy:fb_text="@string/from_front"
                     fancy:fb_textColor="#FFFFFF" />
                 <mehdi.sakout.fancybuttons.FancyButton
                     android:layout_width="0dp"
@@ -207,11 +209,11 @@
                     fancy:fb_borderColor="#FFFFFF"
                     fancy:fb_borderWidth="1dp"
 
-                    fancy:fb_defaultColor="@color/green_highlighted"
+                    fancy:fb_defaultColor="@color/appcolor"
                     fancy:fb_focusColor="#2d7145"
                     fancy:fb_iconPosition="left"
                     fancy:fb_radius="30dp"
-                    fancy:fb_text="من الخلف"
+                    fancy:fb_text="@string/from_back"
                     fancy:fb_textColor="@color/white" />
 
             </LinearLayout>
@@ -323,33 +325,44 @@
                 android:layout_height="500dp"
                 android:layout_marginTop="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="40dp"
-                    android:gravity="top|start"
-                    android:text="@string/body_left"
-                    android:visibility="gone"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginTop="40dp"
-                    android:text="@string/body_right"
-                    android:visibility="gone"/>
-
 
                 <ImageView
                     android:id="@+id/body_image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="7dp"
+                    android:layout_width="350dp"
+                    android:layout_height="500dp"
                     android:layout_gravity="center"
-                    android:src="@mipmap/front_man_icon"
-                    />
+                    android:src="@mipmap/front_man_icon" />
+
+                <!--<mehdi.sakout.fancybuttons.FancyButton-->
+                    <!--android:visibility="gone"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:id="@+id/bt_removePoints"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:layout_alignParentStart="true"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:layout_marginStart="16dp"-->
+                    <!--android:layout_marginTop="16dp"-->
+                    <!--fancy:fb_borderColor="#FFFFFF"-->
+                    <!--fancy:fb_borderWidth="1dp"-->
+                    <!--fancy:fb_defaultColor="@color/green_highlighted"-->
+                    <!--fancy:fb_focusColor="#9bd823"-->
+                    <!--fancy:fb_iconPosition="left"-->
+                    <!--fancy:fb_radius="30dp"-->
+                    <!--fancy:fb_text="@string/remove_points"-->
+                    <!--fancy:fb_textColor="#FFFFFF" />-->
+
+                <RelativeLayout
+                    android:layout_width="350dp"
+                    android:layout_height="500dp"
+                    android:id="@+id/rl_master"
+                    android:layout_gravity="center"
+                    android:layoutDirection="ltr">
+                </RelativeLayout>
+
             </FrameLayout>
 
         </LinearLayout>

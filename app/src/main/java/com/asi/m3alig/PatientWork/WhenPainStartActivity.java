@@ -2,6 +2,7 @@ package com.asi.m3alig.PatientWork;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,7 @@ import com.asi.m3alig.Models.VisitOrderPatient;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Utility.PreferenceUtilities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -36,6 +40,10 @@ public class WhenPainStartActivity extends AppCompatActivity {
 
     private ImageView ivBackArrow, ivMoreArrow, ivRow1;
 
+    private RelativeLayout rl_master;
+    private ImageView point;
+    private boolean front;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +56,11 @@ public class WhenPainStartActivity extends AppCompatActivity {
         bodyImageView = (ImageView) findViewById(R.id.body_image_view);
         frontBodyButton = (FancyButton) findViewById(R.id.front_body_button);
         backBodyButton = (FancyButton) findViewById(R.id.back_body_button);
+
+//        rl_master = (RelativeLayout) findViewById(R.id.rl_master);
+        front = true;
+
+
 //        deepPainButton = (FancyButton) findViewById(R.id.deep_pain_button);
 //        littlePainButton = (FancyButton) findViewById(R.id.little_pain_button);
         whenPainStartTextView = (TextView) findViewById(R.id.when_pain_start);
@@ -59,10 +72,14 @@ public class WhenPainStartActivity extends AppCompatActivity {
         backBodyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order.setPain_position("from front");
-                backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.green_highlighted));
-                frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.appcolor));
-                bodyImageView.setImageResource(R.mipmap.back_man_icon);
+                if(front) {
+                    order.setPain_position("from front");
+                    backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this, R.color.green_highlighted));
+                    frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this, R.color.appcolor));
+                    bodyImageView.setImageResource(R.mipmap.back_man_icon);
+                    front = false;
+                    //rl_master.removeAllViews();
+                }
             }
         });
 
@@ -70,10 +87,14 @@ public class WhenPainStartActivity extends AppCompatActivity {
         frontBodyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order.setPain_position("from back");
-                frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.green_highlighted));
-                backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this,R.color.appcolor));
-                bodyImageView.setImageResource(R.mipmap.front_man_icon);
+                if(!front) {
+                    order.setPain_position("from back");
+                    frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this, R.color.green_highlighted));
+                    backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this, R.color.appcolor));
+                    bodyImageView.setImageResource(R.mipmap.front_man_icon);
+                    front = true;
+                    //rl_master.removeAllViews();
+                }
             }
         });
 //
@@ -136,8 +157,8 @@ public class WhenPainStartActivity extends AppCompatActivity {
                     }
                 }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
         Calendar calendar=Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR,1);
-        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+        calendar.add(Calendar.DAY_OF_YEAR,0);
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         datePickerDialog.show();
         //
     }
