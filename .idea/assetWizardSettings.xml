@@ -86,11 +86,11 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundColor" value="ff2303" />
+                                      <entry key="assetType" value="IMAGE" />
                                       <entry key="cropped" value="true" />
                                       <entry key="iconShape" value="CIRCLE" />
-                                      <entry key="imageAsset" value="C:\Users\Zerir\Desktop\point.jpeg" />
-                                      <entry key="outputName" value="ic_point_2" />
+                                      <entry key="imageAsset" value="F:\points.png" />
+                                      <entry key="outputName" value="ic_point_points" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -111,7 +111,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

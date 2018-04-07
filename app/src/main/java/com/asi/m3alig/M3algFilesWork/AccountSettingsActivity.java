@@ -200,9 +200,12 @@ public class AccountSettingsActivity extends AppCompatActivity {
                         }
                         else{
                         area = response.body().getData().getArea();
-                        ArrayList<String> lol = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
-                        int x = lol.indexOf(area);
-                        doctorWorkAreaSpinner.setSelection(x);
+                        ArrayList<String> areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
+                        int areaIndex = areas.indexOf(area);
+                        doctorWorkAreaSpinner.setSelection(areaIndex);
+
+                        Log.i("area", area);
+                        Log.i("areaIndex", areaIndex+"");
 
                         setHintsToEditText(response.body().getData().getName(), response.body().getData().getPhone(),
                                 response.body().getData().getArea(), response.body().getData().getLicense_number(),

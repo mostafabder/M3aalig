@@ -60,7 +60,7 @@
             <include
                 layout="@layout/login_view"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 />
         </FrameLayout>
 
@@ -110,7 +110,7 @@
             <include
                 layout="@layout/register_view"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="wrap_content" />
         </FrameLayout>
 
 

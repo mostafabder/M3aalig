@@ -271,9 +271,7 @@
                         android:backgroundTint="@color/blue"
                         android:dropDownSelector="@drawable/down_arrow_black"
                         android:entries="@array/places"
-                        android:layoutDirection="rtl"
-                        android:spinnerMode="dropdown"
-                        android:textDirection="rtl" />
+                        android:spinnerMode="dropdown" />
                     <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="wrap_content"-->
