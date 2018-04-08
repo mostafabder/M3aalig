@@ -86,7 +86,7 @@
     <string name="other">"Another disease ... "</string>
     <string name="when_pain_start">"When did the pain begin? "</string>
     <string name="what_is_your_complaint">"What do you complain about? "</string>
-    <string name="pain_postion">"Select pain position (multiple choice allowed) "</string>
+    <string name="pain_postion">"Select pain position on the body</string>
     <string name="click_to_choose_pain_position">"Click to locate the pain "</string>
     <string name="click_to_remove_pain_position">"Press again to remove the tag "</string>
     <string name="where_you_will_recive_treatment">"Where will you receive the treatment? "</string>
@@ -336,6 +336,85 @@
         <item> Center of Khamis Mushait </item>
     </string-array>
 
+    <string-array name="areas">
+        <item>منطقة العمل</item>
+        <item >شمال الرياض</item>
+        <item > شرق الرياض</item>
+        <item > غرب الرياض</item>
+        <item > جنوب الرياض</item>
+        <item >  وسط الرياض</item>
+        <item >شمال مكه</item>
+        <item > شرق مكه</item>
+        <item > غرب مكه</item>
+        <item > جنوب مكه</item>
+        <item > وسط مكه</item>
+        <item >شمال مدينه المنوره</item>
+        <item > شرق مدينه المنوره</item>
+        <item > غرب مدينه المنوره</item>
+        <item >جنوب مدينه المنوره</item>
+        <item > وسط مدينه المنوره</item>
+        <item >شمال بريدة</item>
+        <item > شرق بريدة</item>
+        <item > غرب بريدة</item>
+        <item > جنوب بريدة</item>
+        <item > وسط بريدة</item>
+        <item >شمال تبوك</item>
+        <item > شرق تبوك</item>
+        <item > غرب تبوك</item>
+        <item > جنوب تبوك</item>
+        <item > وسط تبوك</item>
+        <item >شمال الدمام</item>
+        <item > شرق الدمام</item>
+        <item > غرب الدمام</item>
+        <item > جنوب الدمام</item>
+        <item > وسط الدمام</item>
+        <item >شمال الاحساء</item>
+        <item > شرق الاحساء</item>
+        <item > غرب الاحساء</item>
+        <item > جنوب الاحساء</item>
+        <item > وسط الاحساء</item>
+        <item >شمال الطائف</item>
+        <item > شرق الطائف</item>
+        <item > غرب الطائف</item>
+        <item > جنوب الطائف</item>
+        <item > وسط الطائف</item>
+        <item >شمال نجران</item>
+        <item > شرق نجران</item>
+        <item > غرب نجران</item>
+        <item > جنوب نجران</item>
+        <item > وسط نجران</item>
+        <item >شمال حفر الباطن</item>
+        <item > شرق حفر الباطن</item>
+        <item > غرب حفر الباطن</item>
+        <item > جنوب حفر الباطن</item>
+        <item > وسط حفر الباطن</item>
+        <item >شمال الجبيل</item>
+        <item > شرق الجبيل</item>
+        <item > غرب  الجبيل</item>
+        <item > جنوب  الجبيل</item>
+        <item > وسط الجبيل</item>
+        <item >شمال ضباء</item>
+        <item > شرق ضباء</item>
+        <item > غرب  ضباء</item>
+        <item > جنوب  ضباء</item>
+        <item > وسط ضباء</item>
+        <item >شمال الخرج</item>
+        <item > شرق الخرج</item>
+        <item > غرب  الخرج</item>
+        <item > جنوب  الخرج</item>
+        <item > وسط الخرج</item>
+        <item >شمال الثقبة</item>
+        <item > شرق الثقبة</item>
+        <item > غرب  الثقبة</item>
+        <item > جنوب  الثقبة</item>
+        <item > وسط الثقبة</item>
+        <item >شمال خميس مشيط</item>
+        <item > شرق خميس مشيط</item>
+        <item > غرب خميس مشيط</item>
+        <item > جنوب خميس مشيط</item>
+        <item > وسط خميس مشيط</item>
+    </string-array>
+
     <string name="language">EN</string>
     <string name = "enter_work_area"> Enter Work area </string>
     <string name = "change_number"> Modify the number </string>
@@ -471,11 +550,14 @@
     <string name="start_visit_sure">Start session now?</string>
     <string name="finish_visit_sure">Finish session now?</string>
 
-    <string name="oder_number">Order Number..</string>
-    <string name="pain_start_sence">Pain start since.. /</string>
+    <string name="oder_number">Order Number /</string>
+    <string name="pain_start_sence">Pain start since /</string>
     <string name="pain_place">Pain place /</string>
     <string name="city">The city /</string>
-    <string name="street">The street .. /</string>
+    <string name="street">The street /</string>
     <string name="the_address">The address /</string>
+    <string name="order_choosen">Selected</string>
+    <string name="the_patientName">Patient Name /</string>
+    <string name="the_patientNumber">Patient Phone /</string>
 
 </resources>

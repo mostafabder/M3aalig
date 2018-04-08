@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:background="@color/appcolor"
-    android:paddingTop="16dp"
     tools:context="com.asi.m3alig.M3algFilesWork.AvailableTreatmentRequestsActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
 
@@ -93,7 +92,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:padding="7dp"
-            android:textSize="15sp"
+            android:textSize="24sp"
             />
     </LinearLayout>
 
@@ -141,7 +140,8 @@
                     android:textColor="@color/white"
                     android:text="@string/orders"
                     android:gravity="center"
-                    android:textSize="24dp"/>
+                    android:textSize="24sp"
+                    android:visibility="gone"/>
 
                 <mehdi.sakout.fancybuttons.FancyButton
                     android:layout_marginEnd="5dp"

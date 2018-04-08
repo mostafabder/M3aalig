@@ -100,7 +100,7 @@
     <string name="other">مرض اخر ...</string>
     <string name="when_pain_start">متي بدأت المشكلة</string>
     <string name="what_is_your_complaint">بماذا تشكو</string>
-    <string name="pain_postion">حدد  موضع الالم </string>
+    <string name="pain_postion">حدد  موضع الالم على الجسم </string>
     <string name="click_to_choose_pain_position">أضغط لتحديد مكان الالم</string>
     <string name="click_to_remove_pain_position">اضغط مره اخري لازاله العلامه</string>
     <string name="where_you_will_recive_treatment">أين ستتلقي العلاج</string>
@@ -344,6 +344,86 @@
         <item > جنوب خميس مشيط</item>
         <item > وسط خميس مشيط</item>
     </string-array>
+
+    <string-array name="areas">
+        <item> Work area</item>
+        <item> North of Riyadh </item>
+        <item> East of Riyadh </item>
+        <item> West of Riyadh </item>
+        <item> South of Riyadh </item>
+        <item> Center of Riyadh </item>
+        <item> North of Mecca </item>
+        <item> East of Mecca </item>
+        <item> West of Mecca </item>
+        <item> South of Mecca </item>
+        <item> Center of Mecca </item>
+        <item> North of Medina </item>
+        <item> East of Medina </item>
+        <item> West of Medina </item>
+        <item> South of Medina </item>
+        <item> Center of Madina </item>
+        <item> North of Buraidah </item>
+        <item> East of Buraidah </item>
+        <item> West of Buraidah </item>
+        <item> South of Buraidah </item>
+        <item> Center of Buraidah </item>
+        <item> North of Tabuk </item>
+        <item> East of Tabuk </item>
+        <item> West of Tabuk </item>
+        <item> South of Tabuk </item>
+        <item> Center of Tabuk </item>
+        <item> North of Dammam </item>
+        <item> East of Dammam </item>
+        <item> West of Dammam </item>
+        <item> South of Dammam </item>
+        <item> Center of Dammam </item>
+        <item> North of Al-Ehsaa </item>
+        <item> East of Al-Ehsaa </item>
+        <item> West of Al-Ehsaa </item>
+        <item> South of Al-Ehsaa</item>
+        <item> Center of Al-Ehsaa </item>
+        <item> North of Taif </item>
+        <item> East of Taif </item>
+        <item> West of Taif </item>
+        <item> South of Taif </item>
+        <item> Center of Taif </item>
+        <item> North of Najran </item>
+        <item> East of Najran </item>
+        <item> West of Najran </item>
+        <item> South of Najran </item>
+        <item> Center of Najran </item>
+        <item> North of Hafr Al-Batin </item>
+        <item> East of Hafr Al-Batin </item>
+        <item> West of Hafr Al-Batin </item>
+        <item> South of Hafr Al-Batin </item>
+        <item> Center of Hafr Al-Batin </item>
+        <item> North of Jubail </item>
+        <item> East of Jubail </item>
+        <item> Western of Jubail </item>
+        <item> South ofJubail </item>
+        <item> Center of Jubail </item>
+        <item> North of Duba </item>
+        <item> East Duba </item>
+        <item> West of Duba </item>
+        <item> South of Duba </item>
+        <item> Center of Duba </item>
+        <item> North of alkharag  </item>
+        <item> East of alkharag  </item>
+        <item> West of alkharag  </item>
+        <item> South of alkharag  </item>
+        <item> Center of alkharag  </item>
+        <item> North of Al-Thuqbah </item>
+        <item> East of Al-Thuqbah </item>
+        <item> West of Al-Thuqbah </item>
+        <item> South of Al-Thuqbah </item>
+        <item> Center of Al-Thuqbah </item>
+        <item> North of Khamis Mushait </item>
+        <item> East of Khamis Mushait </item>
+        <item> West of Khamis Mushait </item>
+        <item> South of Khamis Mushait </item>
+        <item> Center of Khamis Mushait </item>
+    </string-array>
+
     <string name="choose_health">اختر حالتك الصحية</string>
     <string name="optional">( أختياري )</string>
     <string name="update_info">تعديل البيانات</string>
@@ -484,11 +564,14 @@
     <string name="choose_your_place">اضغط لتحديد موقعك تلقائيا</string>
     <string name="start_visit_sure">بدأ جلسة العلاج؟</string>
     <string name="finish_visit_sure">انهاء جلسة العلاج؟</string>
-    <string name="oder_number">طلب رقم..</string>
-    <string name="pain_start_sence">بدأ الالم منذ.. /</string>
+    <string name="oder_number">طلب رقم /</string>
+    <string name="pain_start_sence">بدأ الالم منذ /</string>
     <string name="pain_place">مكان الالم /</string>
     <string name="city">المدينة /</string>
     <string name="street">الشارع /</string>
     <string name="the_address">العنوان /</string>
+    <string name="order_choosen">هذا الطلب تم اختياره</string>
+    <string name="the_patientName">اسم المريض /</string>
+    <string name="the_patientNumber">رقم المريض /</string>
 
 </resources>

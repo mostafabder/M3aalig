@@ -85,6 +85,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private ArrayAdapter doctorWorkAreaAdapter;
     private Spinner doctorWorkAreaSpinner;
     private String doctorWorkArea;
+    private int areaIndex;
 
     private EditText et_editPhone, et_editName, et_editLicenseNumber, et_editHealthName;
     private TextView tv_doctorWorkArea;
@@ -119,8 +120,12 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 doctorWorkArea = (String) doctorWorkAreaAdapter.getItem(i);
                 bt_saveChanges.setEnabled(true);
                 bt_saveChanges.setBackgroundResource(R.drawable.light_save_changes);
+
+                ArrayList<String> areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
+
                 if(doctorWorkArea.equals(getResources().getStringArray(R.array.work_areas)[0]) ||
-                        doctorWorkArea.equals(tv_doctorWorkArea.getText().toString().trim())){
+                        doctorWorkArea.equals(tv_doctorWorkArea.getText().toString().trim())  ||
+                        (areas.indexOf(doctorWorkAreaAdapter.getItem(i)) == areaIndex)){
                     doctorWorkArea = null;
                     bt_saveChanges.setEnabled(false);
                     bt_saveChanges.setBackgroundResource(R.drawable.dark_save_changes);
@@ -201,7 +206,11 @@ public class AccountSettingsActivity extends AppCompatActivity {
                         else{
                         area = response.body().getData().getArea();
                         ArrayList<String> areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
-                        int areaIndex = areas.indexOf(area);
+                        areaIndex = areas.indexOf(area);
+                        if (areaIndex == -1){
+                            areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.areas)));
+                            areaIndex = areas.indexOf(area);
+                        }
                         doctorWorkAreaSpinner.setSelection(areaIndex);
 
                         Log.i("area", area);

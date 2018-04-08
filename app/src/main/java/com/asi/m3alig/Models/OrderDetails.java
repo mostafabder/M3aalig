@@ -7,16 +7,18 @@ package com.asi.m3alig.Models;
 public class OrderDetails {
 
     private String when_pain_start, street, city, painPlace, location_region,id;
+    private Patient patient;
 
     private String doctorName, doctorJob, reason, prescription, farObject, nearObject, plan, medicine;
 
-    public OrderDetails(String when_pain_start, String street, String city, String painPlace, String location_region, String id) {
+    public OrderDetails(String id, String when_pain_start, String street, String city, String painPlace, String location_region, Patient patient) {
+        this.id = id;
         this.when_pain_start = when_pain_start;
         this.street = street;
         this.city = city;
         this.painPlace = painPlace;
         this.location_region = location_region;
-        this.id=id;
+        this.patient = patient;
     }
 
     public OrderDetails(String doctorName, String doctorJob, String reason, String prescription, String farObject, String nearObject, String plan, String medicine) {
@@ -28,6 +30,30 @@ public class OrderDetails {
         this.nearObject = nearObject;
         this.plan = plan;
         this.medicine = medicine;
+    }
+
+    public String getWhen_pain_start() {
+        return when_pain_start;
+    }
+
+    public void setWhen_pain_start(String when_pain_start) {
+        this.when_pain_start = when_pain_start;
+    }
+
+    public String getLocation_region() {
+        return location_region;
+    }
+
+    public void setLocation_region(String location_region) {
+        this.location_region = location_region;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public String getId() {

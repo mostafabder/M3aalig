@@ -41,7 +41,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
     private ImageView ivBackArrow, ivMoreArrow, ivRow1;
 
     private RelativeLayout rl_master;
-    private ImageView point;
+    private FancyButton bt_removePoints;
     private boolean front;
 
     @Override
@@ -57,9 +57,46 @@ public class WhenPainStartActivity extends AppCompatActivity {
         frontBodyButton = (FancyButton) findViewById(R.id.front_body_button);
         backBodyButton = (FancyButton) findViewById(R.id.back_body_button);
 
-//        rl_master = (RelativeLayout) findViewById(R.id.rl_master);
+        bt_removePoints = (FancyButton) findViewById(R.id.bt_removePoints);
+        rl_master = (RelativeLayout) findViewById(R.id.rl_master);
         front = true;
 
+        bodyImageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int x = (int) event.getX();
+                int y = (int) event.getY();
+
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    ImageView point = new ImageView(WhenPainStartActivity.this);
+                    point.setImageResource(R.mipmap.ic_point_points);
+                    point.setScaleType(ImageView.ScaleType.FIT_XY);
+
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                            62,
+                            62);
+                    layoutParams.addRule(RelativeLayout.ALIGN_START);
+                    layoutParams.addRule(RelativeLayout.ALIGN_TOP);
+                    layoutParams.topMargin = y - 31;
+                    layoutParams.leftMargin = x - 31;
+
+                    rl_master.addView(point, layoutParams);
+
+                    bt_removePoints.setVisibility(View.VISIBLE);
+                }
+
+                return true;
+            }
+        });
+
+        bt_removePoints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rl_master.removeAllViews();
+                bt_removePoints.setVisibility(View.GONE);
+            }
+        });
 
 //        deepPainButton = (FancyButton) findViewById(R.id.deep_pain_button);
 //        littlePainButton = (FancyButton) findViewById(R.id.little_pain_button);
@@ -78,7 +115,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
                     frontBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this, R.color.appcolor));
                     bodyImageView.setImageResource(R.mipmap.back_man_icon);
                     front = false;
-                    //rl_master.removeAllViews();
+                    rl_master.removeAllViews();
                 }
             }
         });
@@ -93,7 +130,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
                     backBodyButton.setBackgroundColor(ContextCompat.getColor(WhenPainStartActivity.this, R.color.appcolor));
                     bodyImageView.setImageResource(R.mipmap.front_man_icon);
                     front = true;
-                    //rl_master.removeAllViews();
+                    rl_master.removeAllViews();
                 }
             }
         });

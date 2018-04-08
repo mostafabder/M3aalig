@@ -57,13 +57,21 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/backgorud_color_shape"
+        android:padding="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="8dp"
-        android:padding="16dp">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_rowUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/up_row" />
 
         <ImageView
             android:id="@+id/iv_rowLeft1"
@@ -90,21 +98,41 @@
             android:layout_marginTop="32dp"
             android:src="@drawable/main_screen_arrow_icon_en"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft4"
+            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft2"
             tools:layout_editor_absoluteX="0dp" />
-
-        <TextView
-            android:id="@+id/tv_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="pain"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft4"
-            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft4" />
 
         <ImageView
             android:id="@+id/iv_rowLeft4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/main_screen_arrow_icon_en"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft3"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <ImageView
+            android:id="@+id/iv_rowLeft5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/main_screen_arrow_icon_en"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft4"
+            tools:layout_editor_absoluteX="0dp"/>
+
+        <ImageView
+            android:id="@+id/iv_rowLeft6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/main_screen_arrow_icon_en"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft5"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <ImageView
+            android:id="@+id/iv_rowLeft7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -114,37 +142,7 @@
             tools:layout_editor_absoluteX="0dp" />
 
         <TextView
-            android:id="@+id/tv_street"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="pain"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft3"
-            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft3" />
-
-        <ImageView
-            android:id="@+id/iv_rowLeft6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/main_screen_arrow_icon_en"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft2"
-            tools:layout_editor_absoluteX="0dp" />
-
-        <TextView
-            android:id="@+id/tv_whenPainStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="pain"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft1"
-            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft1" />
-
-        <TextView
-            android:id="@+id/tv_patientAddress"
+            android:id="@+id/tv_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -154,7 +152,17 @@
             app:layout_constraintStart_toEndOf="@+id/iv_rowLeft6" />
 
         <TextView
-            android:id="@+id/tv_painPlace"
+            android:id="@+id/tv_street"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="pain"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft7"
+            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft7" />
+
+        <TextView
+            android:id="@+id/tv_whenPainStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -163,29 +171,58 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft2"
             app:layout_constraintStart_toEndOf="@+id/iv_rowLeft2" />
 
+        <TextView
+            android:id="@+id/tv_patientAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="pain"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft5"
+            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft5" />
+
+        <TextView
+            android:id="@+id/tv_painPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="pain"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft1"
+            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft1" />
+
+        <TextView
+            android:id="@+id/tv_patientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="pain"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft3"
+            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft3" />
+
+        <TextView
+            android:id="@+id/tv_patientNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="pain"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rowLeft4"
+            app:layout_constraintStart_toEndOf="@+id/iv_rowLeft4" />
+
         <Button
             android:id="@+id/bt_choseOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="32dp"
-            android:text="@string/choose_order"
             android:background="#FFA500"
-            android:textSize="24sp"
+            android:text="@string/choose_order"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft3"
-            tools:layout_editor_absoluteX="0dp" />
-
-        <ImageView
-            android:id="@+id/iv_rowUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/up_row" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_rowLeft7" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

@@ -32,6 +32,32 @@ public class Orders {
     private String created_at;
     private String updated_at;
 
+    private Patient patient;
+
+    public String getSocial_statue() {
+        return social_statue;
+    }
+
+    public void setSocial_statue(String social_statue) {
+        this.social_statue = social_statue;
+    }
+
+    public String getWhen_pain_start() {
+        return when_pain_start;
+    }
+
+    public void setWhen_pain_start(String when_pain_start) {
+        this.when_pain_start = when_pain_start;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
     public String getId() {
         return id;
     }
