@@ -122,6 +122,7 @@
                 android:text="@string/no_visits"
                 android:textColor="@color/white"
                 android:textSize="24sp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView2"
                 app:layout_constraintStart_toStartOf="@+id/textView2"

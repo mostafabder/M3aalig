@@ -559,5 +559,6 @@
     <string name="order_choosen">Selected</string>
     <string name="the_patientName">Patient Name /</string>
     <string name="the_patientNumber">Patient Phone /</string>
+    <string name="ont_the_body">Please put the points on the following body and not outside</string>
 
 </resources>

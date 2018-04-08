@@ -66,7 +66,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
     private RecyclerView mDoctorOrdersRV;
     private DoctorOrdersRecyclerViewAdapter mDoctorOrdersAdapter;
     private LinearLayoutManager layoutManager;
-    private LinearLayout ll_emptyOrdersText;
+    private LinearLayout ll_emptyOrdersText, ll_waiting;
 
     private ImageView ivBackArrow;
 
@@ -123,6 +123,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         mDoctorOrdersRV.setLayoutManager(layoutManager);
 
         ll_emptyOrdersText = (LinearLayout) findViewById(R.id.ll_emptyOrdersText);
+        ll_waiting = (LinearLayout) findViewById(R.id.ll_waiting);
 
         ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
         if(Locale.getDefault().getLanguage().equals("ar")){
@@ -208,6 +209,9 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         call.enqueue(new Callback<DoctorVisitsOrder>() {
             @Override
             public void onResponse(Call<DoctorVisitsOrder> call, Response<DoctorVisitsOrder> response) {
+
+                ll_waiting.setVisibility(View.GONE);
+
                 //here if task successful
                 //check the respond body is null or not
                 //if body not null
@@ -239,6 +243,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                         Log.i("size", mOrders.size()+"");
                         if(mOrders.size() > 0){
                             ll_emptyOrdersText.setVisibility(View.GONE);
+                        }else {
+                            ll_emptyOrdersText.setVisibility(View.VISIBLE);
                         }
                     }else {
                         //here if code not successful
@@ -256,6 +262,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<DoctorVisitsOrder> call, Throwable t) {
+                ll_waiting.setVisibility(View.GONE);
                 //here if task failed
                 Toast.makeText(getApplicationContext(), getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
                 Log.e("ERROR",t.getMessage()+"   ");

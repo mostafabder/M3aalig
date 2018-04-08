@@ -118,6 +118,8 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
                         Log.i("size", mOrders.size()+"");
                         if(mOrders.size() > 0){
                             tv_emptyOrdersText.setVisibility(View.GONE);
+                        }else {
+                            tv_emptyOrdersText.setVisibility(View.VISIBLE);
                         }
                     }else {
                         Log.i("schedule", "403");

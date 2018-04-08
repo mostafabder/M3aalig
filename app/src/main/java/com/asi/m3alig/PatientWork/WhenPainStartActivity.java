@@ -38,7 +38,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
     VisitOrderPatient order;
      Calendar c;
 
-    private ImageView ivBackArrow, ivMoreArrow, ivRow1;
+    private ImageView ivBackArrow, ivMoreArrow, ivRow1, ivRow2;
 
     private RelativeLayout rl_master;
     private FancyButton bt_removePoints;
@@ -162,10 +162,12 @@ public class WhenPainStartActivity extends AppCompatActivity {
             ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
             ivMoreArrow.setImageResource(R.drawable.more_icon_en);
             ivRow1.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon);
         } if(Locale.getDefault().getLanguage().equals("en")){
             ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
             ivMoreArrow.setImageResource(R.drawable.more_icon);
             ivRow1.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivRow2.setImageResource(R.drawable.main_screen_arrow_icon_en);
         }
 
     }

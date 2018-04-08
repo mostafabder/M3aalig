@@ -573,5 +573,6 @@
     <string name="order_choosen">هذا الطلب تم اختياره</string>
     <string name="the_patientName">اسم المريض /</string>
     <string name="the_patientNumber">رقم المريض /</string>
+    <string name="ont_the_body">يرجى وضع العلامات فوق المجسم التالي فقط و ليس خارجه</string>
 
 </resources>

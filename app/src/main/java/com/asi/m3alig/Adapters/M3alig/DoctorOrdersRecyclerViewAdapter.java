@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -174,7 +175,7 @@ public class DoctorOrdersRecyclerViewAdapter extends RecyclerView.Adapter<Doctor
                             //if code successful
                             if (response.body().getCode().equals(FLAGE_CODE_SUCCSESS)) {
                                 doctorOrdersViewHolder.bt_choseOrder.setText(R.string.order_choosen);
-                                doctorOrdersViewHolder.bt_choseOrder.setBackgroundColor(context.getResources().getColor(R.color.green_highlighted));
+                                doctorOrdersViewHolder.bt_choseOrder.setBackgroundColor(ContextCompat.getColor(context, R.color.green_highlighted));
                                 doctorOrdersViewHolder.bt_choseOrder.setClickable(false);
                             } else {
                                 //here if code not successful
