@@ -222,14 +222,14 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                         //set up arrayList
                         ArrayList<Orders> orders = (ArrayList<Orders>) response.body().getData();
                         for(int i=0; i<orders.size(); i++) {
-                            String orderId = getString(R.string.oder_number) +" "+ orders.get(i).getId();
+                            String orderId = orders.get(i).getId();
                             String orderDate = orders.get(i).getDate();
                             String orderTime = orders.get(i).getTime();
-                            String whenPainStart = getString(R.string.pain_start_sence)  + " "+orders.get(i).getWhenPainStart();
-                            String painPlace = getString(R.string.pain_place) +" "+ orders.get(i).getPain_position();
-                            String city = getString(R.string.city) +" "+ orders.get(i).getLocation_city();
-                            String street = getString(R.string.street)+" "+ orders.get(i).getLocation_street_name();
-                            String address = getString(R.string.the_address)+" "+ orders.get(i).getLocation_region();
+                            String whenPainStart = orders.get(i).getWhenPainStart();
+                            String painPlace = orders.get(i).getPain_position();
+                            String city =  orders.get(i).getLocation_city();
+                            String street =  orders.get(i).getLocation_street_name();
+                            String address = orders.get(i).getLocation_region();
                             Patient patient = orders.get(i).getPatient();
                             OrderDetails orderDetails = new OrderDetails(orderId, whenPainStart, street, city, painPlace, address, patient);
                             SingleOrder singleOrder = new SingleOrder(orderId, orderDate, orderTime, orderDetails);

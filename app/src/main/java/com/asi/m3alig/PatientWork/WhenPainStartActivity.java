@@ -74,12 +74,12 @@ public class WhenPainStartActivity extends AppCompatActivity {
                     point.setScaleType(ImageView.ScaleType.FIT_XY);
 
                     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                            62,
-                            62);
+                            32,
+                            32);
                     layoutParams.addRule(RelativeLayout.ALIGN_START);
                     layoutParams.addRule(RelativeLayout.ALIGN_TOP);
-                    layoutParams.topMargin = y - 31;
-                    layoutParams.leftMargin = x - 31;
+                    layoutParams.topMargin = y - 16;
+                    layoutParams.leftMargin = x - 16;
 
                     rl_master.addView(point, layoutParams);
 
@@ -158,6 +158,7 @@ public class WhenPainStartActivity extends AppCompatActivity {
         ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
         ivMoreArrow = (ImageView) findViewById(R.id.ivMoreArrow);
         ivRow1 = (ImageView) findViewById(R.id.ivRow1);
+        ivRow2 = (ImageView) findViewById(R.id.ivRow2);
         if(Locale.getDefault().getLanguage().equals("ar")){
             ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
             ivMoreArrow.setImageResource(R.drawable.more_icon_en);

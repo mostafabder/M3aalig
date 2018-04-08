@@ -126,14 +126,14 @@ public class DoctorOrdersRecyclerViewAdapter extends RecyclerView.Adapter<Doctor
             doctorOrdersViewHolder.iv_rowLeft5.setImageResource(R.drawable.main_screen_arrow_icon_en);
             doctorOrdersViewHolder.iv_rowLeft7.setImageResource(R.drawable.main_screen_arrow_icon_en);
         }
-        doctorOrdersViewHolder.orderId.setText(orders.get(position).getId());
+        doctorOrdersViewHolder.orderId.setText(context.getString(R.string.oder_number) +" "+orders.get(position).getId());
         doctorOrdersViewHolder.orderDate.setText(orders.get(position).getDate());
         doctorOrdersViewHolder.orderTime.setText(orders.get(position).getTime());
-        doctorOrdersViewHolder.tv_whenPainStart.setText(orderDetails.get(position).getWhenPainStart());
-        doctorOrdersViewHolder.tv_painPlace.setText(orderDetails.get(position).getPainPlace());
-        doctorOrdersViewHolder.tv_patientAddress.setText(orderDetails.get(position).getAddress());
-        doctorOrdersViewHolder.tv_street.setText(orderDetails.get(position).getStreet());
-        doctorOrdersViewHolder.tv_city.setText(orderDetails.get(position).getCity());
+        doctorOrdersViewHolder.tv_whenPainStart.setText(context.getString(R.string.pain_start_sence)  + " "+orderDetails.get(position).getWhenPainStart());
+        doctorOrdersViewHolder.tv_painPlace.setText(context.getString(R.string.pain_place) +" "+orderDetails.get(position).getPainPlace());
+        doctorOrdersViewHolder.tv_patientAddress.setText(context.getString(R.string.the_address)+" "+orderDetails.get(position).getAddress());
+        doctorOrdersViewHolder.tv_street.setText(context.getString(R.string.street)+" "+orderDetails.get(position).getStreet());
+        doctorOrdersViewHolder.tv_city.setText(context.getString(R.string.city) +" "+orderDetails.get(position).getCity());
         doctorOrdersViewHolder.tv_patientName.setText(context.getString(R.string.the_patientName)+" "+ orderDetails.get(position).getPatient().getName());
         doctorOrdersViewHolder.tv_patientNumber.setText(context.getString(R.string.the_patientNumber)+" "+ orderDetails.get(position).getPatient().getPhone());
         doctorOrdersViewHolder.rowDown.setOnClickListener(new View.OnClickListener() {
