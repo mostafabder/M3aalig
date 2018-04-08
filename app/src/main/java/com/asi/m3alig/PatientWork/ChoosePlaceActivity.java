@@ -115,8 +115,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             public void onClick(View v) {
                cardView.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
-                mapButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
-                addressButton.setBackgroundColor(getColor(R.color.green_highlighted));
+                mapButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this,R.color.blue_unhighlighted));
+                addressButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this,R.color.green_highlighted));
             }
 
 
@@ -125,8 +125,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             @Override
             public void onClick(View v) {
                 cardView.setVisibility(View.GONE);
-                addressButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
-                mapButton.setBackgroundColor(getColor(R.color.green_highlighted));
+                addressButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this, R.color.blue_unhighlighted));
+                mapButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this,R.color.green_highlighted));
                 linearLayout.setVisibility(View.VISIBLE);
             }
         });
@@ -318,7 +318,7 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
         else
         {
 
-            Toast.makeText(ChoosePlaceActivity.this, "(تعذر الحصول على الموقع. تأكد من تمكين الموقع على الجهاز)", Toast.LENGTH_LONG).show();
+            Toast.makeText(ChoosePlaceActivity.this, R.string.cant_find_location, Toast.LENGTH_LONG).show();
         }
 
     }
