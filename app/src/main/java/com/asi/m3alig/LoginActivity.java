@@ -824,7 +824,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Log.e("FLAG",response.body().getCode()+"   "+response.body().getMessage());
                     if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS))
                     {
-                        Toast.makeText(LoginActivity.this, R.string.veri_code_sent,Toast.LENGTH_SHORT).show();
+                        if(response.body().getMessage().equals("Your account is suspended.")){
+                            Toast.makeText(LoginActivity.this,getString(R.string.contact_services),Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(LoginActivity.this, R.string.veri_code_sent, Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else  {
                         try{
