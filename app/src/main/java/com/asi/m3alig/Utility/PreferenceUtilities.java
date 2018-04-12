@@ -43,13 +43,14 @@ public class PreferenceUtilities {
         Resources resources = context.getResources();
         Configuration configuration = new Configuration();
 
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 
             configuration.setLocale(locale);
             LocaleList localeList = new LocaleList(locale);
             LocaleList.setDefault(localeList);
             configuration.setLocales(localeList);
             context = context.createConfigurationContext(configuration);
+            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
         } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1 && Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
 
