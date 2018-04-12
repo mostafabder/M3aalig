@@ -53,7 +53,7 @@ public class inviteFriendViewDialog {
                 try {
                     activity.startActivity(intent );
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(activity,"Download Twitter app first from google play",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, R.string.download_twitter,Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -69,7 +69,7 @@ public class inviteFriendViewDialog {
                 try {
                     activity.startActivity(intent );
                 } catch (android.content.ActivityNotFoundException ex) {
-                   Toast.makeText(activity,"Download Facebook app first from google play",Toast.LENGTH_LONG).show();
+                   Toast.makeText(activity, R.string.fb_download,Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -87,7 +87,7 @@ public class inviteFriendViewDialog {
                 try {
                     activity.startActivity(intent );
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(activity,"Download Google Plus app first from google play",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, R.string.gplus_download,Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -112,7 +112,7 @@ public class inviteFriendViewDialog {
                     activity.startActivity(Intent.createChooser(waIntent, "Share with"));
 
                 } catch (PackageManager.NameNotFoundException e) {
-                    Toast.makeText(activity,"Download whatsapp app first from google play",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, R.string.whatsapp_download,Toast.LENGTH_LONG).show();
                 }
             }
         });

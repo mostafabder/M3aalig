@@ -10,11 +10,12 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/appcolor"
         android:weightSum="1"
-        >
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
         <LinearLayout
             android:layout_width="0dp"
             android:onClick="goBack"
@@ -24,15 +25,14 @@
             >
             <ImageView
                 android:id="@+id/ivBackArrow"
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/main_screen_arrow_icon"
                 />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/back"
-                android:layout_marginTop="15dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -46,32 +46,27 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".7"
-            android:gravity="right"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-
+            android:gravity="end"
+            android:layout_height="wrap_content"
+            android:paddingEnd="8dp"
             >
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/privacy_how_to_use"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:lines="1"
                 android:ellipsize="end"
                 android:textStyle="bold"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp" />
 
-                />
             <ImageView
                 android:id="@+id/ivMoreArrow"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/privacy_icon"
+                android:layout_gravity="center_vertical"
                 />
 
         </LinearLayout>
@@ -94,6 +89,7 @@
                 <!--android:padding="10dp"-->
                 <!--android:layout_marginTop="10dp"-->
                 <!--&gt;-->
+
 
                 <!--<TextView-->
                     <!--android:layout_width="0dp"-->
@@ -139,6 +135,7 @@
                     <!--android:src="@drawable/how_to_use_icon"-->
                     <!--/>-->
             <!--</LinearLayout>-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,21 +147,24 @@
                 android:onClick="usage_click"
                 >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="شروط الأستخدام"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".2"
                     android:src="@drawable/condition_of_use_icon"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/terms_of_use"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
                     />
             </LinearLayout>
             <LinearLayout
@@ -178,22 +178,26 @@
                 android:onClick="privacy_click"
                 >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".8"
-                    android:layout_height="wrap_content"
-                    android:text="سياسة الخصوصية"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".2"
                     android:src="@drawable/privacy_two_icon"
                     />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    />
+
             </LinearLayout>
 
         </LinearLayout>

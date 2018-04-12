@@ -100,7 +100,7 @@
     <string name="other">مرض اخر ...</string>
     <string name="when_pain_start">متي بدأت المشكلة</string>
     <string name="what_is_your_complaint">بماذا تشكو</string>
-    <string name="pain_postion">حدد  موضع الالم </string>
+    <string name="pain_postion">حدد  موضع الالم على الجسم </string>
     <string name="click_to_choose_pain_position">أضغط لتحديد مكان الالم</string>
     <string name="click_to_remove_pain_position">اضغط مره اخري لازاله العلامه</string>
     <string name="where_you_will_recive_treatment">أين ستتلقي العلاج</string>
@@ -138,7 +138,7 @@
     <string name="login_as_m3alg">تسجيل الدخول كمعالج</string>
     <string name="enter_your_id">ادخل رقم بطاقه الهوية</string>
     <string name="enter_end_date_of_id">أدخل تاريخ انتهاء بطاقة الهوية</string>
-    <string name="enter_your_date_of_grad">تاريخ التخرج</string>
+    <string name="enter_your_date_of_grad">أدخل تاريخ التخرج </string>
     <string name="enter_rokhsa_number">أدخل رقم رخصة مزاوله المهنة</string>
     <string name="enter_moahel">المؤهل الصحي (المسمي الصحي )</string>
     <string name="best_time_for_work">تحديد مواعيد العمل المناسبة</string>
@@ -150,7 +150,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="offer_help">تقديم استشارة طبية</string>
-    <string name="privacy_how_to_use">سياسة الخصوصية وشروط الاستخدام</string>
+    <string name="privacy_how_to_use">سياسة الخصوصية و شروط الاستخدام</string>
     <string name="edit_info">تعديل البيانات</string>
     <string name="visa">بطاقات الدفع</string>
     <string name="visa_num">رقم البطاقة</string>
@@ -255,11 +255,6 @@
         <item value="غرب  الثقبة"> غرب  الثقبة</item>
         <item value="جنوب  الثقبة"> جنوب  الثقبة</item>
         <item value="وسط الثقبة"> وسط الثقبة</item>
-        <item value="شمال نجران">شمال نجران</item>
-        <item value="شرق نجران"> شرق نجران</item>
-        <item value="غرب نجران"> غرب نجران</item>
-        <item value="جنوب نجران"> جنوب نجران</item>
-        <item value="وسط نجران"> وسط نجران</item>
         <item value="شمال خميس مشيط">شمال خميس مشيط</item>
         <item value="شرق خميس مشيط"> شرق خميس مشيط</item>
         <item value="غرب خميس مشيط"> غرب خميس مشيط</item>
@@ -343,22 +338,241 @@
         <item > غرب  الثقبة</item>
         <item > جنوب  الثقبة</item>
         <item > وسط الثقبة</item>
-        <item >شمال نجران</item>
-        <item > شرق نجران</item>
-        <item > غرب نجران</item>
-        <item > جنوب نجران</item>
-        <item > وسط نجران</item>
         <item >شمال خميس مشيط</item>
         <item > شرق خميس مشيط</item>
         <item > غرب خميس مشيط</item>
         <item > جنوب خميس مشيط</item>
         <item > وسط خميس مشيط</item>
     </string-array>
+
+    <string-array name="areas">
+        <item> Work area</item>
+        <item> North of Riyadh </item>
+        <item> East of Riyadh </item>
+        <item> West of Riyadh </item>
+        <item> South of Riyadh </item>
+        <item> Center of Riyadh </item>
+        <item> North of Mecca </item>
+        <item> East of Mecca </item>
+        <item> West of Mecca </item>
+        <item> South of Mecca </item>
+        <item> Center of Mecca </item>
+        <item> North of Medina </item>
+        <item> East of Medina </item>
+        <item> West of Medina </item>
+        <item> South of Medina </item>
+        <item> Center of Madina </item>
+        <item> North of Buraidah </item>
+        <item> East of Buraidah </item>
+        <item> West of Buraidah </item>
+        <item> South of Buraidah </item>
+        <item> Center of Buraidah </item>
+        <item> North of Tabuk </item>
+        <item> East of Tabuk </item>
+        <item> West of Tabuk </item>
+        <item> South of Tabuk </item>
+        <item> Center of Tabuk </item>
+        <item> North of Dammam </item>
+        <item> East of Dammam </item>
+        <item> West of Dammam </item>
+        <item> South of Dammam </item>
+        <item> Center of Dammam </item>
+        <item> North of Al-Ehsaa </item>
+        <item> East of Al-Ehsaa </item>
+        <item> West of Al-Ehsaa </item>
+        <item> South of Al-Ehsaa</item>
+        <item> Center of Al-Ehsaa </item>
+        <item> North of Taif </item>
+        <item> East of Taif </item>
+        <item> West of Taif </item>
+        <item> South of Taif </item>
+        <item> Center of Taif </item>
+        <item> North of Najran </item>
+        <item> East of Najran </item>
+        <item> West of Najran </item>
+        <item> South of Najran </item>
+        <item> Center of Najran </item>
+        <item> North of Hafr Al-Batin </item>
+        <item> East of Hafr Al-Batin </item>
+        <item> West of Hafr Al-Batin </item>
+        <item> South of Hafr Al-Batin </item>
+        <item> Center of Hafr Al-Batin </item>
+        <item> North of Jubail </item>
+        <item> East of Jubail </item>
+        <item> Western of Jubail </item>
+        <item> South ofJubail </item>
+        <item> Center of Jubail </item>
+        <item> North of Duba </item>
+        <item> East Duba </item>
+        <item> West of Duba </item>
+        <item> South of Duba </item>
+        <item> Center of Duba </item>
+        <item> North of alkharag  </item>
+        <item> East of alkharag  </item>
+        <item> West of alkharag  </item>
+        <item> South of alkharag  </item>
+        <item> Center of alkharag  </item>
+        <item> North of Al-Thuqbah </item>
+        <item> East of Al-Thuqbah </item>
+        <item> West of Al-Thuqbah </item>
+        <item> South of Al-Thuqbah </item>
+        <item> Center of Al-Thuqbah </item>
+        <item> North of Khamis Mushait </item>
+        <item> East of Khamis Mushait </item>
+        <item> West of Khamis Mushait </item>
+        <item> South of Khamis Mushait </item>
+        <item> Center of Khamis Mushait </item>
+    </string-array>
+
     <string name="choose_health">اختر حالتك الصحية</string>
     <string name="optional">( أختياري )</string>
     <string name="update_info">تعديل البيانات</string>
     <string name="wrong_number">رقم الهاتف غير صحيح!</string>
+
+
+    <string name="language">ع</string>
+    <string name="enter_work_area">ادخل مكان العمل</string>
+    <string name="change_number">تعديل الرقم</string>
+    <string name="confirm">تأكيد</string>
+    <string name="will_resend_verify_code_after">اعادة ارسال رمز التفعيل بعد</string>
+    <string name="code_didnt_arrived">لم يصلك رمز التفعيل؟</string>
+    <string name="resend_verify_code">اعادة ارسال رمز التفعيل</string>
+    <string name="where_do_you_wanna_work">اين تريد ان تعمل ؟</string>
+    <string name="main_page">الصفحة الرئيسية</string>
+    <string name="account_settings">إعدادات الحساب</string>
+    <string name="help_center">مركز المساعده والدعم</string>
+    <string name="know_about_us">تعرف علينا</string>
+    <string name="offers_and_discounts">العروض والخصومات</string>
+    <string name="start_visit">ابدأ الجلسة</string>
+    <string name="in_waiting_to_active_account">فى انتظار الموافقه ع عضويتك كمعالج</string>
+    <string name="no_visits_go_to_available">ليس لديك جلسات .. اذهب الى الطلبات المتاحة</string>
+    <string name="finish_visit">انهاء الجلسة</string>
+    <string name="the_available">الطلبات المتاحة</string>
+    <string name="rate_patient">تقييم المريض</string>
+    <string name="the_visit_end">الجلسة انتهت \n  يرجى تقييم المريض و اعطاء التقرير اللازم</string>
+    <string name="no_orders">لا يوجد طلبات متاحة الان</string>
+    <string name="no_visits">لا يوجد جلسات تالية</string>
+    <string name="reason_of_rate">قم بادخال سبب التقييم هنا</string>
+    <string name="please_rate_patient">من فضلك قم بتقييم المريض</string>
+    <string name="enter_reason_of_rate">ادخل سبب هذا التقييم لانه اقل من ثلاثة نجوم</string>
+    <string name="rating_done">تم تقييم المريض بنجاح</string>
+    <string name="service_features">مميزات الخدمة</string>
+    <string name="way_to_use">طريقة الاستخدام</string>
+    <string name="terms_of_use">شروط الأستخدام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="send_complaints">ارسل شكواك او اقتراحك من خلال عن طريق الوسائل التالية ...</string>
+    <string name="help_and_support">المساعدة و الدعم</string>
+    <string name="edit_data">تعديل البيانات</string>
+    <string name="change_phone_number">تغيير رقم الهاتف</string>
+    <string name="change_name">تغيير الاسم</string>
+    <string name="change_job_id">تغيير رقم رخصة مزاولة المهنة</string>
+    <string name="change_job">تغيير المؤهل الصحي (المسمى الصحي)</string>
+    <string name="change_work_area">تغيير منطقة العمل</string>
+    <string name="work_area">منطقة العمل</string>
+    <string name="save_changes">حفظ التعديلات</string>
+    <string name="change_language">تغيير اللغة</string>
+
+    <string name="dont_forget_u_have">لا تنسي لديك جلسة علاج مع معالج العلاج الطبيعي خلال 1 يوم</string>
+    <string name="u_have_in_at">لديك جلسه علاج فى يوم 15/2/2018وفى ساعه:18:57:47</string>
+    <string name="press_to_cancel">اضفط لالغاء الجلسة</string>
+    <string name="u_are_sick_with">انت مريض بالتهاب المفاصل و تيبس العضلات يلزمك الالتزام بالجلسات العلاجية و انتظام وضع الدهان</string>
+    <string name="visit">جلسة علاج</string>
+    <string name="doctor_name">اسم المعالج</string>
+    <string name="wasfa">الوصفة الطبية</string>
+    <string name="plan_for_secure">الخطة العلاجية</string>
+    <string name="wasfa_secure">الوصفة العلاجية</string>
+    <string name="customer_service">خدمة العملاء</string>
+    <string name="continue_with_doctor_name">يتابع مع معالج الطبيعي</string>
+    <string name="changing_hour">تغيير الساعة</string>
+    <string name="changind_day">تغيير اليوم</string>
+    <string name="best_date_for_u">قم بتحديد أفضل موعد يناسبك</string>
+    <string name="comunicate_with_doctor">وسيتم التواصل مع المعالج لتحديد موعد جديد</string>
+    <string name="visit_half">جلسة علاج نصف اسبوعية</string>
+    <string name="body_right">يمين الجسم</string>
+    <string name="body_left">يسار الجسم</string>
+    <string name="cant_find_location">(تعذر الحصول على الموقع. تأكد من تمكين الموقع على الجهاز)</string>
+    <string name="make_sure_of_location">تاكد من تمكين الموقع علي جهازك</string>
+    <string name="fast_order">طلب مستعجل</string>
+    <string name="pocking_order">حجز موعد</string>
+    <string name="will_comunicate_with_doctor">سيتم التواصل معك من قبل ممثلي الخدمة خلال الدقائق القادمة لترتيب زيارة المعالج</string>
+    <string name="time_to_arrive">متوسط زمن وصول المعالج هو ساعة بعد دفع ثمن الجلسة علما ان الطلب المستعجل يكون متوفر فقط من الساعة 9 صباحا و الي الساعة 9 مساء عدا يوم الجمعة من الساعة 3 مساء و الي الساعة 9 مساء</string>
+    <string name="press_to_finish_and_rate">اضفط للانهاء و التقييم</string>
+    <string name="press_to_cancel_order">اضفط لالغاء الطلب</string>
+    <string name="with_our_wishes">مع تمنياتنا بالشفاء العاجل</string>
+    <string name="enter_to_finish_and_rate">إضغط للإنهاء والتقييم</string>
+    <string name="visit_start_sence">بدأت جلسة العلاج من</string>
+    <string name="ended">إنتهت جلسة التشخيص</string>
     <string name="wrong_code"> كود التفعيل غير صحيح!</string>
     <string name="share_whatsapp_not_instaled">واتس اب غير مثبت</string>
     <string name="share_intent_title">شارك تطبيق معالج</string>
+    <string name="from_front">من الامام</string>
+    <string name="from_back">من الخلف</string>
+    <string name="the_map">الخريطة</string>
+    <string name="the_adress">اكتب العنوان</string>
+    <string name="confirm_order">تاكيد الطلب</string>
+    <string name="cash">الدفع كاش</string>
+    <string name="choose_payment_way">اختر طريقة الدفع</string>
+    <string name="orders">الطلبات</string>
+    <string name="choose_order">اختيار الطلب</string>
+    <string name="visit_started">بدأت الجلسة</string>
+    <string name="subjective_complete">من فضلك اكمل البيانات SUBJECTIVE</string>
+    <string name="objective_complete">من فضلك اكمل البيانات OBJECTIVE</string>
+    <string name="assessment_complete">من فضلك اكمل البيانات ASSESSMENT</string>
+    <string name="plan_complete">من فضلك اكمل البيانات PLAN</string>
+    <string name="visits_complete">من فضلك اكمل البيانات عدد الزيارات</string>
+    <string name="visits_wrong_complete">عدد الزيارات خطأ</string>
+    <string name="date">يوم / شهر / سنة</string>
+    <string name="day">يوم  </string>
+    <string name="month">شهر  </string>
+    <string name="year">سنة  </string>
+    <string name="this_user_already_register">هذا الهاتف مسجل بالفعل</string>
+    <string name="cancel_order">الغاء هذا الطلب؟</string>
+    <string name="cancel_visit">الغاء هذه الزيارة؟</string>
+    <string name="the_date_underway">جارى تحديد موعد  الزياره التشخيصية</string>
+    <string name="download_twitter">قم بتنزيل تطبيق Twitter أولاً من متجر google play</string>
+    <string name="fb_download">قم بتنزيل تطبيق Facebook أولاً من متجر google play</string>
+    <string name="gplus_download">قم بتنزيل تطبيق Google Plus أولاً من متجر google play</string>
+    <string name="whatsapp_download">قم بتنزيل تطبيق Whatsapp أولاً من متجر google play</string>
+    <string name="know_about_the_app">تعرف على التطبيق</string>
+    <string name="remove_points">حذف العلامات</string>
+    <string name="oder_m3alij_now">اطلب معالج الان..</string>
+
+    <string name="save_new_day_now">يمكنك حفظ اليوم الجديد الان</string>
+    <string name="save_new_hour_now">يمكنك حفظ الساعة الجديدة الان</string>
+    <string name="please_enter_day">من فضلك ادخل اليوم</string>
+    <string name="please_enter_month">من فضلك ادخل الشهر</string>
+    <string name="please_enter_year">من فضلك ادخل العام</string>
+    <string name="please_enter_zero">من فضلك ضع 0 قبل الرقم ان كان اصغر من 10</string>
+    <string name="cant_enter_low_year">لا يمكنك ادخال عام اقل من العام الحالي</string>
+    <string name="cant_enter_low_month">لا يمكنك ادخال شهر اقل من الشهر الحالي</string>
+    <string name="cant_enter_low_day">لا يمكنك ادخال يوم اقل من اليوم الحالي</string>
+    <string name="cant_enter_high_month">لا يمكنك ادخال شهر اكبر من 12</string>
+    <string name="cant_enter_more30">لا يمكنك ادخال يوم اكبر من 30 في هذا الشهر</string>
+    <string name="cant_enter_more29">لا يمكنك ادخال يوم اكبر من 29 في هذا الشهر</string>
+    <string name="cant_enter_high_day">لا يمكنك ادخال يوم اكبر من 31</string>
+    <string name="cant_enter_high_seconds">لا يمكنك ادخال ثواني اكثر من 59</string>
+    <string name="enter_hour">من فضلك ادخل الساعة</string>
+    <string name="enter_min">من فضلك ادخل الدقاقئق</string>
+    <string name="enter_second">من فضلك ادخل الثواني</string>
+    <string name="cant_enter_high_min">لا يمكنك ادخال دقائق اكثر من 59</string>
+    <string name="cant_enter_high_hours">لا يمكنك ادخال ساعة اكبر من 23</string>
+    <string name="nothing_changes">لم يتم تغيير شيئ منك</string>
+    <string name="just_hour">لقد تم تغيير الساعة فقط</string>
+    <string name="just_day">لقد تم تغيير اليوم فقط</string>
+    <string name="day_and_hour">لقد تم تغيير اليوم و الساعة</string>
+    <string name="doctor_change_time_string">قم بتحديد افضل موعد يناسبك  و سيتم التواصل مع المريض لتحديد موعد جديد</string>
+    <string name="choose_your_place">اضغط لتحديد موقعك تلقائيا</string>
+    <string name="start_visit_sure">بدأ جلسة العلاج؟</string>
+    <string name="finish_visit_sure">انهاء جلسة العلاج؟</string>
+    <string name="oder_number">طلب رقم /</string>
+    <string name="pain_start_sence">بدأ الالم منذ /</string>
+    <string name="pain_place">مكان الالم /</string>
+    <string name="city">المدينة /</string>
+    <string name="street">الشارع /</string>
+    <string name="the_address">العنوان /</string>
+    <string name="order_choosen">هذا الطلب تم اختياره</string>
+    <string name="the_patientName">اسم المريض /</string>
+    <string name="the_patientNumber">رقم المريض /</string>
+    <string name="ont_the_body">يرجى وضع العلامات فوق المجسم التالي فقط و ليس خارجه</string>
+
 </resources>

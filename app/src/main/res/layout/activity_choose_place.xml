@@ -37,9 +37,8 @@
                     />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/back"
-                    android:layout_marginTop="15dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -59,14 +58,14 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight=".3"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:onClick="nextPage"
                 android:layout_height="match_parent"
 
                 >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/cont"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"
@@ -74,7 +73,6 @@
                     android:textStyle="bold"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
 
                     />
                 <ImageView
@@ -112,12 +110,30 @@
             android:orientation="vertical"
             >
 
-            <ImageView
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:src="@drawable/choose_location_iicon" />-->
+
+            <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/choose_location_iicon" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                fancy:fb_defaultColor="#00ced1"
+                fancy:fb_iconResource="@drawable/ic_place"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="30dp"
+                fancy:fb_text="@string/choose_your_place"
+                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textSize="20sp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,11 +141,14 @@
                 android:weightSum="2"
                 android:layout_marginTop="10dp"
                 >
+
                 <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/map_button"
+
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+
                     android:layout_marginStart="5dp"
                     android:paddingBottom="10dp"
                     android:paddingLeft="20dp"
@@ -139,7 +158,7 @@
                     fancy:fb_focusColor="#4d75ba"
                     fancy:fb_iconPosition="left"
                     fancy:fb_radius="30dp"
-                    fancy:fb_text="الخريطة"
+                    fancy:fb_text="@string/the_map"
                     fancy:fb_textColor="#FFFFFF"
                     fancy:fb_textSize="20sp"/>
                 <mehdi.sakout.fancybuttons.FancyButton
@@ -156,9 +175,10 @@
                     fancy:fb_focusColor="#4d75ba"
                     fancy:fb_iconPosition="left"
                     fancy:fb_radius="30dp"
-                    fancy:fb_text="اكتب العنوان"
+                    fancy:fb_text="@string/the_adress"
                     fancy:fb_textColor="#FFFFFF"
                     fancy:fb_textSize="20sp"
+
                     />
                 <!--<ImageView-->
                     <!--android:layout_width="0dp"-->
@@ -196,16 +216,15 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:text="@string/flat_num"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:paddingEnd="8dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -252,9 +271,7 @@
                         android:backgroundTint="@color/blue"
                         android:dropDownSelector="@drawable/down_arrow_black"
                         android:entries="@array/places"
-                        android:layoutDirection="rtl"
-                        android:spinnerMode="dropdown"
-                        android:textDirection="rtl" />
+                        android:spinnerMode="dropdown" />
                     <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="wrap_content"-->

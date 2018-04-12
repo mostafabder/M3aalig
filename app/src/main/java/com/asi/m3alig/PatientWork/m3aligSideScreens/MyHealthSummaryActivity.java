@@ -10,17 +10,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.Patient.PatientHealthSummryAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.Visit;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.VisitResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,15 +41,26 @@ public class MyHealthSummaryActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private TextView summary;
     int max;
+
+    private ImageView iv_backRow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(MyHealthSummaryActivity.this, PreferenceUtilities.getLanguage(MyHealthSummaryActivity.this));
         setContentView(R.layout.activity_my_health_summary);
         summary=(TextView)findViewById(R.id.health_sum_last_desc);
         recyclerView = (RecyclerView) findViewById(R.id.health_sum_recycler);
         recyclerView.setHasFixedSize(true);
+
+        iv_backRow = (ImageView) findViewById(R.id.ivBackArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            iv_backRow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            iv_backRow.setImageResource(R.drawable.main_screen_arrow_icon);
+        }
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

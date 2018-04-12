@@ -8,11 +8,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.M3alig.DoctorNextVisitScheduleRecyclerViewAdapter;
 import com.asi.m3alig.Adapters.M3alig.DoctorOrdersRecyclerViewAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.Models.DoctorSingleVisit;
 import com.asi.m3alig.Models.OrderDetails;
@@ -23,8 +25,10 @@ import com.asi.m3alig.Responses.DoctorVisits;
 import com.asi.m3alig.Responses.DoctorVisitsOrder;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,9 +47,12 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private TextView tv_emptyOrdersText;
 
+    private ImageView ivBackArrow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PreferenceUtilities.setLocale(DoctorTreatmentSessionsScheduleActivity.this, PreferenceUtilities.getLanguage(DoctorTreatmentSessionsScheduleActivity.this));
         setContentView(R.layout.activity_doctor_treatment_sessions_schedule);
 
         mOrders = new ArrayList<>();
@@ -55,6 +62,14 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
         mDoctorOrdersRV.setLayoutManager(layoutManager);
 
         tv_emptyOrdersText = (TextView) findViewById(R.id.tv_emptyOrdersText);
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+        }
+
 
         prepareListData();
 
@@ -103,6 +118,8 @@ public class DoctorTreatmentSessionsScheduleActivity extends AppCompatActivity {
                         Log.i("size", mOrders.size()+"");
                         if(mOrders.size() > 0){
                             tv_emptyOrdersText.setVisibility(View.GONE);
+                        }else {
+                            tv_emptyOrdersText.setVisibility(View.VISIBLE);
                         }
                     }else {
                         Log.i("schedule", "403");

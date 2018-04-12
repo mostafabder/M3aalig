@@ -13,7 +13,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
         android:orientation="vertical"
         android:padding="5dp"
         >
@@ -22,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
-            android:text="اختر طريقة الدفع"
+            android:text="@string/choose_payment_way"
             android:textSize="15sp"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -38,7 +37,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="30dp"
-            android:text="الدفع كاش"
+            android:text="@string/cash"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"/>
@@ -60,7 +59,7 @@
                 fancy:fb_focusColor="#4d75ba"
                 fancy:fb_iconPosition="left"
                 fancy:fb_radius="30dp"
-                fancy:fb_text="تاكيد الطلب"
+                fancy:fb_text="@string/confirm_order"
                 fancy:fb_textColor="#FFFFFF" />
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/back_payment"
@@ -77,7 +76,7 @@
                 fancy:fb_focusColor="#4d75ba"
                 fancy:fb_iconPosition="left"
                 fancy:fb_radius="30dp"
-                fancy:fb_text="رجوع"
+                fancy:fb_text="@string/back"
                 fancy:fb_textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>

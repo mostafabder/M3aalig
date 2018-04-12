@@ -13,12 +13,14 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.PatientWork.RateTreatmentSessionActivity;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.StartingVisit;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,6 +41,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(RateTreatmentDoctorSessionActivity.this, PreferenceUtilities.getLanguage(RateTreatmentDoctorSessionActivity.this));
         setContentView(R.layout.activity_rate_treatment_doctor_session);
 
         rateReason = (EditText) findViewById(R.id.et_rateReason);
@@ -63,7 +66,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
         float rate = ratingBar.getRating();
         String rateReasonMessage = rateReason.getText().toString().trim();
         if(rate <= 0.0){
-            Toast.makeText(getApplicationContext(), "من فضلك قم بتقييم المريض", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.please_rate_patient, Toast.LENGTH_LONG).show();
         }else if(rate < 3){
             if(!rateReasonMessage.equals("")){
                 rateVisit(rateReasonMessage, rate);
@@ -74,7 +77,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
                 finish();
             }else {
                 rateReason.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(),"ادخل سبب هذا التقييم لانه اقل من ثلاثة نجوم",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.enter_reason_of_rate,Toast.LENGTH_SHORT).show();
             }
         }else {
             rateVisit("", rate);
@@ -111,6 +114,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
                     //if code successful
                     if(response.body().getCode().equals(FLAGE_CODE_SUCCSESS)){
                         Log.i("sv", "200");
+                        Toast.makeText(getApplicationContext(), getString(R.string.rating_done), Toast.LENGTH_SHORT).show();
                     }else {
                         Log.i("sv", "403");
                         //here if code not successful

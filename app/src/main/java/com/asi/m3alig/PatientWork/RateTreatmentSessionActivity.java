@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.Visit;
 import com.asi.m3alig.Responses.FinishVisitResponse;
 import com.asi.m3alig.Responses.NormalResponse;
@@ -20,6 +21,7 @@ import com.asi.m3alig.Retrofit.ApiInterface;
 import com.asi.m3alig.Utility.Constants;
 import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.R;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
@@ -40,6 +42,7 @@ FancyButton finishRate;
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(RateTreatmentSessionActivity.this, PreferenceUtilities.getLanguage(RateTreatmentSessionActivity.this));
         setContentView(R.layout.activity_rate_treatment_session);
         currentVisit=(Visit)getIntent().getSerializableExtra("visit");
         ratingBar=(RatingBar)findViewById(R.id.ratingBar);
@@ -50,7 +53,7 @@ FancyButton finishRate;
             public void onClick(View v) {
                 if(ratingBar.getRating()<3&&reason.getText().toString().trim().equals(""))
                 {
-                    Toast.makeText(RateTreatmentSessionActivity.this,"ادخل سبب هذا التقييم",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RateTreatmentSessionActivity.this, getString(R.string.enter_reason_of_rate), Toast.LENGTH_SHORT).show();
                 }
                 else{
                     rateVisit(currentVisit.getId());

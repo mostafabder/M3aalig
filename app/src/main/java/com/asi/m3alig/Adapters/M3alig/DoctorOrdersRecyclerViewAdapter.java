@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ import com.asi.m3alig.Utility.SQLiteHandler;
 import com.asi.m3alig.Utility.SessionManager;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,8 +65,8 @@ public class DoctorOrdersRecyclerViewAdapter extends RecyclerView.Adapter<Doctor
         TextView orderId, orderDate, orderTime;
         ImageView rowDown;
         ConstraintLayout detailsLayout;
-        TextView tv_whenPainStart, tv_painPlace, tv_painPosition, tv_farFromYou, tv_patientAddress;
-        ImageView iv_rowUp, iv_rowLeft1, iv_rowLeft2, iv_rowLeft3, iv_rowLeft5, iv_rowLeft6;
+        TextView tv_whenPainStart, tv_painPlace, tv_patientAddress, tv_street, tv_city, tv_patientName, tv_patientNumber;
+        ImageView iv_rowUp, iv_rowLeft1, iv_rowLeft2, iv_rowLeft3, iv_rowLeft4, iv_rowLeft6,iv_rowLeft7,iv_rowLeft5;
         Button bt_choseOrder;
 
         public DoctorOrdersViewHolder(View itemView) {
@@ -76,14 +78,18 @@ public class DoctorOrdersRecyclerViewAdapter extends RecyclerView.Adapter<Doctor
             detailsLayout = (ConstraintLayout) itemView.findViewById(R.id.details_layout);
             tv_whenPainStart = (TextView) itemView.findViewById(R.id.tv_whenPainStart);
             tv_painPlace = (TextView) itemView.findViewById(R.id.tv_painPlace);
-       //     tv_painPosition = (TextView) itemView.findViewById(R.id.tv_painPosition);
-//            tv_farFromYou = (TextView) itemView.findViewById(R.id.tv_farFromYou);
+            tv_street = (TextView) itemView.findViewById(R.id.tv_street);
+            tv_city = (TextView) itemView.findViewById(R.id.tv_city);
             tv_patientAddress = (TextView) itemView.findViewById(R.id.tv_patientAddress);
+            tv_patientName = (TextView) itemView.findViewById(R.id.tv_patientName);
+            tv_patientNumber = (TextView) itemView.findViewById(R.id.tv_patientNumber);
             iv_rowUp = (ImageView) itemView.findViewById(R.id.iv_rowUp);
             iv_rowLeft1 = (ImageView) itemView.findViewById(R.id.iv_rowLeft1);
             iv_rowLeft2 = (ImageView) itemView.findViewById(R.id.iv_rowLeft2);
-           // iv_rowLeft3 = (ImageView) itemView.findViewById(R.id.iv_rowLeft3);
-         //   iv_rowLeft5 = (ImageView) itemView.findViewById(R.id.iv_rowLeft5);
+            iv_rowLeft3 = (ImageView) itemView.findViewById(R.id.iv_rowLeft3);
+            iv_rowLeft4 = (ImageView) itemView.findViewById(R.id.iv_rowLeft4);
+            iv_rowLeft5 = (ImageView) itemView.findViewById(R.id.iv_rowLeft5);
+            iv_rowLeft7 = (ImageView) itemView.findViewById(R.id.iv_rowLeft7);
             iv_rowLeft6 = (ImageView) itemView.findViewById(R.id.iv_rowLeft6);
             bt_choseOrder = (Button) itemView.findViewById(R.id.bt_choseOrder);
         }
@@ -103,15 +109,33 @@ public class DoctorOrdersRecyclerViewAdapter extends RecyclerView.Adapter<Doctor
 
     @Override
     public void onBindViewHolder(final DoctorOrdersViewHolder doctorOrdersViewHolder, final int position) {
-        Log.e("order",orderDetails.get(position).getPainPosition());
-        doctorOrdersViewHolder.orderId.setText(orders.get(position).getId());
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            doctorOrdersViewHolder.iv_rowLeft1.setImageResource(R.drawable.main_screen_arrow_icon);
+            doctorOrdersViewHolder.iv_rowLeft2.setImageResource(R.drawable.main_screen_arrow_icon);
+            doctorOrdersViewHolder.iv_rowLeft3.setImageResource(R.drawable.main_screen_arrow_icon);
+            doctorOrdersViewHolder.iv_rowLeft4.setImageResource(R.drawable.main_screen_arrow_icon);
+            doctorOrdersViewHolder.iv_rowLeft6.setImageResource(R.drawable.main_screen_arrow_icon);
+            doctorOrdersViewHolder.iv_rowLeft5.setImageResource(R.drawable.main_screen_arrow_icon);
+            doctorOrdersViewHolder.iv_rowLeft7.setImageResource(R.drawable.main_screen_arrow_icon);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            doctorOrdersViewHolder.iv_rowLeft1.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            doctorOrdersViewHolder.iv_rowLeft2.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            doctorOrdersViewHolder.iv_rowLeft3.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            doctorOrdersViewHolder.iv_rowLeft4.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            doctorOrdersViewHolder.iv_rowLeft6.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            doctorOrdersViewHolder.iv_rowLeft5.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            doctorOrdersViewHolder.iv_rowLeft7.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        }
+        doctorOrdersViewHolder.orderId.setText(context.getString(R.string.oder_number) +" "+orders.get(position).getId());
         doctorOrdersViewHolder.orderDate.setText(orders.get(position).getDate());
         doctorOrdersViewHolder.orderTime.setText(orders.get(position).getTime());
-        doctorOrdersViewHolder.tv_whenPainStart.setText(orderDetails.get(position).getWhenPainStart());
-        doctorOrdersViewHolder.tv_painPlace.setText(orderDetails.get(position).getPainPlace());
-       // doctorOrdersViewHolder.tv_painPosition.setText(orderDetails.get(position).getPainPosition());
-        //doctorOrdersViewHolder.tv_farFromYou.setText(orderDetails.get(position).getFarFromYou());
-        doctorOrdersViewHolder.tv_patientAddress.setText(orderDetails.get(position).getAddress());
+        doctorOrdersViewHolder.tv_whenPainStart.setText(context.getString(R.string.pain_start_sence)  + " "+orderDetails.get(position).getWhenPainStart());
+        doctorOrdersViewHolder.tv_painPlace.setText(context.getString(R.string.pain_place) +" "+orderDetails.get(position).getPainPlace());
+        doctorOrdersViewHolder.tv_patientAddress.setText(context.getString(R.string.the_address)+" "+orderDetails.get(position).getAddress());
+        doctorOrdersViewHolder.tv_street.setText(context.getString(R.string.street)+" "+orderDetails.get(position).getStreet());
+        doctorOrdersViewHolder.tv_city.setText(context.getString(R.string.city) +" "+orderDetails.get(position).getCity());
+        doctorOrdersViewHolder.tv_patientName.setText(context.getString(R.string.the_patientName)+" "+ orderDetails.get(position).getPatient().getName());
+        doctorOrdersViewHolder.tv_patientNumber.setText(context.getString(R.string.the_patientNumber)+" "+ orderDetails.get(position).getPatient().getPhone());
         doctorOrdersViewHolder.rowDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,8 +174,8 @@ public class DoctorOrdersRecyclerViewAdapter extends RecyclerView.Adapter<Doctor
                             //check if response code is successful or not
                             //if code successful
                             if (response.body().getCode().equals(FLAGE_CODE_SUCCSESS)) {
-                                doctorOrdersViewHolder.bt_choseOrder.setText("هذا الطلب تم اختياره");
-                                doctorOrdersViewHolder.bt_choseOrder.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                doctorOrdersViewHolder.bt_choseOrder.setText(R.string.order_choosen);
+                                doctorOrdersViewHolder.bt_choseOrder.setBackgroundColor(ContextCompat.getColor(context, R.color.green_highlighted));
                                 doctorOrdersViewHolder.bt_choseOrder.setClickable(false);
                             } else {
                                 //here if code not successful

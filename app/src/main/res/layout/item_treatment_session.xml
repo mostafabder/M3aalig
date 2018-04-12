@@ -16,23 +16,6 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="0.1">
-
-            <ImageView
-                android:id="@+id/edit_image_click"
-                android:layout_width="20dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/edit" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="0.9"
             android:orientation="vertical">
 
@@ -44,25 +27,25 @@
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.4"
-                    android:gravity="left"
-                    android:id="@+id/date_next_visit"
-                    android:text="28-12-2018"
-                    android:textColor="@color/tinytext"
-                    android:textSize="12sp" />
-
-                <TextView
                     android:id="@+id/next_visit_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
-                    android:text="جلسة علاج نصف اسبوعية"
+                    android:text="@string/visit_half"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.4"
+                    android:gravity="end"
+                    android:id="@+id/date_next_visit"
+                    android:text="28-12-2018"
+                    android:textColor="@color/tinytext"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -72,23 +55,38 @@
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.4"
-                    android:gravity="left"
-                    android:id="@+id/time_next_visit"
-                    android:text="3:15"
-                    android:textColor="@color/white" />
-
-                <TextView
                     android:id="@+id/next_visit_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
                     android:text="د / محمد محسن"
                     android:textColor="@color/tinytext" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.4"
+                    android:gravity="end"
+                    android:id="@+id/time_next_visit"
+                    android:text="3:15"
+                    android:textColor="@color/white" />
             </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="0.1">
+
+            <ImageView
+                android:id="@+id/edit_image_click"
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/edit" />
 
         </LinearLayout>
     </LinearLayout>
@@ -108,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="قم بتحديد أفضل موعد يناسبك"
+            android:text="@string/best_date_for_u"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -117,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="وسيتم التواصل مع المعالج لتحديد موعد جديد"
+            android:text="@string/comunicate_with_doctor"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -132,6 +130,61 @@
             android:orientation="horizontal"
             android:weightSum="3">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/change_date_button"
+                android:layout_weight="0.9"
+                android:background="@color/colorPrimaryDark"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/changind_day"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:id="@+id/change_time_button"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/changing_hour"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/confirm_change_button"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:src="@drawable/ok_button" />
+
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
@@ -139,57 +192,6 @@
                 android:id="@+id/cancel_change_button"
                 android:layout_weight="0.5"
                 android:src="@drawable/cancel_button" />
-
-            <ImageView
-                android:id="@+id/confirm_change_button"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-
-                android:layout_gravity="center"
-                android:layout_weight="0.5"
-                android:src="@drawable/ok_button" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="0.9"
-                android:id="@+id/change_time_button"
-                android:background="@drawable/round_dark_blue_button"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="تغيير الساعة"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </LinearLayout>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight="0.1"
-                 />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-               android:id="@+id/change_date_button"
-                android:layout_weight="0.9"
-                android:background="@drawable/round_dark_blue_button"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="تغيير اليوم"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
         </LinearLayout>
 
 

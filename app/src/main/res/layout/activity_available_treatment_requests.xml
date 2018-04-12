@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:background="@color/appcolor"
-    android:paddingTop="16dp"
     tools:context="com.asi.m3alig.M3algFilesWork.AvailableTreatmentRequestsActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
 
@@ -26,7 +25,6 @@
                 android:layout_width="0dp"
                 android:layout_weight=".3"
                 android:onClick="goBack"
-
                 android:layout_height="match_parent"
                 android:gravity="center"
                 >
@@ -38,15 +36,13 @@
                     />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/back"
-                    android:layout_marginTop="15dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginBottom="6dp"
                     />
             </LinearLayout>
 
@@ -54,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".4"
-                android:src="@drawable/side_menu_logo"
+                android:src="@drawable/logo_icon_white"
                 android:padding="8dp"
                 />
             <LinearLayout
@@ -96,7 +92,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:padding="7dp"
-            android:textSize="15sp"
+            android:textSize="24sp"
             />
     </LinearLayout>
 
@@ -117,20 +113,71 @@
                 android:layout_marginTop="10dp"
                 >
 
-                <ImageView
-                    android:id="@+id/map_button_doctor"
+                <mehdi.sakout.fancybuttons.FancyButton
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:src="@drawable/map_not_clicked_icon" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
                     android:id="@+id/write_address_button"
-                    android:layout_height="40dp"
-                    android:src="@drawable/write_address_clicked_icon"
-                    />
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    fancy:fb_borderColor="#FFFFFF"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="@color/green_highlighted"
+                    fancy:fb_focusColor="#9bd823"
+                    fancy:fb_iconPosition="left"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="@string/orders"
+                    fancy:fb_textColor="#FFFFFF"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="@string/orders"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:visibility="gone"/>
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:id="@+id/map_button_doctor"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    fancy:fb_borderColor="#FFFFFF"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="@color/appcolor"
+                    fancy:fb_focusColor="#2d7145"
+                    fancy:fb_iconPosition="left"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="@string/the_map"
+                    fancy:fb_textColor="@color/white"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_waiting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="16dp"
+                android:visibility="visible">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:progressTint="@color/white"/>
             </LinearLayout>
 
            <FrameLayout
@@ -170,12 +217,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="لا يوجد طلبات متاحة الان"
+                    android:text="@string/no_orders"
                     android:textColor="@color/white"
                     android:textSize="24sp"/>
             </LinearLayout>

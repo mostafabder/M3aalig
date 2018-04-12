@@ -27,7 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".3"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:onClick="goBack">
 
                 <ImageView
@@ -38,10 +38,9 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
                     android:text="@string/back"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -61,18 +60,17 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".3"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:onClick="nextPage"
 
                 >
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
                     android:text="@string/cont"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -122,7 +120,7 @@
                 android:id="@+id/when_pain_start"
                 android:onClick="whenPainStart"
                 android:layout_gravity="center"
-                android:gravity="center|right"
+                android:gravity="center"
                 android:text="@string/when_pain_start"
                 android:textColorHint="@color/offwhite"
                 android:textColor="@color/white"
@@ -149,6 +147,17 @@
                 android:orientation="horizontal"
                 android:padding="7dp"
                 android:weightSum="2">
+
+
+                <ImageView
+                    android:id="@+id/ivRow1"
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".2"
+                    android:src="@drawable/main_screen_arrow_icon" />
+
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -158,12 +167,35 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_blue"
+                android:orientation="horizontal"
+                android:padding="7dp"
+                android:weightSum="2">
+
+
                 <ImageView
+                    android:id="@+id/ivRow2"
                     android:layout_width="0dp"
                     android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight=".2"
                     android:src="@drawable/main_screen_arrow_icon" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.7"
+                    android:text="@string/ont_the_body"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -173,6 +205,25 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:id="@+id/front_body_button"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    fancy:fb_borderColor="#FFFFFF"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="@color/green_highlighted"
+                    fancy:fb_focusColor="#9bd823"
+                    fancy:fb_iconPosition="left"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="@string/from_front"
+                    fancy:fb_textColor="#FFFFFF" />
                 <mehdi.sakout.fancybuttons.FancyButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -186,29 +237,14 @@
                     android:paddingTop="10dp"
                     fancy:fb_borderColor="#FFFFFF"
                     fancy:fb_borderWidth="1dp"
+
                     fancy:fb_defaultColor="@color/appcolor"
-                    fancy:fb_focusColor="#9bd823"
-                    fancy:fb_iconPosition="left"
-                    fancy:fb_radius="30dp"
-                    fancy:fb_text="من الخلف"
-                    fancy:fb_textColor="#FFFFFF" />
-                <mehdi.sakout.fancybuttons.FancyButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="20dp"
-                    android:id="@+id/front_body_button"
-                    android:paddingRight="20dp"
-                    android:paddingTop="10dp"
-                    fancy:fb_borderColor="#FFFFFF"
-                    fancy:fb_borderWidth="1dp"
-                    fancy:fb_defaultColor="@color/green_highlighted"
                     fancy:fb_focusColor="#2d7145"
                     fancy:fb_iconPosition="left"
                     fancy:fb_radius="30dp"
-                    fancy:fb_text="من الامام"
+                    fancy:fb_text="@string/from_back"
                     fancy:fb_textColor="@color/white" />
+
             </LinearLayout>
 
             <!--<LinearLayout-->
@@ -265,6 +301,14 @@
                 <!--android:padding="5dp"-->
                 <!--android:weightSum="2">-->
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".2"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:tint="@color/tinyblack" />
+
 
                 <!--<TextView-->
                     <!--android:layout_width="0dp"-->
@@ -275,14 +319,7 @@
                     <!--android:textSize="14sp"-->
                     <!--android:textStyle="bold" />-->
 
-                <!--<ImageView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="15dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_weight=".2"-->
-                    <!--android:src="@drawable/main_screen_arrow_icon"-->
-                    <!--android:tint="@color/tinyblack" />-->
-            <!--</LinearLayout>-->
+
 
             <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
@@ -291,6 +328,14 @@
                 <!--android:orientation="horizontal"-->
                 <!--android:padding="5dp"-->
                 <!--android:weightSum="2">-->
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".2"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:tint="@color/tinyblack" />
 
 
                 <!--<TextView-->
@@ -302,43 +347,50 @@
                     <!--android:textSize="14sp"-->
                     <!--android:textStyle="bold" />-->
 
-                <!--<ImageView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="15dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_weight=".2"-->
-                    <!--android:src="@drawable/main_screen_arrow_icon"-->
-                    <!--android:tint="@color/tinyblack" />-->
-            <!--</LinearLayout>-->
+
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:layout_marginTop="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="40dp"
-                    android:gravity="top|left"
-                    android:text="يمين الجسم" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="40dp"
-                    android:text="يسار الجسم" />
-
 
                 <ImageView
                     android:id="@+id/body_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="7dp"
+                    android:layout_gravity="center"
                     android:src="@mipmap/front_man_icon" />
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:id="@+id/bt_removePoints"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    fancy:fb_borderColor="#FFFFFF"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="@color/red"
+                    fancy:fb_iconPosition="left"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="@string/remove_points"
+                    fancy:fb_textColor="#FFFFFF" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rl_master"
+                    android:layout_gravity="center"
+                    android:layoutDirection="ltr">
+                </RelativeLayout>
+
             </FrameLayout>
 
         </LinearLayout>

@@ -32,6 +32,7 @@ import com.asi.m3alig.Retrofit.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -150,21 +151,40 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
             public void onClick(View v) {
                 doctorVisitsViewHolder.newChanges.setVisibility(View.VISIBLE);
                 if(doctorVisitsViewHolder.timeOrDay) {
-                    doctorVisitsViewHolder.et_day.setHint("dd");
-                    doctorVisitsViewHolder.tv_f1.setText("/");
-                    doctorVisitsViewHolder.et_month.setHint("mm");
-                    doctorVisitsViewHolder.tv_f2.setText("/");
-                    doctorVisitsViewHolder.et_year.setHint("yyyy");
+                    if (Locale.getDefault().getLanguage().equals("en")) {
+                        doctorVisitsViewHolder.et_day.setHint("dd");
+                        doctorVisitsViewHolder.tv_f1.setText("/");
+                        doctorVisitsViewHolder.et_month.setHint("mm");
+                        doctorVisitsViewHolder.tv_f2.setText("/");
+                        doctorVisitsViewHolder.et_year.setHint("yyyy");
+                    }else if(Locale.getDefault().getLanguage().equals("ar")){
+                        doctorVisitsViewHolder.et_day.setHint("يوم");
+                        doctorVisitsViewHolder.tv_f1.setText("/");
+                        doctorVisitsViewHolder.et_month.setHint("شهر");
+                        doctorVisitsViewHolder.tv_f2.setText("/");
+                        doctorVisitsViewHolder.et_year.setHint("سنة");
+                    }
                 }else {
                     doctorVisitsViewHolder.timeOrDay = true;
-                    doctorVisitsViewHolder.et_day.setHint("dd");
-                    doctorVisitsViewHolder.et_day.setText("");
-                    doctorVisitsViewHolder.tv_f1.setText("/");
-                    doctorVisitsViewHolder.et_month.setHint("mm");
-                    doctorVisitsViewHolder.et_month.setText("");
-                    doctorVisitsViewHolder.tv_f2.setText("/");
-                    doctorVisitsViewHolder.et_year.setHint("yyyy");
-                    doctorVisitsViewHolder.et_year.setText("");
+                    if(Locale.getDefault().getLanguage().equals("en")){
+                        doctorVisitsViewHolder.et_day.setHint("dd");
+                        doctorVisitsViewHolder.et_day.setText("");
+                        doctorVisitsViewHolder.tv_f1.setText("/");
+                        doctorVisitsViewHolder.et_month.setHint("mm");
+                        doctorVisitsViewHolder.et_month.setText("");
+                        doctorVisitsViewHolder.tv_f2.setText("/");
+                        doctorVisitsViewHolder.et_year.setHint("yyyy");
+                        doctorVisitsViewHolder.et_year.setText("");
+                    }else if(Locale.getDefault().getLanguage().equals("ar")){
+                        doctorVisitsViewHolder.et_day.setHint("يوم");
+                        doctorVisitsViewHolder.et_day.setText("");
+                        doctorVisitsViewHolder.tv_f1.setText("/");
+                        doctorVisitsViewHolder.et_month.setHint("شهر");
+                        doctorVisitsViewHolder.et_month.setText("");
+                        doctorVisitsViewHolder.tv_f2.setText("/");
+                        doctorVisitsViewHolder.et_year.setHint("سنة");
+                        doctorVisitsViewHolder.et_year.setText("");
+                    }
                 }
             }
         });
@@ -174,20 +194,39 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
                 doctorVisitsViewHolder.newChanges.setVisibility(View.VISIBLE);
                 if(doctorVisitsViewHolder.timeOrDay){
                     doctorVisitsViewHolder.timeOrDay = false;
-                    doctorVisitsViewHolder.et_day.setHint("hh");
-                    doctorVisitsViewHolder.et_day.setText("");
-                    doctorVisitsViewHolder.tv_f1.setText(":");
-                    doctorVisitsViewHolder.et_month.setHint("mm");
-                    doctorVisitsViewHolder.et_month.setText("");
-                    doctorVisitsViewHolder.tv_f2.setText(":");
-                    doctorVisitsViewHolder.et_year.setHint("ss");
-                    doctorVisitsViewHolder.et_year.setText("");
+                    if(Locale.getDefault().getLanguage().equals("en")){
+                        doctorVisitsViewHolder.et_day.setHint("hh");
+                        doctorVisitsViewHolder.et_day.setText("");
+                        doctorVisitsViewHolder.tv_f1.setText(":");
+                        doctorVisitsViewHolder.et_month.setHint("mm");
+                        doctorVisitsViewHolder.et_month.setText("");
+                        doctorVisitsViewHolder.tv_f2.setText(":");
+                        doctorVisitsViewHolder.et_year.setHint("ss");
+                        doctorVisitsViewHolder.et_year.setText("");
+                    }else if(Locale.getDefault().getLanguage().equals("ar")){
+                        doctorVisitsViewHolder.et_day.setHint("س");
+                        doctorVisitsViewHolder.et_day.setText("");
+                        doctorVisitsViewHolder.tv_f1.setText(":");
+                        doctorVisitsViewHolder.et_month.setHint("د");
+                        doctorVisitsViewHolder.et_month.setText("");
+                        doctorVisitsViewHolder.tv_f2.setText(":");
+                        doctorVisitsViewHolder.et_year.setHint("ث");
+                        doctorVisitsViewHolder.et_year.setText("");
+                    }
                 }else {
-                    doctorVisitsViewHolder.et_day.setHint("hh");
-                    doctorVisitsViewHolder.tv_f1.setText(":");
-                    doctorVisitsViewHolder.et_month.setHint("mm");
-                    doctorVisitsViewHolder.tv_f2.setText(":");
-                    doctorVisitsViewHolder.et_year.setHint("ss");
+                    if(Locale.getDefault().getLanguage().equals("en")){
+                        doctorVisitsViewHolder.et_day.setHint("hh");
+                        doctorVisitsViewHolder.tv_f1.setText(":");
+                        doctorVisitsViewHolder.et_month.setHint("mm");
+                        doctorVisitsViewHolder.tv_f2.setText(":");
+                        doctorVisitsViewHolder.et_year.setHint("ss");
+                    }else if(Locale.getDefault().getLanguage().equals("ar")){
+                        doctorVisitsViewHolder.et_day.setHint("س");
+                        doctorVisitsViewHolder.tv_f1.setText(":");
+                        doctorVisitsViewHolder.et_month.setHint("د");
+                        doctorVisitsViewHolder.tv_f2.setText(":");
+                        doctorVisitsViewHolder.et_year.setHint("ث");
+                    }
                 }
             }
         });
@@ -208,14 +247,14 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
                 Log.i("OKAYBITCH", ok);
                 if(ok.equals("ok")){
                     if(doctorVisitsViewHolder.timeOrDay) {
-                        Toast.makeText(context, "يمكنك حفظ اليوم الجديد الان", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.save_new_day_now, Toast.LENGTH_LONG).show();
                         doctorVisitsViewHolder.day =
                                 doctorVisitsViewHolder.et_year.getText().toString().trim() + "-" +
                                         doctorVisitsViewHolder.et_month.getText().toString().trim() + "-" +
                                         doctorVisitsViewHolder.et_day.getText().toString().trim();
                         Log.i("day", doctorVisitsViewHolder.day);
                     }else {
-                        Toast.makeText(context, "يمكنك حفظ الساعة الجديدة الان", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.save_new_hour_now, Toast.LENGTH_LONG).show();
                         doctorVisitsViewHolder.time =
                                 doctorVisitsViewHolder.et_day.getText().toString().trim() + ":" +
                                         doctorVisitsViewHolder.et_month.getText().toString().trim() + ":" +
@@ -314,54 +353,54 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
         String dateYear = year.getText().toString().trim();
         if(timeOrDay) {
             if (dateDay.equals("")) {
-                return "من فضلك ادخل اليوم";
+                return context.getString(R.string.please_enter_day);
             }
             if (dateMonth.equals("")) {
-                return "من فضلك ادخل الشهر";
+                return context.getString(R.string.please_enter_month);
             }
             if (dateYear.equals("")) {
-                return "من فضلك ادخل العام";
+                return context.getString(R.string.please_enter_year);
             }
 
             if (!dateDay.equals("")) {
                 if (dateDay.length() < 2) {
-                    return "من فضضلك ضع 0 قبل الرقم ان كان اصغر من 10";
+                    return context.getString(R.string.please_enter_zero);
                 }
             }
             if (!dateMonth.equals("")){
                 if (dateMonth.length() < 2) {
-                    return "من فضضلك ضع 0 قبل الرقم ان كان اصغر من 10";
+                    return context.getString(R.string.please_enter_zero);
                 }
             }
             if(!dateYear.equals("")) {
                 if (dateYear.length() < 2) {
-                    return "من فضضلك ضع 0 قبل الرقم ان كان اصغر من 10";
+                    return context.getString(R.string.please_enter_zero);
                 }
             }
 
             if(Integer.parseInt(dateYear) < Integer.parseInt(currentYear)){
-                return "لا يمكنك ادخال عام اقل من العام الحالي";
+                return context.getString(R.string.cant_enter_low_year);
             } else {
                 if (Integer.parseInt(dateMonth) < Integer.parseInt(currentMonth)) {
-                    return "لا يمكنك ادخال شهر اقل من الشهر الحالي";
+                    return context.getString(R.string.cant_enter_low_month);
                 } else {
                     if (Integer.parseInt(dateDay) < Integer.parseInt(currentDay)) {
-                        return "لا يمكنك ادخال يوم اقل من اليوم الحالي";
+                        return context.getString(R.string.cant_enter_low_day);
                     }
                 }
 
                 if(!dateMonth.equals("")){
                     if (Integer.parseInt(dateMonth) > 12){
-                        return "لا يمكنك ادخال شهر اكبر من 12";
+                        return context.getString(R.string.cant_enter_high_month);
                     }else {
                         if(dateMonth.equals("4")||dateMonth.equals("6")||
                                 dateMonth.equals("9")||dateMonth.equals("11")){
                             if (Integer.parseInt(dateDay) > 31){
-                                return "لا يمكنك ادخال يوم اكبر من 30 في هذا الشهر";
+                                return context.getString(R.string.cant_enter_more30);
                             }
                         }else if(dateMonth.equals("2")){
                             if (Integer.parseInt(dateDay) > 29){
-                                return "لا يمكنك ادخال يوم اكبر من 29 في هذا الشهر";
+                                return context.getString(R.string.cant_enter_more29);
                             }
                         }
                     }
@@ -369,47 +408,47 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
 
                 if(!dateDay.equals("")){
                     if (Integer.parseInt(dateDay) > 31){
-                        return "لا يمكنك ادخال يوم اكبر من 31";
+                        return context.getString(R.string.cant_enter_high_day);
                     }
                 }
             }
         }else {
             if(dateDay.equals("")){
-                return "من فضلك ادخل الساعة";
+                return context.getString(R.string.enter_hour);
             }
             if(dateMonth.equals("")){
-                return "من فضلك ادخل الدقاقئق";
+                return context.getString(R.string.enter_min);
             }
             if(dateYear.equals("")){
-                return "من فضلك ادخل الثواني";
+                return context.getString(R.string.enter_second);
             }
 
             if(!dateYear.equals("")){
                 if (Integer.parseInt(dateYear) >= 60 || dateYear.length() > 2){
-                    return "لا يمكنك ادخال ثواني اكثر من 59";
+                    return context.getString(R.string.cant_enter_high_seconds);
                 }else {
                     if(dateYear.length() < 2){
-                        return "من فضضلك ضع 0 قبل الرقم ان كان اصغر من 10";
+                        return context.getString(R.string.please_enter_zero);
                     }
                 }
             }
 
             if(!dateMonth.equals("")){
                 if (Integer.parseInt(dateMonth) >= 60){
-                    return "لا يمكنك ادخال دقائق اكثر من 59";
+                    return context.getString(R.string.cant_enter_high_min);
                 }else {
                     if(dateMonth.length() < 2){
-                        return "من فضضلك ضع 0 قبل الرقم ان كان اصغر من 10";
+                        return context.getString(R.string.please_enter_zero);
                     }
                 }
             }
 
             if(!dateDay.equals("")){
                 if (Integer.parseInt(dateDay) > 23){
-                    return "لا يمكنك ادخال ساعة اكبر من 23";
+                    return context.getString(R.string.cant_enter_high_hours);
                 }else {
                     if(dateDay.length() < 2){
-                        return "من فضضلك ضع 0 قبل الرقم ان كان اصغر من 10";
+                        return context.getString(R.string.please_enter_zero);
                     }
                 }
             }
@@ -421,12 +460,12 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
     private void apiValidation(String id, String oldDay, String oldTime, String day, String time, LinearLayout linearLayout){
         if(day.equals("")){
             if(time.equals("")){
-                Toast.makeText(context, "لم يتم تغيير شيئ منك", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.nothing_changes, Toast.LENGTH_LONG).show();
             }else {
                 if(time.equals(oldTime)){
-                    Toast.makeText(context, "لم يتم تغيير شيئ منك", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.nothing_changes, Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(context, "لقد تم تغيير الساعة فقط", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.just_hour, Toast.LENGTH_LONG).show();
                     changeDateOrTime(id, oldDay, time);
                     linearLayout.setVisibility(View.GONE);
                 }
@@ -434,28 +473,28 @@ public class DoctorNextVisitScheduleRecyclerViewAdapter extends RecyclerView.Ada
         }else {
             if(day.equals(oldDay)){
                 if(time.equals("")){
-                    Toast.makeText(context, "لم يتم تغيير شيئ منك", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.nothing_changes, Toast.LENGTH_LONG).show();
                 }else {
                     if(time.equals(oldTime)){
-                        Toast.makeText(context, "لم يتم تغيير شيئ منك", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.nothing_changes, Toast.LENGTH_LONG).show();
                     }else {
-                        Toast.makeText(context, "لقد تم تغيير الساعة فقط", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.just_hour, Toast.LENGTH_LONG).show();
                         //changeDateOrTime(id, oldDay, time);
                         //linearLayout.setVisibility(View.GONE);
                     }
                 }
             }else{
                 if(time.equals("")){
-                    Toast.makeText(context, "لقد تم تغيير اليوم فقط", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.just_day, Toast.LENGTH_LONG).show();
                     //changeDateOrTime(id, day, oldTime);
                     //linearLayout.setVisibility(View.GONE);
                 }else {
                     if(time.equals(oldTime)){
-                        Toast.makeText(context, "لقد تم تغيير اليوم فقط", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.just_day, Toast.LENGTH_LONG).show();
                         //changeDateOrTime(id, day, oldTime);
                         //linearLayout.setVisibility(View.GONE);
                     }else {
-                        Toast.makeText(context, "لقد تم تغيير اليوم و الساعة", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.day_and_hour, Toast.LENGTH_LONG).show();
                         //changeDateOrTime(id, day, time);
                         //linearLayout.setVisibility(View.GONE);
                     }

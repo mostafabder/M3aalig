@@ -40,31 +40,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
             android:paddingEnd="5dp"
             android:paddingStart="5dp">
 
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/btn_verify"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                fancy:fb_borderColor="#FFFFFF"
-                fancy:fb_borderWidth="1dp"
-                fancy:fb_defaultColor="@color/blue"
-                fancy:fb_focusColor="@color/white_blue"
-                fancy:fb_iconPosition="left"
-                fancy:fb_radius="30dp"
-                fancy:fb_text="تأكيد"
-                fancy:fb_textColor="#FFFFFF"
-                fancy:fb_textSize="15sp" />
-
-            <mehdi.sakout.fancybuttons.FancyButton
-                android:id="@+id/btn_close"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -78,7 +58,26 @@
                 fancy:fb_focusColor="@color/white_blue"
                 fancy:fb_iconPosition="left"
                 fancy:fb_radius="30dp"
-                fancy:fb_text="تعديل الرقم"
+                fancy:fb_text="@string/confirm"
+                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textSize="15sp" />
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_close"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                fancy:fb_borderColor="#FFFFFF"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="@color/blue"
+                fancy:fb_focusColor="@color/white_blue"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="30dp"
+                fancy:fb_text="@string/change_number"
                 fancy:fb_textColor="#FFFFFF"
                 fancy:fb_textSize="15sp" />
         </RelativeLayout>
@@ -88,8 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:layoutDirection="rtl">
+            android:gravity="center">
 
             <LinearLayout
                 android:id="@+id/send_layout"
@@ -100,19 +98,23 @@
                 android:visibility="gone">
                 <TextView
                     android:id="@+id/tv_not"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="لم يصلك رمز التفعيل؟"
+                    android:layout_weight="0.5"
+                    android:text="@string/code_didnt_arrived"
                     android:textColor="#696969"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_send_sms"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="اعادة ارسال رمز التفعيل"
+                    android:layout_weight="0.5"
+                    android:text="@string/resend_verify_code"
                     android:textColor="@color/tinyblue"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/seconds_layout"
@@ -121,13 +123,13 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:orientation="horizontal"
-               >
+               android:visibility="visible">
 
                 <TextView
                     android:id="@+id/tv_retry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="اعادة ارسال رمز التفعيل بعد"
+                    android:text="@string/will_resend_verify_code_after"
                     android:textColor="#696969"
                     android:textStyle="bold" />
 

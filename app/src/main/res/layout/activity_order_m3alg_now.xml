@@ -24,7 +24,7 @@
                 android:layout_width="0dp"
                 android:onClick="goBack"
                 android:layout_weight=".3"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 >
                 <ImageView
@@ -36,11 +36,10 @@
                     />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/back"
                     android:layout_toEndOf="@id/ivBackArrow"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="35dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -54,20 +53,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".4"
+
                 android:src="@drawable/logo_icon_white"
                 android:padding="8dp"
                 />
-            <LinearLayout
+
+          <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight=".3"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:onClick="nextPage"
                 android:layout_height="match_parent"
-
                 >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/cont"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"
@@ -75,8 +75,6 @@
                     android:textStyle="bold"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
-
                     />
                 <ImageView
                     android:id="@+id/ivMoreArrow"
@@ -123,6 +121,14 @@
                 android:background="@color/white_blue"
                 >
 
+                <ImageView
+                    android:id="@+id/ivRow1"
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="15dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
 
                 <TextView
                     android:layout_width="0dp"
@@ -133,13 +139,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="15dp"
-                    android:src="@drawable/main_screen_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,6 +190,14 @@
                 android:background="@color/white_blue"
                 >
 
+                <ImageView
+                    android:id="@+id/ivRow2"
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="15dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
 
                 <TextView
                     android:layout_width="0dp"
@@ -200,13 +208,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="15dp"
-                    android:src="@drawable/main_screen_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -247,6 +249,14 @@
                 android:background="@color/white_blue"
                 >
 
+                <ImageView
+                    android:id="@+id/ivRow3"
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="15dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
 
                 <TextView
                     android:layout_width="0dp"
@@ -257,13 +267,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="15dp"
-                    android:src="@drawable/main_screen_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -358,6 +362,14 @@
                 android:background="@color/white_blue"
                 >
 
+                <ImageView
+                    android:id="@+id/ivRow4"
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="15dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
 
                 <TextView
                     android:layout_width="0dp"
@@ -368,13 +380,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="15dp"
-                    android:src="@drawable/main_screen_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -425,6 +431,14 @@
                 android:background="@color/white_blue"
                 >
 
+                <ImageView
+                    android:id="@+id/ivRow5"
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="15dp"
+                    android:src="@drawable/main_screen_arrow_icon"
+                    android:layout_gravity="center_vertical"
+                    />
 
                 <TextView
                     android:layout_width="0dp"
@@ -435,13 +449,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight=".2"
-                    android:layout_height="15dp"
-                    android:src="@drawable/main_screen_arrow_icon"
-                    android:layout_gravity="center_vertical"
-                    />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.Patient.PatientTreatmentSessionsScheduleAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.TestModel;
 import com.asi.m3alig.Models.Visit;
 import com.asi.m3alig.R;
@@ -20,9 +22,11 @@ import com.asi.m3alig.Responses.VisitResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
 import com.asi.m3alig.Tools.Connection.ServerTool;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -39,11 +43,14 @@ public class TreatmentSessionsScheduleActivity extends AppCompatActivity {
     private ArrayList<Visit> data;
     private RecyclerView.LayoutManager layoutManager;
 
+    private ImageView ivBackArrow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(TreatmentSessionsScheduleActivity.this, PreferenceUtilities.getLanguage(TreatmentSessionsScheduleActivity.this));
         setContentView(R.layout.activity_treatment_sessions_schedule);
         recyclerView = (RecyclerView) findViewById(R.id.next_treatment_sessions_recycler);
         recyclerView.setHasFixedSize(true);
@@ -51,6 +58,13 @@ public class TreatmentSessionsScheduleActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         getNextVisits();
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+        }
 
     }
     public void goBack(View view) {

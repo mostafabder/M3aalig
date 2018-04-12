@@ -14,13 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.M3alig.DoctorOrdersRecyclerViewAdapter;
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.OrderDetails;
 import com.asi.m3alig.Models.Orders;
+import com.asi.m3alig.Models.Patient;
 import com.asi.m3alig.Models.SingleOrder;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.DoctorVisitsOrder;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,7 +34,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
+import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,7 +53,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
     private Marker sourceMarker;
     FrameLayout frameLayout;
     LinearLayout linearLayout;
-    ImageView mapButton,addressButton;
+    FancyButton mapButton,addressButton;
 
 
     /*ExpandableListAdapter listAdapter;
@@ -61,24 +66,25 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
     private RecyclerView mDoctorOrdersRV;
     private DoctorOrdersRecyclerViewAdapter mDoctorOrdersAdapter;
     private LinearLayoutManager layoutManager;
-    private LinearLayout ll_emptyOrdersText;
+    private LinearLayout ll_emptyOrdersText, ll_waiting;
+
+    private ImageView ivBackArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(AvailableTreatmentRequestsActivity.this, PreferenceUtilities.getLanguage(AvailableTreatmentRequestsActivity.this));
         setContentView(R.layout.activity_available_treatment_requests);
 
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMapDoctor);
         frameLayout = (FrameLayout) findViewById(R.id.frame_doctor);
         linearLayout = (LinearLayout) findViewById(R.id.map_layout_doctor);
-        mapButton= (ImageView) findViewById(R.id.map_button_doctor);
-        addressButton= (ImageView) findViewById(R.id.write_address_button);
+        mapButton= (FancyButton) findViewById(R.id.map_button_doctor);
+        addressButton= (FancyButton) findViewById(R.id.write_address_button);
 
-        mapButton.setImageResource(R.drawable.map_not_clicked_icon);
-        addressButton.setImageResource(R.drawable.write_address_clicked_icon);
         frameLayout.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.GONE);
         setupMap(0, 0);
@@ -91,8 +97,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                 }
                 frameLayout.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
-                mapButton.setImageResource(R.drawable.map_not_clicked_icon);
-                addressButton.setImageResource(R.drawable.write_address_clicked_icon);
+                mapButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
+                addressButton.setBackgroundColor(getColor(R.color.green_highlighted));
             }
 
 
@@ -102,8 +108,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ll_emptyOrdersText.setVisibility(View.GONE);
                 frameLayout.setVisibility(View.GONE);
-                mapButton.setImageResource(R.drawable.map_clicked_icon);
-                addressButton.setImageResource(R.drawable.write_address_not_clicked_icon);
+                mapButton.setBackgroundColor(getColor(R.color.green_highlighted));
+                addressButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
                 linearLayout.setVisibility(View.VISIBLE);
             }
         });
@@ -117,6 +123,14 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         mDoctorOrdersRV.setLayoutManager(layoutManager);
 
         ll_emptyOrdersText = (LinearLayout) findViewById(R.id.ll_emptyOrdersText);
+        ll_waiting = (LinearLayout) findViewById(R.id.ll_waiting);
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+        }
 
         // preparing list data
         prepareListData();
@@ -195,6 +209,9 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
         call.enqueue(new Callback<DoctorVisitsOrder>() {
             @Override
             public void onResponse(Call<DoctorVisitsOrder> call, Response<DoctorVisitsOrder> response) {
+
+                ll_waiting.setVisibility(View.GONE);
+
                 //here if task successful
                 //check the respond body is null or not
                 //if body not null
@@ -205,16 +222,16 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                         //set up arrayList
                         ArrayList<Orders> orders = (ArrayList<Orders>) response.body().getData();
                         for(int i=0; i<orders.size(); i++) {
-                            String orderId = "طلب رقم " + orders.get(i).getId();
+                            String orderId = orders.get(i).getId();
                             String orderDate = orders.get(i).getDate();
                             String orderTime = orders.get(i).getTime();
-                            String whenPainStart = "بدأ الالم منذ.. / "  + orders.get(i).getWhenPainStart();
-                            String painPlace = "مكان الالم / " + orders.get(i).getPain_position();
-                            String painPosition = "نوع الام / " + orders.get(i).getPainDeep();
-                            String farFromYou = "المريض يبعد عنك بمقدار..";
-                            String address = "العنوان / "+ orders.get(i).getLocation_region();
-                            Log.e("PainPos",painPlace);
-                            OrderDetails orderDetails = new OrderDetails(whenPainStart, farFromYou, painPosition, painPlace, address,orders.get(i).getId());
+                            String whenPainStart = orders.get(i).getWhenPainStart();
+                            String painPlace = orders.get(i).getPain_position();
+                            String city =  orders.get(i).getLocation_city();
+                            String street =  orders.get(i).getLocation_street_name();
+                            String address = orders.get(i).getLocation_region();
+                            Patient patient = orders.get(i).getPatient();
+                            OrderDetails orderDetails = new OrderDetails(orderId, whenPainStart, street, city, painPlace, address, patient);
                             SingleOrder singleOrder = new SingleOrder(orderId, orderDate, orderTime, orderDetails);
                             mOrders.add(singleOrder);
                             mOrderDetails.add(orderDetails);
@@ -226,6 +243,8 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
                         Log.i("size", mOrders.size()+"");
                         if(mOrders.size() > 0){
                             ll_emptyOrdersText.setVisibility(View.GONE);
+                        }else {
+                            ll_emptyOrdersText.setVisibility(View.VISIBLE);
                         }
                     }else {
                         //here if code not successful
@@ -243,6 +262,7 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<DoctorVisitsOrder> call, Throwable t) {
+                ll_waiting.setVisibility(View.GONE);
                 //here if task failed
                 Toast.makeText(getApplicationContext(), getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
                 Log.e("ERROR",t.getMessage()+"   ");

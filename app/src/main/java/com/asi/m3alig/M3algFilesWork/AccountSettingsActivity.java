@@ -2,6 +2,8 @@ package com.asi.m3alig.M3algFilesWork;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -17,6 +19,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import android.widget.EditText;
@@ -41,6 +45,7 @@ import com.asi.m3alig.Responses.ProfileUpdateResponse;
 
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.SQLiteHandler;
 import com.asi.m3alig.Utility.SessionManager;
 import com.hbb20.CountryCodePicker;
@@ -59,6 +64,7 @@ import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -70,6 +76,8 @@ import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 import static com.asi.m3alig.Utility.Constants.getType;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ARABIC_LANGUAGE;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ENGLISH_LANGUAGE;
 
 public class AccountSettingsActivity extends AppCompatActivity {
 
@@ -77,6 +85,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private ArrayAdapter doctorWorkAreaAdapter;
     private Spinner doctorWorkAreaSpinner;
     private String doctorWorkArea;
+    private int areaIndex;
 
     private EditText et_editPhone, et_editName, et_editLicenseNumber, et_editHealthName;
     private TextView tv_doctorWorkArea;
@@ -87,13 +96,19 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private String area = "";
     Boolean start;
 
+    private ImageView ivBackArrow, imageButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(AccountSettingsActivity.this, PreferenceUtilities.getLanguage(AccountSettingsActivity.this));
         setContentView(R.layout.activity_account_settings);
+
+        //false mean data came without change button
         start=false;
+
         doctorWorkAreaSpinner = (Spinner) findViewById(R.id.sp_doctorWorkArea);
         doctorWorkAreaAdapter = ArrayAdapter.createFromResource(this,
                 R.array.work_areas, R.layout.support_simple_spinner_dropdown_item);
@@ -105,8 +120,12 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 doctorWorkArea = (String) doctorWorkAreaAdapter.getItem(i);
                 bt_saveChanges.setEnabled(true);
                 bt_saveChanges.setBackgroundResource(R.drawable.light_save_changes);
+
+                ArrayList<String> areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
+
                 if(doctorWorkArea.equals(getResources().getStringArray(R.array.work_areas)[0]) ||
-                        doctorWorkArea.equals(tv_doctorWorkArea.getText().toString().trim())){
+                        doctorWorkArea.equals(tv_doctorWorkArea.getText().toString().trim())  ||
+                        (areas.indexOf(doctorWorkAreaAdapter.getItem(i)) == areaIndex)){
                     doctorWorkArea = null;
                     bt_saveChanges.setEnabled(false);
                     bt_saveChanges.setBackgroundResource(R.drawable.dark_save_changes);
@@ -136,6 +155,16 @@ public class AccountSettingsActivity extends AppCompatActivity {
         et_editName.addTextChangedListener(setTextWatcher());
         et_editLicenseNumber.addTextChangedListener(setTextWatcher());
         et_editHealthName.addTextChangedListener(setTextWatcher());
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            imageButton.setImageResource(R.drawable.log_out);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            imageButton.setImageResource(R.drawable.asset_3xhdpi);
+        }
 
     }
 
@@ -176,9 +205,16 @@ public class AccountSettingsActivity extends AppCompatActivity {
                         }
                         else{
                         area = response.body().getData().getArea();
-                        ArrayList<String> lol = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
-                        int x = lol.indexOf(area);
-                        doctorWorkAreaSpinner.setSelection(x);
+                        ArrayList<String> areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.work_areas)));
+                        areaIndex = areas.indexOf(area);
+                        if (areaIndex == -1){
+                            areas = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.areas)));
+                            areaIndex = areas.indexOf(area);
+                        }
+                        doctorWorkAreaSpinner.setSelection(areaIndex);
+
+                        Log.i("area", area);
+                        Log.i("areaIndex", areaIndex+"");
 
                         setHintsToEditText(response.body().getData().getName(), response.body().getData().getPhone(),
                                 response.body().getData().getArea(), response.body().getData().getLicense_number(),
@@ -256,5 +292,26 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
     public void goBack(View view) {
         onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void changeLanguage(View view){
+        String language = PreferenceUtilities.getLanguage(this);
+        if(language.equals(ARABIC_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ENGLISH_LANGUAGE);
+            //recreate();
+            startActivity(getIntent());
+        }
+        if(language.equals(ENGLISH_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ARABIC_LANGUAGE);
+            //recreate();
+            startActivity(getIntent());
+        }
     }
 }

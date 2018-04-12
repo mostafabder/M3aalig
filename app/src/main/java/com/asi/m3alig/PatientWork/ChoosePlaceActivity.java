@@ -24,10 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.VisitOrderPatient;
 import com.asi.m3alig.PatientWork.m3aligSideScreens.ContactDoctorActivty;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Utility.MyLocation;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -81,11 +83,15 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
 
     VisitOrderPatient order;
     final static int locationRequestCode=1000;
+
+    private ImageView ivBackArrow, ivMoreRows;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(ChoosePlaceActivity.this, PreferenceUtilities.getLanguage(ChoosePlaceActivity.this));
         setContentView(R.layout.activity_choose_place);
         spinner=(Spinner)findViewById(R.id.region_spinner);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(ChoosePlaceActivity.this, R.array.places, R.layout.item_spinner_location);
@@ -109,8 +115,8 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             public void onClick(View v) {
                cardView.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
-                mapButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
-                addressButton.setBackgroundColor(getColor(R.color.green_highlighted));
+                mapButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this,R.color.blue_unhighlighted));
+                addressButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this,R.color.green_highlighted));
             }
 
 
@@ -119,11 +125,22 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             @Override
             public void onClick(View v) {
                 cardView.setVisibility(View.GONE);
-                addressButton.setBackgroundColor(getColor(R.color.blue_unhighlighted));
-                mapButton.setBackgroundColor(getColor(R.color.green_highlighted));
+                addressButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this, R.color.blue_unhighlighted));
+                mapButton.setBackgroundColor(ContextCompat.getColor(ChoosePlaceActivity.this,R.color.green_highlighted));
                 linearLayout.setVisibility(View.VISIBLE);
             }
         });
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        ivMoreRows = (ImageView) findViewById(R.id.ivMoreArrow);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            ivMoreRows.setImageResource(R.drawable.more_icon_en);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            ivMoreRows.setImageResource(R.drawable.more_icon);
+        }
+
     }
 
 
@@ -146,7 +163,12 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             }
             else Toast.makeText(ChoosePlaceActivity.this,validate(),Toast.LENGTH_SHORT).show();
         }
-        else Toast.makeText(ChoosePlaceActivity.this,"(تعذر الحصول على الموقع. تأكد من تمكين الموقع على الجهاز)",Toast.LENGTH_SHORT).show();
+        else{
+            if(mLastLocation != null) {
+                Log.i("Location", mLastLocation.toString());
+            }
+            Toast.makeText(ChoosePlaceActivity.this, R.string.cant_find_location,Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -194,7 +216,7 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
          if(street.getText().toString().trim().equals(""))
             return getString(R.string.enter_steer);
         else if(mLastLocation==null)
-            return "تاكد من تمكين الموقع علي جهازك";
+            return getString(R.string.make_sure_of_location);
 //        else if(city.getText().toString().trim().equals(""))
 //            return getString(R.string.enter_city);
         return "ok";
@@ -296,7 +318,7 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
         else
         {
 
-            Toast.makeText(ChoosePlaceActivity.this, "(تعذر الحصول على الموقع. تأكد من تمكين الموقع على الجهاز)", Toast.LENGTH_LONG).show();
+            Toast.makeText(ChoosePlaceActivity.this, R.string.cant_find_location, Toast.LENGTH_LONG).show();
         }
 
     }

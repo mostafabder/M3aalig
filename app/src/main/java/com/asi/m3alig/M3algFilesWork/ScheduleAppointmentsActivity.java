@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.PatientWork.FinishSessionActivity;
 import com.asi.m3alig.PatientWork.NotesActivity;
 import com.asi.m3alig.PatientWork.TreatmentSessionMain;
 import com.asi.m3alig.R;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 
 public class ScheduleAppointmentsActivity extends AppCompatActivity {
 
@@ -19,6 +21,7 @@ public class ScheduleAppointmentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(ScheduleAppointmentsActivity.this, PreferenceUtilities.getLanguage(ScheduleAppointmentsActivity.this));
         setContentView(R.layout.activity_schedule_appointments);
 
 

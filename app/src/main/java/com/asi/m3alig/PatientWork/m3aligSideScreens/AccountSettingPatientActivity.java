@@ -9,18 +9,22 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asi.m3alig.BeforLoginActivity;
+import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.R;
 import com.asi.m3alig.Responses.ProfileUpdateResponse;
 import com.asi.m3alig.Retrofit.ApiClient;
 import com.asi.m3alig.Retrofit.ApiInterface;
+import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.asi.m3alig.Utility.SQLiteHandler;
 import com.asi.m3alig.Utility.SessionManager;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -32,6 +36,8 @@ import static com.asi.m3alig.Utility.Constants.M3ALG_TYPE;
 import static com.asi.m3alig.Utility.Constants.getSecret;
 import static com.asi.m3alig.Utility.Constants.getToken;
 import static com.asi.m3alig.Utility.Constants.getType;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ARABIC_LANGUAGE;
+import static com.asi.m3alig.Utility.PreferenceUtilities.ENGLISH_LANGUAGE;
 
 public class AccountSettingPatientActivity extends AppCompatActivity {
 
@@ -40,13 +46,28 @@ public class AccountSettingPatientActivity extends AppCompatActivity {
     Map<String,String> params;
     EditText name_et,phone_et;
     TextView submit;
+
+    private ImageView ivBackArrow, iv_logout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        PreferenceUtilities.setLocale(AccountSettingPatientActivity.this, PreferenceUtilities.getLanguage(AccountSettingPatientActivity.this));
         setContentView(R.layout.activity_account_setting_patient);
         init();
+
+        ivBackArrow = (ImageView) findViewById(R.id.ivBackArrow);
+        iv_logout = (ImageView) findViewById(R.id.iv_logout);
+        if(Locale.getDefault().getLanguage().equals("ar")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon_en);
+            iv_logout.setImageResource(R.drawable.log_out);
+        } if(Locale.getDefault().getLanguage().equals("en")){
+            ivBackArrow.setImageResource(R.drawable.main_screen_arrow_icon);
+            iv_logout.setImageResource(R.drawable.asset_3xhdpi);
+        }
+
     }
 
 
@@ -78,9 +99,18 @@ public class AccountSettingPatientActivity extends AppCompatActivity {
         });
         get_patient_data();
     }
+
     public void goBack(View view) {
         onBackPressed();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void update_patient(){
         params=new HashMap<>();
         if(!name_et.getText().toString().trim().equals(""))
@@ -171,5 +201,19 @@ public class AccountSettingPatientActivity extends AppCompatActivity {
                 Log.e("ERROR",t.getMessage()+"   ");
             }
         });
+    }
+
+    public void changeLanguage(View view){
+        String language = PreferenceUtilities.getLanguage(this);
+        if(language.equals(ARABIC_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ENGLISH_LANGUAGE);
+            //recreate();
+            startActivity(getIntent());
+        }
+        if(language.equals(ENGLISH_LANGUAGE)){
+            PreferenceUtilities.setLocale(this, ARABIC_LANGUAGE);
+            //recreate();
+            startActivity(getIntent());
+        }
     }
 }
