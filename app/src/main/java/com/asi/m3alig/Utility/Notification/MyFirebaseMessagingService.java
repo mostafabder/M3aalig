@@ -24,8 +24,27 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        String message=remoteMessage.getData().get("title")+"  "+remoteMessage.getData().get("date");
-        sendNotification(message);
+
+        if(remoteMessage.getData().size()>0)
+        {
+            String message;
+            if(remoteMessage.getData().get("date")!=null)
+            message=remoteMessage.getData().get("title")+"  "+remoteMessage.getData().get("date");
+            else
+                message=remoteMessage.getData().get("title");
+            sendNotification(message);
+            Log.e("Message data",message);
+        }
+        else
+        {
+            String message=remoteMessage.getNotification().getBody();
+            sendNotification(message);
+            Log.e("Message body",message);
+        }
+
+//         String message=remoteMessage.getData().get("title")+"  "+remoteMessage.getData().get("date");
+//         sendNotification(message);
+
 
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
