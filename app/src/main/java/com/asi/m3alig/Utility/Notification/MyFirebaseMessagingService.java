@@ -24,6 +24,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
         Log.d(TAG, "From: " + remoteMessage.getFrom());
+
         if(remoteMessage.getData().size()>0)
         {
             String message;
@@ -40,6 +41,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             sendNotification(message);
             Log.e("Message body",message);
         }
+
+//         String message=remoteMessage.getData().get("title")+"  "+remoteMessage.getData().get("date");
+//         sendNotification(message);
+
 
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
