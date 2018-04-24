@@ -149,8 +149,20 @@ public class NotesActivity extends AppCompatActivity {
         Log.e("TOKEN,SECRET",getToken(NotesActivity.this)+"  "+getSecret(NotesActivity.this));
         Log.e("data",order.toString());
 
-        if(order.getLocation_floor_number().equals("")){
+        if(order.getLocation_floor_number() == null || order.getLocation_floor_number().equals("")){
             order.setLocation_floor_number("floor");
+        }
+        if(order.getSocial_statue() == null || order.getSocial_statue().equals("")){
+            order.setSocial_statue("social_status");
+        }
+        if(order.getLat() == null || order.getLat().equals("")){
+            order.setLat("latitude");
+        }
+        if(order.getLng() == null || order.getLng().equals("")){
+            order.setLng("longitude");
+        }
+        if(order.getLocation_city() == null || order.getLocation_city().equals("")){
+            order.setLocation_city("city_location");
         }
 
         Call<NormalResponse> call=apiService.createVisitOrderPatient(
@@ -159,7 +171,7 @@ public class NotesActivity extends AppCompatActivity {
                 order.getAge(),
                 order.getGender(),
                 order.getWho_need_session(),
-                "as",
+                order.getSocial_statue(),
                 order.getMove_level(),
                 order.getHealth_problem(),
                 order.getWhen_pain_start(),

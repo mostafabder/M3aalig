@@ -2,6 +2,7 @@ package com.asi.m3alig.M3algFilesWork;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -36,6 +38,8 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
     private RatingBar ratingBar;
     String id, patient_id;
 
+    private LinearLayout ll_nextReport;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,8 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         PreferenceUtilities.setLocale(RateTreatmentDoctorSessionActivity.this, PreferenceUtilities.getLanguage(RateTreatmentDoctorSessionActivity.this));
         setContentView(R.layout.activity_rate_treatment_doctor_session);
+
+        ll_nextReport = (LinearLayout) findViewById(R.id.ll_nextReport);
 
         rateReason = (EditText) findViewById(R.id.et_rateReason);
         ratingBar =(RatingBar)findViewById(R.id.rating_bar);
@@ -54,6 +60,15 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
                 }else {
                     rateReason.setVisibility(View.VISIBLE);
                 }
+
+                ll_nextReport.setBackgroundColor(getResources().getColor(R.color.blue));
+                ll_nextReport.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        makeSessionReport();
+                    }
+                });
+
             }
         });
 
@@ -62,7 +77,7 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
 
     }
 
-    public void makeSessionReport(View view) {
+    public void makeSessionReport() {
         float rate = ratingBar.getRating();
         String rateReasonMessage = rateReason.getText().toString().trim();
         if(rate <= 0.0){
@@ -74,7 +89,6 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
                 intent.putExtra("visit_id", id);
                 intent.putExtra("patient_id", patient_id);
                 startActivity(intent);
-                finish();
             }else {
                 rateReason.setVisibility(View.VISIBLE);
                 Toast.makeText(getApplicationContext(), R.string.enter_reason_of_rate,Toast.LENGTH_SHORT).show();
@@ -86,7 +100,6 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
             intent.putExtra("visit_id", id);
             intent.putExtra("patient_id", patient_id);
             startActivity(intent);
-            finish();
         }
     }
 
@@ -140,6 +153,13 @@ public class RateTreatmentDoctorSessionActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

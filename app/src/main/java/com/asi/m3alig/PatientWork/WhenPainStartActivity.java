@@ -74,12 +74,12 @@ public class WhenPainStartActivity extends AppCompatActivity {
                     point.setScaleType(ImageView.ScaleType.FIT_XY);
 
                     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                            32,
-                            32);
+                            48,
+                            48);
                     layoutParams.addRule(RelativeLayout.ALIGN_START);
                     layoutParams.addRule(RelativeLayout.ALIGN_TOP);
-                    layoutParams.topMargin = y - 16;
-                    layoutParams.leftMargin = x - 16;
+                    layoutParams.topMargin = y - 24;
+                    layoutParams.leftMargin = x - 24;
 
                     rl_master.addView(point, layoutParams);
 

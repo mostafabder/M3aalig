@@ -1,5 +1,6 @@
 package com.asi.m3alig.M3algFilesWork;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.asi.m3alig.Adapters.M3alig.DoctorOrdersRecyclerViewAdapter;
 import com.asi.m3alig.BeforLoginActivity;
+import com.asi.m3alig.MainActivity;
 import com.asi.m3alig.Models.OrderDetails;
 import com.asi.m3alig.Models.Orders;
 import com.asi.m3alig.Models.Patient;
@@ -301,6 +303,13 @@ public class AvailableTreatmentRequestsActivity extends AppCompatActivity {
 
     public void goBack(View view) {
         onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void setupMap(final double latitude, final double longitude) {

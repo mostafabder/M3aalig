@@ -132,7 +132,8 @@
                 fancy:fb_radius="30dp"
                 fancy:fb_text="@string/choose_your_place"
                 fancy:fb_textColor="#FFFFFF"
-                fancy:fb_textSize="20sp"/>
+                fancy:fb_textSize="20sp"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

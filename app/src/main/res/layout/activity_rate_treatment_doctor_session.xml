@@ -5,7 +5,7 @@
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_back">
+    android:background="@drawable/new_background">
 
 
     <TextView
@@ -16,7 +16,8 @@
         android:gravity="center"
         android:text="@string/session_finished"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,8 +30,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_margin="15dp"
-            android:onClick="makeSessionReport"
-            android:background="@drawable/round_layout_tint">
+            android:background="@android:color/darker_gray"
+            android:id="@+id/ll_nextReport">
 
 
             <TextView

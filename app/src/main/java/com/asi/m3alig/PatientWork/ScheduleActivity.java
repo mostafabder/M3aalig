@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.asi.m3alig.BeforLoginActivity;
 import com.asi.m3alig.Models.VisitOrderPatient;
@@ -17,8 +18,10 @@ import com.asi.m3alig.Utility.PreferenceUtilities;
 import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import mehdi.sakout.fancybuttons.FancyButton;
@@ -45,7 +48,6 @@ public class ScheduleActivity extends AppCompatActivity {
         order.setType("normal");
         getDateTime();
         calendar=Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH,1);
         singleDateAndTimePicker.setMinDate(calendar.getTime());
         urgentOrderLayout = (LinearLayout) findViewById(R.id.urgent_order_layout);
         bookOrderLayout = (LinearLayout) findViewById(R.id.book_date_layout);
@@ -114,12 +116,25 @@ public class ScheduleActivity extends AppCompatActivity {
         getDateTime();
         Intent intent=new Intent(ScheduleActivity.this, NotesActivity.class);
         intent.putExtra("order",order);
-        Log.e("type,date,time",order.getType()+","+order.getDate()+","+order.getTime());
+        Log.e("type,date,time",order.getType()+" , "+order.getDate()+" , "+order.getTime());
+
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        String calendarDate = simpleDateFormat.format(calendar.getTime());
+        String pickerDate = simpleDateFormat.format(singleDateAndTimePicker.getDate());
+
+        Log.i("TIME CALENDAR", calendarDate);
+        Log.i("TIME PICKER", pickerDate);
+
+       if (pickerDate.equals(calendarDate)){
+           Toast.makeText(getApplicationContext(), R.string.earlist_time, Toast.LENGTH_LONG).show();
+            return;
+        }
         startActivity(intent);
     }
+
     public void getDateTime(){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("hh:mm");
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy/MM/dd", Locale.ROOT);
+        SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("hh:mm:ss", Locale.ROOT);
         date=simpleDateFormat.format(singleDateAndTimePicker.getDate());
         time=simpleDateFormat1.format(singleDateAndTimePicker.getDate());
         order.setDate(date);

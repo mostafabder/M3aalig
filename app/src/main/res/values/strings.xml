@@ -574,5 +574,6 @@
     <string name="the_patientName">اسم المريض /</string>
     <string name="the_patientNumber">رقم المريض /</string>
     <string name="ont_the_body">يرجى وضع العلامات فوق المجسم التالي فقط و ليس خارجه</string>
+    <string name="earlist_time">لا يمكن حجز موعد اليوم</string>
 
 </resources>

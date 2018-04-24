@@ -164,10 +164,23 @@ public class ChoosePlaceActivity extends AppCompatActivity  implements GoogleApi
             else Toast.makeText(ChoosePlaceActivity.this,validate(),Toast.LENGTH_SHORT).show();
         }
         else{
-            if(mLastLocation != null) {
-                Log.i("Location", mLastLocation.toString());
+//            if(mLastLocation != null) {
+//                Log.i("Location", mLastLocation.toString());
+//            }
+//            Toast.makeText(ChoosePlaceActivity.this, R.string.cant_find_location,Toast.LENGTH_SHORT).show();
+            if(validate().equals("ok")||validate().equals(getString(R.string.make_sure_of_location)))
+            {
+                order.setLocation_floor_number(floor.getText().toString());
+                order.setLocation_street_name(street.getText().toString());
+                order.setLocation_region(spinner.getSelectedItem().toString());
+//                order.setLocation_city(city.getText().toString());
+                Intent intent=new Intent(ChoosePlaceActivity.this, ScheduleActivity.class);
+                intent.putExtra("order",order);
+                Log.e("flr,st,reg,city,lat,lng",order.getLocation_floor_number()+","+order.getLocation_street_name()+","+order.getLocation_region()+","+order.getLocation_city()+","+order.getLocation_city()
+                        +","+order.getLat()+","+order.getLng());
+                startActivity(intent);
             }
-            Toast.makeText(ChoosePlaceActivity.this, R.string.cant_find_location,Toast.LENGTH_SHORT).show();
+            else Toast.makeText(ChoosePlaceActivity.this,validate(),Toast.LENGTH_SHORT).show();
         }
 
     }
